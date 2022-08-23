@@ -2,6 +2,7 @@ import * as React from "react"
 import styled from 'styled-components'
 import Hero from '../components/Hero'
 import About from '../components/About'
+import Projects from '../components/Projects'
 import GlobalStyle from '../styles/globalStyles.js'
 
 const Main = styled.main`
@@ -18,6 +19,7 @@ const IndexPage = () => {
     <Main>
       <Hero />
       <About />
+      <Projects />
     </Main>
     </>
   )
