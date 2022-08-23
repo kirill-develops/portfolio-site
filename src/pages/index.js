@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from 'styled-components'
 import Hero from '../components/Hero'
+import About from '../components/About'
 import GlobalStyle from '../styles/globalStyles.js'
 
 const Main = styled.main`
@@ -16,6 +17,7 @@ const IndexPage = () => {
     <GlobalStyle/>
     <Main>
       <Hero />
+      <About />
     </Main>
     </>
   )
