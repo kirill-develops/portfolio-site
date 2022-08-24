@@ -1,9 +1,15 @@
-import styled, {createGlobalStyle} from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; 
+  }
+
+  a {
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -18,12 +24,9 @@ export const TitleAccent = styled.span`
   color: #663399;
 `;
 
-export const TitleLink = styled.a`
-`;
+export const TitleLink = styled.a``;
 
-export const Body = styled.p`
-
-`;
+export const Body = styled.p``;
 
 export const BodyAccent = styled.span`
   font-weight: bold;
