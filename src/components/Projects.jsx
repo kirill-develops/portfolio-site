@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import {Title} from '../styles/globalStyles'
+import React from 'react';
+import styled from 'styled-components';
+import { Title } from '../styles/globalStyles';
 
 const Main = styled.section`
   height: calc(100vh - 96px);
@@ -14,7 +14,7 @@ const Projects = () => {
         Projects
       </Title>
     </Main>
-  )
-}
+  );
+};
 
 export default Projects;

@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import {
-  Title, 
-  TitleAccent, 
-  TitleLink
-} from '../styles/globalStyles.js'
+  Title,
+  TitleAccent,
+  TitleLink,
+} from '../styles/globalStyles';
 
 const Main = styled.section`
   height: calc(100vh - 96px);
@@ -20,7 +20,7 @@ const Hero = () => {
       </Title>
       <TitleLink href="#about">Learn More</TitleLink>
     </Main>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

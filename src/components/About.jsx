@@ -1,10 +1,10 @@
-import React from 'react'
-import {
-  Title, 
-  Body, 
-  BodyAccent
-} from '../styles/globalStyles'
+import React from 'react';
 import styled from 'styled-components';
+import {
+  Title,
+  Body,
+  BodyAccent,
+} from '../styles/globalStyles';
 
 const Section = styled.section`
   height: calc(100vh - 96px);
@@ -44,7 +44,7 @@ const About = () => {
           MySQL, Knex.js, MongoDB
         </Body>
       </Section>
-  )
-}
+  );
+};
 
-export default About
+export default About;
