@@ -1,20 +1,11 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
 import Contact from '../components/Footer';
 import GlobalStyle from '../styles/globalStyles';
-
-const Main = styled.main`
-  color: #232129;
-  font-family: -apple-system, Roboto, sans-serif, serif;
-  padding: 96px 12px;
-  @media (min-width: 48rem) {
-    padding: 96px;
-  } ;
-`;
+import { Main } from '../styles/globalStyles';
 
 const IndexPage = () => {
   return (

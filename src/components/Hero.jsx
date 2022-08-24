@@ -1,25 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  Title,
-  TitleAccent,
-  TitleLink,
-} from '../styles/globalStyles';
+import { Section, Title, TitleAccent, TitleLink } from '../styles/globalStyles';
 
-const Main = styled.section`
-  height: calc(100vh - 96px);
+const HeroSection = styled(Section)`
+  height: 100vh;
 `;
 
 const Hero = () => {
   return (
-    <Main id="top">
-      <Title >
+    <HeroSection id='top'>
+      <Title>
         Kirill Tchentsov
         <br />
         <TitleAccent>Web Developer</TitleAccent>
       </Title>
-      <TitleLink href="#about">Learn More</TitleLink>
-    </Main>
+      <TitleLink href='#about'>Learn More</TitleLink>
+      <br />
+      <TitleLink href='#projects'>Projects</TitleLink>
+    </HeroSection>
   );
 };
 

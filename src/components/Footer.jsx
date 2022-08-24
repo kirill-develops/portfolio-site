@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SiGmail, SiGithub, SiLinkedin } from 'react-icons/si';
-import { Title } from '../styles/globalStyles';
+import { Section, Title } from '../styles/globalStyles';
 
-const Contact = styled.footer``;
+const Contact = styled(Section)`
+  height: inherit;
+`;
 
 const LinksWrapper = styled.address`
   display: flex;
