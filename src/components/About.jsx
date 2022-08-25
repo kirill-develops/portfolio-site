@@ -3,28 +3,27 @@ import React from 'react';
 import styled from 'styled-components';
 import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
 
+const AboutSection = styled(Section)`
+  background-color: #1c52a2;
+  color: #efecef;
+  display: flex;
+  flex-direction: column;
+`;
+
 const FlexWrapper = styled.div`
   display: flex;
+  flex: 1;
+  overflow-y: auto;
   flex-wrap: wrap;
   flex-basis: min-content;
   justify-content: center;
   align-items: center;
-  gap: 0 12px;
+  gap: 0 24px;
 
   @media (min-width: 70rem) {
-    padding: 0 96px;
+    padding: 0 64px;
+    gap: 0 32px;
   } ;
-`;
-
-const BodyWrapper = styled.article`
-  min-width: 280px;
-  /* max-width: 400px; */
-  width: 100%;
-
-  @media (min-width: 37.5rem) {
-    width: 50%;
-    max-width: 480px;
-  }
 `;
 
 const PhotoWrapper = styled.div`
@@ -33,8 +32,17 @@ const PhotoWrapper = styled.div`
   overflow: hidden;
 
   @media (min-width: 37.5rem) {
-    width: 45%;
+    width: 46%;
     max-width: fit-content;
+  }
+`;
+
+const BodyWrapper = styled.article`
+  min-width: 280px;
+  width: 100%;
+
+  @media (min-width: 37.5rem) {
+    width: 50%;
   }
 `;
 
@@ -45,12 +53,11 @@ function About() {
       alt='Kirill in Scuba Equipment'
       placeholder='tracedSVG'
       layout='constrained'
-      width={450}
     />
   );
 
   return (
-    <Section
+    <AboutSection
       id='about'
       color='purple'
     >
@@ -59,10 +66,9 @@ function About() {
         <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
         <BodyWrapper>
           <Body>
-            I've worn many hats in my time. Marketing professional. Bartender.
-            Carpenter. Even a scuba diving instructor. It wasn't until I
-            rediscovered programming and developing that I really felt in my
-            element.
+            I've worn many hats. Marketing professional. Bartender. Carpenter.
+            Even a scuba diving instructor. It wasn't until I rediscovered
+            programming that I really felt in my element.
           </Body>
           <Body>
             I first fell in love with programming in grade 7, creating
@@ -96,7 +102,7 @@ function About() {
           </Body>
         </BodyWrapper>
       </FlexWrapper>
-    </Section>
+    </AboutSection>
   );
 }
 

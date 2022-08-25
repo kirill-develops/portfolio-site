@@ -34,13 +34,16 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-  margin-top: 0;
-  margin-bottom: 64px;
+  margin: 12px 0 40px;
   font-size: 2.7rem;
 
   @media (min-width: 37.5rem) {
-    margin: 16px auto 48px;
+    margin: 16px 0 16px;
     max-width: 80rem;
+  }
+  @media (min-width: 80rem) {
+    margin: 16px auto 16px;
+    min-width: 80rem;
   }
 `;
 
