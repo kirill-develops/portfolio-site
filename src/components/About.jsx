@@ -8,6 +8,10 @@ const AboutSection = styled(Section)`
   color: #efecef;
   display: flex;
   flex-direction: column;
+  height: inherit;
+  @media (min-width: 37.5rem) {
+    height: 100vh;
+  }
 `;
 
 const FlexWrapper = styled.div`
@@ -21,7 +25,6 @@ const FlexWrapper = styled.div`
   gap: 0 24px;
 
   @media (min-width: 70rem) {
-    padding: 0 64px;
     gap: 0 32px;
   } ;
 `;
@@ -30,9 +33,10 @@ const PhotoWrapper = styled.div`
   border-radius: 3px;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
   overflow: hidden;
+  max-width: 25rem;
 
   @media (min-width: 37.5rem) {
-    width: 46%;
+    width: 40%;
     max-width: fit-content;
   }
 `;
@@ -42,7 +46,7 @@ const BodyWrapper = styled.article`
   width: 100%;
 
   @media (min-width: 37.5rem) {
-    width: 50%;
+    width: 40%;
   }
 `;
 
