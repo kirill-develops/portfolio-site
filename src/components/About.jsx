@@ -17,7 +17,7 @@ const AboutSection = styled(Section)`
 const FlexWrapper = styled.div`
   display: flex;
   flex: 1;
-  overflow-y: auto;
+  overflow-y: hidden;
   flex-wrap: wrap;
   flex-basis: min-content;
   justify-content: center;

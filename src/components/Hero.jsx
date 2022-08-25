@@ -18,6 +18,11 @@ const HeroSection = styled(Section)`
 
 const HeroTitle = styled(Title)`
   max-width: 220px;
+  min-width: 220px;
+
+  @media (min-width: 80rem) {
+    margin: 16px 0 16px;
+  }
 `;
 
 const HeroAccent = styled(TitleAccent)`
