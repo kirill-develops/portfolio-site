@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    transition: 1s;
+    transition: 0.2s;
   }
 
   body {
