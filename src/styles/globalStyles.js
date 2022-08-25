@@ -26,9 +26,9 @@ export const Main = styled.main`
 export const Section = styled.section`
   min-height: fit-content;
   padding: 12px 16px 96px;
+  height: 100vh;
 
   @media (min-width: 37.5rem) {
-    height: 100vh;
     padding: 32px 32px 96px;
   }
 `;
