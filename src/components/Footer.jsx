@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SiGmail, SiGithub, SiLinkedin } from 'react-icons/si';
-import { Title } from '../styles/globalStyles';
+import { SiGmail, SiGithub, SiLinkedin, SiClickup } from 'react-icons/si';
+import { Section, Title } from '../styles/globalStyles';
 
-const Contact = styled.footer``;
+const Contact = styled(Section)`
+  height: inherit;
+  padding-bottom: 64px;
+  background-color: #0a0908;
+  color: #efecef;
+`;
 
 const LinksWrapper = styled.address`
   display: flex;
@@ -13,31 +18,36 @@ const LinksWrapper = styled.address`
 `;
 
 const LogoWrapper = styled.a`
-  background-color: white;
   display: inline-flex;
+  color: #c9cbcb;
   box-sizing: content-box;
-  margin: 0.6rem;
-  padding: 0.6rem;
+  margin: 1.2rem;
 `;
 
 const GithubWrapper = styled(LogoWrapper)`
-  color: #272727;
   &: hover {
     color: #207729;
   }
 `;
 
 const GmailWrapper = styled(LogoWrapper)`
-  color: #272727;
   &: hover {
     color: #be2624;
   }
 `;
 
 const LinkedinWrapper = styled(LogoWrapper)`
-  color: #272727;
   &: hover {
     color: #0e4fb4;
+  }
+`;
+
+const ClickUpWrapper = styled(LogoWrapper)`
+  display: flex;
+  width: fit-content;
+  margin: 2.4rem auto 0;
+  &: hover {
+    color: #d58a27;
   }
 `;
 
@@ -64,6 +74,9 @@ function Footer() {
           <SiGithub size={28} />
         </GithubWrapper>
       </LinksWrapper>
+      <ClickUpWrapper href='#top'>
+        <SiClickup size={22} />
+      </ClickUpWrapper>
     </Contact>
   );
 }
