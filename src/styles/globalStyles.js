@@ -1,10 +1,15 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import media, { desktopBreakpoint } from './mediaQueries';
 
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     scroll-behavior: smooth;
     transition: 0.1s;
+  }
+
+  html{
+    font-family: -apple-system, Roboto, sans-serif, serif;
   }
 
   body {
@@ -20,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
 
 export const Main = styled.main`
   color: #232129;
-  font-family: -apple-system, Roboto, sans-serif, serif;
 `;
 
 export const Section = styled.section`
@@ -28,26 +32,48 @@ export const Section = styled.section`
   padding: 12px 16px 96px;
   height: 100vh;
 
-  @media (min-width: 37.5rem) {
-    padding: 32px 32px 96px;
-  }
+  ${media.devicePortrait`
+  padding: 32px 32px 96px;
+  `}
+
+  ${media.deviceLandscape`
+  padding: 32px 32px 96px;
+  `}
+
+  ${media.laptop`
+  padding: 32px 32px 96px;
+  `}
+
+  ${media.desktop`
+  padding: 32px 32px 96px;
+  `}
 `;
 
 export const Title = styled.h1`
   margin: 12px 0 40px;
   font-size: 2.7rem;
   color: ${(props) => props.color || 'inherit'};
+  width: 100%;
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   min-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
 
-  @media (min-width: 37.5rem) {
-    margin: 16px 0 16px;
-    max-width: ${(props) => (props.Hero ? '220px' : '70rem')};
-  }
-  @media (min-width: 80rem) {
-    margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
-    min-width: ${(props) => (props.Hero ? '220px' : '70rem')};
-  }
+  ${media.devicePortrait`
+  margin: 16px 0 16px;
+  max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
+  `}
+
+  ${media.deviceLandscape`
+  margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
+  `};
+
+  ${media.laptop`
+  margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
+  `};
+
+  ${media.desktop`
+  margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
+  max-width: ${(props) => (props.Hero ? '220px' : `${desktopBreakpoint}rem`)};
+  `};
 `;
 
 export const TitleAccent = styled.span`
