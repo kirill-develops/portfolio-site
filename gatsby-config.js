@@ -11,6 +11,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-image',
+    'gatsby-plugin-sass',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
