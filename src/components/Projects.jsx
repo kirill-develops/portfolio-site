@@ -11,7 +11,7 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/parallax';
-import '../styles/swiper.css';
+import '../styles/swiper.scss';
 
 const ProjectsSection = styled(Section)`
   color: #2f2756;
@@ -33,6 +33,10 @@ const PhotoWrapper = styled(Card)`
   background-color: #2f2756;
   overflow: hidden;
   height: fit-content;
+  max-height: 50%;
+  width: fit-content;
+  max-width: 95%;
+  padding: 16px;
 `;
 
 const PhotoBorder = styled.div`
@@ -40,14 +44,15 @@ const PhotoBorder = styled.div`
   border: 1.2px solid #c2b368;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   overflow: hidden;
+  height: 100%;
 `;
 
 const DetailsWrapper = styled(Card)`
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
   height: fit-content;
-  color: #ebdbe2;
-  background-color: #4795cf;
-  padding-bottom: 32px;
+  background-color: #fcf2ee;
+  padding-bottom: 24px;
+  width: 98%;
 `;
 
 const CardTitle = styled.h2`
@@ -60,9 +65,9 @@ const CardTitle = styled.h2`
 `;
 
 const CardAccent = styled.h3`
-  color: #ebdbe2;
+  color: #4795cf;
   font: roboto slab;
-  font-size: 1rem;
+  font-size: 0.8rem;
 `;
 
 function Projects() {
@@ -77,8 +82,8 @@ function Projects() {
             childImageSharp {
               gatsbyImageData(
                 placeholder: TRACED_SVG
+                width: 600
                 layout: CONSTRAINED
-                width: 500
               )
             }
           }
@@ -87,28 +92,30 @@ function Projects() {
     }
   `);
 
-  const projectSlides = data.allProjectListJson?.nodes?.map((project) => {
-    const projectPhoto = getImage(project.img);
+  const projectSlides = data.allProjectListJson?.nodes
+    ?.reverse()
+    .map((project) => {
+      const projectPhoto = getImage(project.img);
 
-    return (
-      <SwiperSlide key={project.id}>
-        <PhotoWrapper>
-          <PhotoBorder>
-            <GatsbyImage
-              image={projectPhoto}
-              alt={`Screenshot of ${project.name}`}
-            />
-          </PhotoBorder>
-        </PhotoWrapper>
-        <CardTitle>{project.name}</CardTitle>
-        <DetailsWrapper>
-          <Body>{project.description}</Body>
-          <CardAccent>Front-End:</CardAccent>
-          <CardAccent>Back-End:</CardAccent>
-        </DetailsWrapper>
-      </SwiperSlide>
-    );
-  });
+      return (
+        <SwiperSlide key={project.id}>
+          <PhotoWrapper>
+            <PhotoBorder>
+              <GatsbyImage
+                image={projectPhoto}
+                alt={`Screenshot of ${project.name}`}
+              />
+            </PhotoBorder>
+          </PhotoWrapper>
+          <CardTitle>{project.name}</CardTitle>
+          <DetailsWrapper>
+            <Body>{project.description}</Body>
+            <CardAccent>Front-End:</CardAccent>
+            <CardAccent>Back-End:</CardAccent>
+          </DetailsWrapper>
+        </SwiperSlide>
+      );
+    });
 
   return (
     <ProjectsSection id="projects">
@@ -117,7 +124,10 @@ function Projects() {
         modules={[Pagination, Parallax, Autoplay]}
         pagination={{ type: 'bullets' }}
         parallax
-        spaceBetween={32}
+        breakpoints={{
+          320: { spaceBetween: 32 },
+          600: { spaceBetween: 64 },
+        }}
         // autoplay
       >
         {projectSlides}
