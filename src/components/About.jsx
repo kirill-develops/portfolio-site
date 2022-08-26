@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../styles/colors';
 import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
+import media from '../styles/mediaQueries';
 
 const AboutSection = styled(Section)`
   background-color: ${colors.darkShade};
@@ -11,9 +12,13 @@ const AboutSection = styled(Section)`
   flex-direction: column;
   height: inherit;
 
-  @media (min-width: 37.5rem) {
-    height: 100vh;
-  }
+  ${media.deviceLandscape`
+  height: 100vh;
+  `};
+
+  ${media.laptop`
+  height: 100vh;
+  `};
 `;
 
 const FlexWrapper = styled.div`
@@ -26,9 +31,16 @@ const FlexWrapper = styled.div`
   height: fit-content;
   gap: 12px 24px;
 
-  @media (min-width: 70rem) {
-    gap: 0 32px;
-  } ;
+  ${media.deviceLandscape`
+  gap: 0 32px;
+  `};
+
+  ${media.laptop`
+  gap: 0 32px;
+  `}
+  ${media.desktop`
+  gap: 0 42px;
+  `}
 `;
 
 const PhotoWrapper = styled.div`
@@ -39,23 +51,49 @@ const PhotoWrapper = styled.div`
   margin: 0 16px;
   max-width: 25rem;
 
-  @media (min-width: 37.5rem) {
-    width: 40%;
-    margin: 0;
-    max-width: fit-content;
-  }
+  ${media.deviceLandscape`
+  width: 40%;
+  margin: 0;
+  max-width: fit-content;
+  `};
+
+  ${media.laptop`
+  width: 40%;
+  margin: 0;
+  max-width: fit-content;
+  `};
+
+  ${media.desktop`
+  width: 35%;
+  margin: 0;
+  max-width: fit-content;
+  `}
 `;
 
 const BodyWrapper = styled.article`
-  min-width: 280px;
+  min-width: 240px;
   width: 100%;
   padding: 0 8px;
   text-align: center;
 
-  @media (min-width: 37.5rem) {
+  ${media.devicePortrait`
+    padding: 0 16px;
+  `}
+
+  ${media.deviceLandscape`
     text-align: start;
     width: 40%;
-  }
+  `};
+
+  ${media.laptop`
+    text-align: start;
+    width: 40%;
+    `};
+
+  ${media.desktop`
+    text-align: start;
+    width: 40%;
+    `};
 `;
 
 function About() {

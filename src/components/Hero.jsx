@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Section, Title, TitleAccent, TitleLink } from '../styles/globalStyles';
+import media from '../styles/mediaQueries';
 
 const HeroSection = styled(Section)`
   height: 100vh;
@@ -9,11 +10,23 @@ const HeroSection = styled(Section)`
   flex-direction: column;
   justify-content: center;
 
-  @media (min-width: 37.5rem) {
-    transform: translateY(-10%);
-    width: 75%;
-    margin: auto;
-  }
+  ${media.deviceLandscape`
+  transform: translateY(-10%);
+  width: 75%;
+  margin: auto;
+  `};
+
+  ${media.laptop`
+  transform: translateY(-10%);
+  width: 75%;
+  margin: auto;
+  `};
+
+  ${media.desktop`
+  transform: translateY(-10%);
+  width: 75%;
+  margin: auto;
+  `};
 `;
 
 function Hero() {

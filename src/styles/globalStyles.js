@@ -32,10 +32,6 @@ export const Section = styled.section`
   padding: 12px 16px 96px;
   height: 100vh;
 
-  ${media.devicePortrait`
-  padding: 32px 32px 96px;
-  `}
-
   ${media.deviceLandscape`
   padding: 32px 32px 96px;
   `}
@@ -58,11 +54,11 @@ export const Title = styled.h1`
   min-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
 
   ${media.devicePortrait`
-  margin: 16px 0 16px;
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   `}
-
+  
   ${media.deviceLandscape`
+  margin: 16px 0 16px;
   margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
   `};
 
