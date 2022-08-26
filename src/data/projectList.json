@@ -1,26 +1,26 @@
 [
   {
-    "name": "Coffee Shop",
-    "img": "../images/CoffeeShop.jpg",
+    "name": "CoffeeShop",
+    "img": "../images/coffeeshop2.jpg",
     "description": ""
   },
   {
-    "name": "Travel Site",
+    "name": "TravelSite",
     "img": "../images/TravelSite.jpg",
     "description": ""
   },
   {
-    "name": "BrainFlix (YouTube Clone)",
-    "img": "../images/BrainFlix.jpg",
+    "name": "BrainFlix",
+    "img": "../images/brainflix2.jpg",
     "description": ""
   },
   {
-    "name": "The Bees Knees Band Site",
-    "img": "../images/BandSite.jpg",
+    "name": "BandSite",
+    "img": "../images/bandsite2.jpg",
     "description": ""
   },
   {
-    "name": "InStock Warehouse SPA",
+    "name": "InStock",
     "img": "../images/InStock.jpg",
     "description": ""
   }
