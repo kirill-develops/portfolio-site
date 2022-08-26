@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { SiGmail, SiGithub, SiLinkedin, SiClickup } from 'react-icons/si';
 import { Section, Title, Body } from '../styles/globalStyles';
+import colors from '../styles/colors';
 
 const Contact = styled(Section)`
   height: inherit;
   padding-bottom: 64px;
-  background-color: #272727;
-  color: #efecef;
+  background-color: ${colors.black};
 `;
 
 const LinksContainer = styled.address`
@@ -19,33 +19,33 @@ const LinksContainer = styled.address`
 
 const LogoWrapper = styled.a`
   display: inline-flex;
-  color: #c9cbcb;
+  color: ${colors.logoInactive};
   box-sizing: content-box;
   margin: 1.2rem;
 `;
 
 const GithubWrapper = styled(LogoWrapper)`
   &: hover {
-    color: #00ac47;
+    color: ${colors.logoGithub};
   }
 `;
 
 const GmailWrapper = styled(LogoWrapper)`
   &: hover {
-    color: #ea4335;
+    color: ${colors.logoGmail};
   }
 `;
 
 const LinkedinWrapper = styled(LogoWrapper)`
   &: hover {
-    color: #0a66c2;
+    color: ${colors.logoLinkedin};
   }
 `;
 
 const Divider = styled.hr`
   width: 50%;
   min-width: 300px;
-  border-color: #c2b368;
+  border-color: ${colors.lightAccent};
 `;
 
 const ClickUpWrapper = styled(LogoWrapper)`
@@ -53,20 +53,20 @@ const ClickUpWrapper = styled(LogoWrapper)`
   width: fit-content;
   margin: 0 auto 2.4rem;
   &: hover {
-    color: #d58a27;
+    color: ${colors.logoUp};
   }
 `;
 
 const Caption = styled(Body)`
   font-size: 0.8rem;
   text-align: center;
-  color: #6d6d6d;
+  color: ${colors.finePrint};
 `;
 
 function Footer() {
   return (
     <Contact id="contact">
-      <Title color="#c2b368"> Connect </Title>
+      <Title color={colors.lightAccent}> Connect </Title>
       <ClickUpWrapper href="#top">
         <SiClickup size={22} />
       </ClickUpWrapper>

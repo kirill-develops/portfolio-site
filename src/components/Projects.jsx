@@ -5,6 +5,7 @@ import { Pagination, Autoplay } from 'swiper';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Title, Section, Body } from '../styles/globalStyles';
+import colors from '../styles/colors';
 
 // Swiper style dependencies
 import 'swiper/scss';
@@ -13,8 +14,8 @@ import 'swiper/scss/pagination';
 import '../styles/swiper.scss';
 
 const ProjectsSection = styled(Section)`
-  color: #2f2756;
-  background-color: #ebdbe2;
+  color: ${colors.darkShade};
+  background-color: ${colors.lightShade};
 `;
 
 const Card = styled.div`
@@ -29,7 +30,7 @@ const PhotoWrapper = styled(Card)`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #2f2756;
+  background-color: ${colors.darkShade};
   overflow: hidden;
   height: fit-content;
   max-height: 50%;
@@ -40,7 +41,7 @@ const PhotoWrapper = styled(Card)`
 
 const PhotoBorder = styled.div`
   border-radius: 4px;
-  border: 1.2px solid #c2b368;
+  border: 1.2px solid ${colors.lightAccent};
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   overflow: hidden;
   height: 100%;
@@ -49,7 +50,7 @@ const PhotoBorder = styled.div`
 const DetailsWrapper = styled(Card)`
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
   height: fit-content;
-  background-color: #fcf2ee;
+  background-color: ${colors.white};
   padding-bottom: 24px;
   width: 98%;
 `;
@@ -60,11 +61,11 @@ const CardTitle = styled.h2`
   text-align: center;
   width: fit-content;
   text-transform: uppercase;
-  color: #2f2756;
+  color: ${colors.darkShade};
 `;
 
 const CardAccent = styled.h3`
-  color: #4795cf;
+  color: ${colors.mainColor};
   font: roboto slab;
   font-size: 0.8rem;
 `;

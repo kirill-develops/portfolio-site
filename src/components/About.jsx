@@ -1,11 +1,12 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
+import colors from '../styles/colors';
 import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
 
 const AboutSection = styled(Section)`
-  background-color: #2f2756;
-  color: #ebdbe2;
+  background-color: ${colors.darkShade};
+  color: ${colors.lightShade};
   display: flex;
   flex-direction: column;
   height: inherit;
@@ -18,11 +19,11 @@ const AboutSection = styled(Section)`
 const FlexWrapper = styled.div`
   display: flex;
   flex: 1;
-  overflow-y: hidden;
   flex-wrap: wrap;
   flex-basis: min-content;
   justify-content: center;
   align-items: center;
+  height: fit-content;
   gap: 12px 24px;
 
   @media (min-width: 70rem) {
@@ -32,9 +33,9 @@ const FlexWrapper = styled.div`
 
 const PhotoWrapper = styled.div`
   border-radius: 6px;
-  border: 2px solid #c2b368;
+  border: 2px solid ${colors.lightAccent};
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
-  overflow: hidden;
+  height: fit-content;
   margin: 0 16px;
   max-width: 25rem;
 
