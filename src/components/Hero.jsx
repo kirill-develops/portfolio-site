@@ -16,34 +16,21 @@ const HeroSection = styled(Section)`
   }
 `;
 
-const HeroTitle = styled(Title)`
-  max-width: 220px;
-  min-width: 220px;
-
-  @media (min-width: 80rem) {
-    margin: 16px 0 16px;
-  }
-`;
-
-const HeroAccent = styled(TitleAccent)`
-  color: #1c52a2;
-`;
-
-const Hero = () => {
+function Hero() {
   return (
-    <HeroSection id='top'>
-      <HeroTitle>
+    <HeroSection id="top">
+      <Title Hero>
         Kirill Tchentsov
         <br />
-        <HeroAccent>Web Developer</HeroAccent>
-      </HeroTitle>
-      <TitleLink href='#about'>Learn More</TitleLink>
+        <TitleAccent color="#1c52a2">Web Developer</TitleAccent>
+      </Title>
+      <TitleLink href="#about">Learn More</TitleLink>
       <br />
-      <TitleLink href='#projects'>Projects</TitleLink>
+      <TitleLink href="#projects">Projects</TitleLink>
       <br />
-      <TitleLink href='#contact'>Contact Me</TitleLink>
+      <TitleLink href="#contact">Contact Me</TitleLink>
     </HeroSection>
   );
-};
+}
 
 export default Hero;

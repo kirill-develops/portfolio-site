@@ -36,19 +36,22 @@ export const Section = styled.section`
 export const Title = styled.h1`
   margin: 12px 0 40px;
   font-size: 2.7rem;
+  color: ${(props) => props.color || 'inherit'};
+  max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
+  min-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
 
   @media (min-width: 37.5rem) {
     margin: 16px 0 16px;
-    max-width: 80rem;
+    max-width: ${(props) => (props.Hero ? '220px' : '70rem')};
   }
   @media (min-width: 80rem) {
-    margin: 16px auto 16px;
-    min-width: 80rem;
+    margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
+    min-width: ${(props) => (props.Hero ? '220px' : '70rem')};
   }
 `;
 
 export const TitleAccent = styled.span`
-  color: #663399;
+  color: ${(props) => props.color || '#663399'};
 `;
 
 export const TitleLink = styled.a`
@@ -81,6 +84,7 @@ export const Body = styled.p``;
 
 export const BodyAccent = styled.span`
   font-weight: bold;
+  color: ${(props) => props.color || 'inherit'};
 `;
 
 export default GlobalStyle;
