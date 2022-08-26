@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper';
+import { Pagination, Autoplay, Mousewheel } from 'swiper';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Title, Section, Body } from '../styles/globalStyles';
@@ -12,6 +12,7 @@ import 'swiper/scss';
 import 'swiper/scss/autoplay';
 import 'swiper/scss/pagination';
 import '../styles/swiper.scss';
+import media from '../styles/mediaQueries';
 
 const ProjectsSection = styled(Section)`
   color: ${colors.darkShade};
@@ -37,6 +38,12 @@ const PhotoWrapper = styled(Card)`
   width: fit-content;
   max-width: 95%;
   padding: 16px;
+
+  ${media.landscape`
+    max-width: 45%;
+    max-height: 100%;
+    align-self: center;
+  `}
 `;
 
 const PhotoBorder = styled.div`
@@ -47,12 +54,32 @@ const PhotoBorder = styled.div`
   height: 100%;
 `;
 
+const CardSection = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ${media.landscape`
+  width: 45%;
+  flex-direction: column;
+  gap: 64px 0;
+`};
+`;
+
 const DetailsWrapper = styled(Card)`
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
-  height: fit-content;
   background-color: ${colors.white};
+  height: fit-content;
   padding-bottom: 24px;
   width: 98%;
+
+  ${media.landscape`
+    border-radius: initial;
+    background-color: inherit;
+    box-shadow: unset;
+  `}
 `;
 
 const CardTitle = styled.h2`
@@ -62,6 +89,17 @@ const CardTitle = styled.h2`
   width: fit-content;
   text-transform: uppercase;
   color: ${colors.darkShade};
+
+  ${media.landscape`
+    margin: 28px auto 42px;
+    box-shadow: inset 0px 0rem 3rem 5px rgb(0 0 0 / 38%);
+    background-color: ${colors.mainColor};
+    color: ${colors.lightShade};
+    width:100%;
+    border-radius: 8px;
+    padding: 12px;
+
+  `}
 `;
 
 const CardAccent = styled.h3`
@@ -80,11 +118,7 @@ function Projects() {
           description
           img {
             childImageSharp {
-              gatsbyImageData(
-                placeholder: TRACED_SVG
-                width: 600
-                layout: CONSTRAINED
-              )
+              gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
             }
           }
         }
@@ -107,12 +141,14 @@ function Projects() {
               />
             </PhotoBorder>
           </PhotoWrapper>
-          <CardTitle>{project.name}</CardTitle>
-          <DetailsWrapper>
-            <Body>{project.description}</Body>
-            <CardAccent>Front-End:</CardAccent>
-            <CardAccent>Back-End:</CardAccent>
-          </DetailsWrapper>
+          <CardSection>
+            <CardTitle>{project.name}</CardTitle>
+            <DetailsWrapper>
+              <Body>{project.description}</Body>
+              <CardAccent>Front-End:</CardAccent>
+              <CardAccent>Back-End:</CardAccent>
+            </DetailsWrapper>
+          </CardSection>
         </SwiperSlide>
       );
     });
@@ -121,14 +157,14 @@ function Projects() {
     <ProjectsSection id="projects">
       <Title>Projects</Title>
       <Swiper
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination, Autoplay, Mousewheel]}
         pagination={{ type: 'bullets' }}
         autoplay={{ delay: 5000 }}
+        mousewheel={{ forceToAxis: true }}
         breakpoints={{
           320: { spaceBetween: 32 },
           600: { spaceBetween: 64 },
         }}
-        // autoplay
       >
         {projectSlides}
       </Swiper>

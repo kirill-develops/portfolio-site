@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    margin:0;
+    margin: 0;
   }
 
   a {
@@ -56,7 +56,7 @@ export const Title = styled.h1`
   ${media.devicePortrait`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   `}
-  
+
   ${media.deviceLandscape`
   margin: 16px 0 16px;
   margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
