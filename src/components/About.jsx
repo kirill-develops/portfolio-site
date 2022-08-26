@@ -19,6 +19,10 @@ const AboutSection = styled(Section)`
   ${media.laptop`
   height: 100vh;
   `};
+
+  ${media.desktop`
+  height: 100vh;
+  `};
 `;
 
 const FlexWrapper = styled.div`
@@ -82,12 +86,12 @@ const BodyWrapper = styled.article`
 
   ${media.deviceLandscape`
     text-align: start;
-    width: 40%;
+    width: 45%;
   `};
 
   ${media.laptop`
     text-align: start;
-    width: 40%;
+    width: 45%;
     `};
 
   ${media.desktop`
