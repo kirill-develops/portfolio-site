@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Parallax, Autoplay } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Title, Section, Body } from '../styles/globalStyles';
 
 // Swiper style dependencies
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/pagination';
-import 'swiper/css/parallax';
+import 'swiper/scss';
+import 'swiper/scss/autoplay';
+import 'swiper/scss/pagination';
 import '../styles/swiper.scss';
 
 const ProjectsSection = styled(Section)`
@@ -121,9 +120,9 @@ function Projects() {
     <ProjectsSection id="projects">
       <Title>Projects</Title>
       <Swiper
-        modules={[Pagination, Parallax, Autoplay]}
+        modules={[Pagination, Autoplay]}
         pagination={{ type: 'bullets' }}
-        parallax
+        autoplay={{ delay: 5000 }}
         breakpoints={{
           320: { spaceBetween: 32 },
           600: { spaceBetween: 64 },
