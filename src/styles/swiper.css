@@ -1,0 +1,16 @@
+.swiper {
+  height: 95%;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  border-radius: 3px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: black;
+}
+
+.swiper-slide {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

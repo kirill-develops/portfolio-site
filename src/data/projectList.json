@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Coffee Shop",
+    "img": "../images/CoffeeShop.jpg",
+    "description": ""
+  },
+  {
+    "name": "Travel Site",
+    "img": "../images/TravelSite.jpg",
+    "description": ""
+  },
+  {
+    "name": "BrainFlix (YouTube Clone)",
+    "img": "../images/BrainFlix.jpg",
+    "description": ""
+  },
+  {
+    "name": "The Bees Knees Band Site",
+    "img": "../images/BandSite.jpg",
+    "description": ""
+  },
+  {
+    "name": "InStock Warehouse SPA",
+    "img": "../images/InStock.jpg",
+    "description": ""
+  }
+]
