@@ -29,13 +29,20 @@ const HeroSection = styled(Section)`
   margin: auto;
   `};
 `;
+const parallaxProps = {
+  opacity: [1, -1],
+  translateX: [0, 350],
+  translateY: [0, 0],
+  easing: 'easeInOutQuad',
+};
 
 function Hero() {
   return (
     <HeroSection id="top">
       <Parallax
-        opacity={[10, -1]}
-        easing="easeInOutQuad"
+        startScroll={0}
+        endScroll={1250}
+        {...parallaxProps}
       >
         <Title Hero>
           Kirill Tchentsov
@@ -44,23 +51,25 @@ function Hero() {
         </Title>
       </Parallax>
       <Parallax
-        opacity={[10, -1]}
-        offset
-        easing="easeInOutQuad"
+        startScroll={25}
+        endScroll={1275}
+        {...parallaxProps}
       >
         <TitleLink href="#about">Learn More</TitleLink>
       </Parallax>
       <br />
       <Parallax
-        opacity={[10, -1]}
-        easing="easeInOutQuad"
+        startScroll={50}
+        endScroll={1300}
+        {...parallaxProps}
       >
         <TitleLink href="#projects">Projects</TitleLink>
       </Parallax>
       <br />
       <Parallax
-        opacity={[10, -1]}
-        easing="easeInOutQuad"
+        startScroll={75}
+        endScroll={1325}
+        {...parallaxProps}
       >
         <TitleLink href="#contact">Contact Me</TitleLink>
       </Parallax>
