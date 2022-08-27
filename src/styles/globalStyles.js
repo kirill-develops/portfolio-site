@@ -10,10 +10,14 @@ const GlobalStyle = createGlobalStyle`
 
   html{
     font-family: -apple-system, Roboto, sans-serif, serif;
+  height: 100vh;
+
   }
 
   body {
     margin: 0;
+  height: 100vh;
+
   }
 
   a {
@@ -25,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
 export const Main = styled.main`
   color: #232129;
+  height: 100vh;
 `;
 
 export const Section = styled.section`

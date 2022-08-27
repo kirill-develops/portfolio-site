@@ -48,7 +48,11 @@ const FlexWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: fit-content;
-  gap: 12px 24px;
+  gap: 16px 24px;
+
+  ${media.devicePortrait`
+  gap: 32px 24px;
+  `};
 
   ${media.deviceLandscape`
   gap: 0 32px;
@@ -91,6 +95,8 @@ const PhotoWrapper = styled.div`
 `;
 
 const BodyWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
   min-width: 240px;
   width: 100%;
   padding: 0 8px;
@@ -104,23 +110,27 @@ const BodyWrapper = styled.article`
     text-align: start;
     padding: unset;
     width: 45%;
-  `};
+    gap: 12px;
+    `};
 
   ${media.laptop`
     text-align: start;
     padding: unset;
     width: 45%;
-  `};
+    gap: 12px;
+    `};
 
   ${media.desktop`
     text-align: start;
     padding: unset;
     width: 40%;
+    gap: 12px;
   `};
 `;
 
 const AboutBody = styled(Body)`
   z-index: 10;
+  margin: auto;
 `;
 
 function About() {
@@ -147,6 +157,7 @@ function About() {
     >
       <Parallax
         opacity={[-2, 2]}
+        translateY={[-100, 0]}
         easing="easeInOutQuad"
       >
         <Title ref={aboutTargetRef}>About Me</Title>
@@ -156,27 +167,26 @@ function About() {
         <BodyWrapper>
           <Parallax
             opacity={[-2, 2]}
+            translateY={[-350, 0]}
             targetElement={targetElement}
-            speed={2}
-            easing="easeInOutQuad"
-          >
-            <AboutBody>
-              I've worn many hats. Marketing professional. Bartender. Carpenter.
-              Even a scuba diving instructor. It wasn't until I rediscovered
-              programming that I really felt in my element.
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            opacity={[-2, 2]}
-            targetElement={targetElement}
-            speed={3}
+            speed={-8}
             easing="easeInOutQuad"
           >
             <AboutBody>
               I first fell in love with programming in grade 7, creating
-              side-scrolling QBasic games way before Pokemon was a thing. More
-              recently I've been creating Full-Stack projects built on modern
-              frameworks like
+              side-scrolling QBasic games way before Pokemon was a thing.
+            </AboutBody>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            translateY={[-300, 0]}
+            targetElement={targetElement}
+            speed={-7}
+            easing="easeInOutQuad"
+          >
+            <AboutBody>
+              More recently I've been creating Full-Stack projects built on
+              modern frameworks like
               <BodyAccent color={colors.lightAccent}>
                 {' '}
                 React.js, Node.js, MySQL{' '}
@@ -190,8 +200,22 @@ function About() {
           </Parallax>
           <Parallax
             opacity={[-2, 2]}
+            translateY={[-275, 0]}
             targetElement={targetElement}
-            speed={4}
+            speed={-6}
+            easing="easeInOutQuad"
+          >
+            <AboutBody>
+              I've worn many hats. Marketing professional. Bartender. Carpenter.
+              Even a scuba diving instructor. It wasn't until I rediscovered
+              programming that I really felt in my element.
+            </AboutBody>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            translateY={[-250, 0]}
+            targetElement={targetElement}
+            speed={-5}
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -202,8 +226,9 @@ function About() {
           </Parallax>
           <Parallax
             opacity={[-2, 2]}
+            translateY={[-225, 0]}
             targetElement={targetElement}
-            speed={5}
+            speed={-4}
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -213,8 +238,9 @@ function About() {
           </Parallax>
           <Parallax
             opacity={[-2, 2]}
+            translateY={[-350, 0]}
             targetElement={targetElement}
-            speed={6}
+            speed={-3}
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -224,8 +250,9 @@ function About() {
           </Parallax>
           <Parallax
             opacity={[-2, 2]}
+            translateY={[-350, 0]}
             targetElement={targetElement}
-            speed={7}
+            speed={-2}
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -235,8 +262,9 @@ function About() {
           </Parallax>
           <Parallax
             opacity={[-2, 2]}
+            translateY={[-350, 0]}
             targetElement={targetElement}
-            speed={8}
+            speed={-1}
             easing="easeInOutQuad"
           >
             <AboutBody>
