@@ -6,17 +6,20 @@ import Projects from '../components/Projects';
 import Contact from '../components/Footer';
 import GlobalStyle from '../styles/globalStyles';
 import { Main } from '../styles/globalStyles';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 const IndexPage = () => {
   return (
     <>
-      <GlobalStyle />
-      <Main>
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
-      </Main>
+      <ParallaxProvider>
+        <GlobalStyle />
+        <Main>
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+        </Main>
+      </ParallaxProvider>
     </>
   );
 };
