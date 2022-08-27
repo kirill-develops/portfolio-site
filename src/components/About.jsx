@@ -1,6 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { Parallax } from 'react-scroll-parallax';
 import colors from '../styles/colors';
 import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
 import media from '../styles/mediaQueries';
@@ -101,6 +102,13 @@ const BodyWrapper = styled.article`
 `;
 
 function About() {
+  const aboutTargetRef = useRef();
+
+  const [targetElement, setElement] = useState();
+  useEffect(() => {
+    setElement(aboutTargetRef.current);
+  }, []);
+
   const ScubaPhoto = (
     <StaticImage
       src="../images/Scuba.jpg"
@@ -115,45 +123,99 @@ function About() {
       id="about"
       color="purple"
     >
-      <Title>About Me</Title>
+      <Parallax
+        opacity={[-2, 2]}
+        easing="easeInOutQuad"
+      >
+        <Title ref={aboutTargetRef}>About Me</Title>
+      </Parallax>
       <FlexWrapper>
         <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
         <BodyWrapper>
-          <Body>
-            I've worn many hats. Marketing professional. Bartender. Carpenter.
-            Even a scuba diving instructor. It wasn't until I rediscovered
-            programming that I really felt in my element.
-          </Body>
-          <Body>
-            I first fell in love with programming in grade 7, creating
-            side-scrolling QBasic games way before Pokemon was a thing. More
-            recently I've been creating Full-Stack projects built on modern
-            frameworks like
-            <BodyAccent> React.js, Node.js, MySQL </BodyAccent>&
-            <BodyAccent> JavaScript</BodyAccent> and I'm always eager to learn
-            new languages & frameworks.
-          </Body>
-          <Body>
-            My love for programming stems from a need to be creative and the
-            satisfaction you gain from solving problems. I'm excited about all
-            the possibilites this industry provides.
-          </Body>
-          <Body>
-            If you would like to talk more, I can be contacted below via email
-            or LinkedIn. Thanks for dropping by!
-          </Body>
-          <Body>
-            <BodyAccent color="#EFEFEF">FrontEnd: </BodyAccent>
-            React.js, Redux, HTML5, CSS3, AJAX, Next.js
-          </Body>
-          <Body>
-            <BodyAccent color="#EFEFEF">BackEnd: </BodyAccent>
-            Python, Node.js, Express.js, Passport.js
-          </Body>
-          <Body>
-            <BodyAccent color="#EFEFEF">Database: </BodyAccent>
-            MySQL, Knex.js, MongoDB
-          </Body>
+          <Parallax
+            opacity={[-2, 2]}
+            targetElement={targetElement}
+            speed={2}
+            easing="easeInOutQuad"
+          >
+            <Body>
+              I've worn many hats. Marketing professional. Bartender. Carpenter.
+              Even a scuba diving instructor. It wasn't until I rediscovered
+              programming that I really felt in my element.
+            </Body>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            targetElement={targetElement}
+            speed={3}
+            easing="easeInOutQuad"
+          >
+            <Body>
+              I first fell in love with programming in grade 7, creating
+              side-scrolling QBasic games way before Pokemon was a thing. More
+              recently I've been creating Full-Stack projects built on modern
+              frameworks like
+              <BodyAccent> React.js, Node.js, MySQL </BodyAccent>&
+              <BodyAccent> JavaScript</BodyAccent> and I'm always eager to learn
+              new languages & frameworks.
+            </Body>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            targetElement={targetElement}
+            speed={4}
+            easing="easeInOutQuad"
+          >
+            <Body>
+              My love for programming stems from a need to be creative and the
+              satisfaction you gain from solving problems. I'm excited about all
+              the possibilites this industry provides.
+            </Body>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            targetElement={targetElement}
+            speed={5}
+            easing="easeInOutQuad"
+          >
+            <Body>
+              If you would like to talk more, I can be contacted below via email
+              or LinkedIn. Thanks for dropping by!
+            </Body>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            targetElement={targetElement}
+            speed={6}
+            easing="easeInOutQuad"
+          >
+            <Body>
+              <BodyAccent color="#EFEFEF">FrontEnd: </BodyAccent>
+              React.js, Redux, HTML5, CSS3, AJAX, Next.js
+            </Body>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            targetElement={targetElement}
+            speed={7}
+            easing="easeInOutQuad"
+          >
+            <Body>
+              <BodyAccent color="#EFEFEF">BackEnd: </BodyAccent>
+              Python, Node.js, Express.js, Passport.js
+            </Body>
+          </Parallax>
+          <Parallax
+            opacity={[-2, 2]}
+            targetElement={targetElement}
+            speed={8}
+            easing="easeInOutQuad"
+          >
+            <Body>
+              <BodyAccent color="#EFEFEF">Database: </BodyAccent>
+              MySQL, Knex.js, MongoDB
+            </Body>
+          </Parallax>
         </BodyWrapper>
       </FlexWrapper>
     </AboutSection>
