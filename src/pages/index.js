@@ -8,21 +8,19 @@ import GlobalStyle from '../styles/globalStyles';
 import { Main } from '../styles/globalStyles';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
-const IndexPage = () => {
+function IndexPage() {
   return (
-    <>
-      <ParallaxProvider>
-        <GlobalStyle />
-        <Main>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </Main>
-      </ParallaxProvider>
-    </>
+    <ParallaxProvider>
+      <GlobalStyle />
+      <Main>
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+      </Main>
+    </ParallaxProvider>
   );
-};
+}
 
 export default IndexPage;
 
