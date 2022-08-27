@@ -102,7 +102,9 @@ export const TitleLink = styled.a`
   }
 `;
 
-export const Body = styled.p``;
+export const Body = styled.p`
+  color: ${(props) => props.color || 'inherit'};
+`;
 
 export const BodyAccent = styled.span`
   font-weight: bold;
