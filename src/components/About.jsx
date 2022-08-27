@@ -177,9 +177,15 @@ function About() {
               side-scrolling QBasic games way before Pokemon was a thing. More
               recently I've been creating Full-Stack projects built on modern
               frameworks like
-              <BodyAccent> React.js, Node.js, MySQL </BodyAccent>&
-              <BodyAccent> JavaScript</BodyAccent> and I'm always eager to learn
-              new languages & frameworks.
+              <BodyAccent color={colors.lightAccent}>
+                {' '}
+                React.js, Node.js, MySQL{' '}
+              </BodyAccent>
+              &<BodyAccent color={colors.lightAccent}>
+                {' '}
+                JavaScript
+              </BodyAccent>{' '}
+              and I'm always eager to learn new languages & frameworks.
             </AboutBody>
           </Parallax>
           <Parallax
