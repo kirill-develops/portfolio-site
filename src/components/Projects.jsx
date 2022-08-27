@@ -13,6 +13,7 @@ import 'swiper/scss/autoplay';
 import 'swiper/scss/pagination';
 import '../styles/swiper.scss';
 import media from '../styles/mediaQueries';
+import { Parallax } from 'react-scroll-parallax';
 
 const ProjectsSection = styled(Section)`
   color: ${colors.darkShade};
@@ -94,7 +95,7 @@ const CardTitle = styled.h2`
     margin: 28px auto 42px;
     box-shadow: inset 0px 0rem 3rem 5px rgb(0 0 0 / 38%);
     background-color: ${colors.mainColor};
-    color: ${colors.lightShade};
+    color: ${colors.white};
     width:100%;
     border-radius: 8px;
     padding: 12px;
@@ -155,7 +156,12 @@ function Projects() {
 
   return (
     <ProjectsSection id="projects">
-      <Title>Projects</Title>
+      <Parallax
+        opacity={[-2, 2]}
+        easing="easeInOutQuad"
+      >
+        <Title>Projects</Title>
+      </Parallax>
       <Swiper
         modules={[Pagination, Autoplay, Mousewheel]}
         pagination={{ type: 'bullets' }}
