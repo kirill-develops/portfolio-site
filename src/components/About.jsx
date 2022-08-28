@@ -23,7 +23,7 @@ const AboutSection = styled(Section)`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 100%;
+  height: fit-content;
   min-height: 100vh;
   width: 100%;
 
@@ -101,30 +101,31 @@ const BodyWrapper = styled.article`
   width: 100%;
   padding: 0 8px;
   text-align: center;
+  gap: 12px;
 
   ${media.devicePortrait`
-    padding: 0 16px;
+  padding: 0 16px;
   `}
 
   ${media.deviceLandscape`
     text-align: start;
     padding: unset;
     width: 45%;
-    gap: 12px;
+
     `};
 
   ${media.laptop`
     text-align: start;
     padding: unset;
     width: 45%;
-    gap: 12px;
+
     `};
 
   ${media.desktop`
     text-align: start;
     padding: unset;
     width: 40%;
-    gap: 12px;
+
   `};
 `;
 
@@ -156,7 +157,7 @@ function About() {
       className="bubbles"
     >
       <Parallax
-        opacity={[-2, 2]}
+        opacity={[-1, 1]}
         translateY={[-100, 0]}
         easing="easeInOutQuad"
       >
@@ -166,10 +167,11 @@ function About() {
         <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
         <BodyWrapper>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-350, 0]}
-            targetElement={targetElement}
-            speed={-8}
+            startScroll={0}
+            endScroll={1000}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -178,10 +180,11 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-300, 0]}
-            targetElement={targetElement}
-            speed={-7}
+            startScroll={-25}
+            endScroll={975}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -199,10 +202,11 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-275, 0]}
-            targetElement={targetElement}
-            speed={-6}
+            startScroll={-50}
+            endScroll={950}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -212,10 +216,11 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-250, 0]}
-            targetElement={targetElement}
-            speed={-5}
+            startScroll={-75}
+            endScroll={925}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -225,10 +230,11 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-225, 0]}
-            targetElement={targetElement}
-            speed={-4}
+            startScroll={-100}
+            endScroll={900}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -237,10 +243,11 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-350, 0]}
-            targetElement={targetElement}
-            speed={-3}
+            startScroll={-125}
+            endScroll={875}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -249,10 +256,11 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-350, 0]}
-            targetElement={targetElement}
-            speed={-2}
+            startScroll={-150}
+            endScroll={850}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
@@ -261,10 +269,11 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-2, 2]}
+            opacity={[-1, 1]}
             translateY={[-350, 0]}
-            targetElement={targetElement}
-            speed={-1}
+            startScroll={-175}
+            endScroll={825}
+            shouldAlwaysCompleteAnimation
             easing="easeInOutQuad"
           >
             <AboutBody>
