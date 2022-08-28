@@ -6,7 +6,10 @@ import { Parallax } from 'react-scroll-parallax';
 import useProjectSlide from '../utils/useProjectSlides';
 import useMediaQuery from '../utils/useMediaQuery';
 import { Title, Section } from '../styles/globalStyles';
-import { laptopBreakpoint, mobileBreakpoint } from '../styles/mediaQueries';
+import {
+  laptopBreakpointStr,
+  tabletBreakpointStr,
+} from '../styles/mediaQueries';
 import colors from '../styles/colors';
 import ProjectLaptopView from './ProjectLaptopView';
 
@@ -44,18 +47,6 @@ function ProjectView({ children }) {
 }
 
 function Projects() {
-  // laptop and tablet breakpoints interpolated into REM
-  const laptopBreakpointStr = useMemo(
-    () => `(min-width:${laptopBreakpoint}rem)`,
-    [],
-  );
-
-  const tabletBreakpointStr = useMemo(
-    () =>
-      `(min-width:${mobileBreakpoint}rem) and (max-width:${laptopBreakpoint}rem)`,
-    [],
-  );
-
   // array with boolean values if in tablet or laptop view, otherwise assume we
   // are on mobile
   const breakpoint = {

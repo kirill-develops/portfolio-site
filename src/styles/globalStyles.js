@@ -39,15 +39,15 @@ export const Section = styled.section`
   height: 100vh;
 
   ${media.deviceLandscape`
-  padding: 32px 32px 96px;
+  padding: 32px 32px 32px;
   `}
 
   ${media.laptop`
-  padding: 32px 32px 96px;
+  padding: 32px 32px 32px;
   `}
 
   ${media.desktop`
-  padding: 32px 32px 96px;
+  padding: 32px 32px 32px;
   `}
 `;
 

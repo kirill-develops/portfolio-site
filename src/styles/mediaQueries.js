@@ -1,9 +1,14 @@
 import { css } from 'styled-components';
 
 export const mobileBreakpoint = 481 / 16;
-export const tabletBreakpoint = 600 / 16;
-export const laptopBreakpoint = 1024 / 16;
-export const desktopBreakpoint = 1080 / 16;
+export const tabletBreakpoint = 601 / 16;
+export const laptopBreakpoint = 1025 / 16;
+export const desktopBreakpoint = 1081 / 16;
+
+// laptop and tablet breakpoints interpolated into REM
+export const mobileLandscapeBreakpointStr = `(max-width:${laptopBreakpoint}rem) and (max-height: ${mobileBreakpoint}rem) and (orientation: landscape)`;
+export const tabletBreakpointStr = `(min-width:${mobileBreakpoint}rem) and (max-width:${laptopBreakpoint}rem)`;
+export const laptopBreakpointStr = `(min-width:${laptopBreakpoint}rem)`;
 
 const media = {
   devicePortrait: (...args) => css`
