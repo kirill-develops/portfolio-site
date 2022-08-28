@@ -11,12 +11,12 @@ export const tabletBreakpointStr = `(min-width:${mobileBreakpoint}rem) and (max-
 export const laptopBreakpointStr = `(min-width:${laptopBreakpoint}rem)`;
 
 const media = {
-  devicePortrait: (...args) => css`
+  tabletPortrait: (...args) => css`
     @media (min-width: ${tabletBreakpoint}em) and (max-width: ${laptopBreakpoint}em) and (orientation: portrait) {
       ${css(...args)}
     };
   `,
-  deviceLandscape: (...args) => css`
+  tabletLandscape: (...args) => css`
     @media (min-width: ${mobileBreakpoint}em) and (max-width: ${laptopBreakpoint}em) and (orientation: landscape) {
       ${css(...args)}
     };

@@ -12,8 +12,13 @@ const HeroSection = styled(Section)`
   justify-content: center;
   overflow-x: hidden;
 
-  ${media.deviceLandscape`
-  transform: translateY(-10%);
+  ${media.tabletPortrait`
+    width:75%;
+    margin: auto;
+  `}
+
+  ${media.tabletLandscape`
+  transform: unset;
   width: 75%;
   margin: auto;
   `};

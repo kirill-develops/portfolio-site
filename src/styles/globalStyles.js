@@ -38,7 +38,7 @@ export const Section = styled.section`
   padding: 12px 16px 96px;
   height: 100vh;
 
-  ${media.deviceLandscape`
+  ${media.tabletLandscape`
   padding: 32px 32px 32px;
   `}
 
@@ -59,13 +59,14 @@ export const Title = styled.h1`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   min-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
 
-  ${media.devicePortrait`
+  ${media.tabletPortrait`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   `}
 
-  ${media.deviceLandscape`
+  ${media.tabletLandscape`
   margin: 16px 0 16px;
   margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
+  max-width: unset;
   `};
 
   ${media.laptop`
