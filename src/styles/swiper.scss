@@ -2,7 +2,6 @@
   height: 99%;
   border-radius: 3px;
   overflow-y: unset;
-  padding: 0 12px 0;
   margin-left: -16px;
   margin-right: -16px;
 
@@ -14,7 +13,7 @@
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #2f2756;
+  background-color: #1D3051;
 }
 
 .swiper-pagination-bullet {
@@ -22,15 +21,16 @@
 }
 
 .swiper-slide {
-  height: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0 32px;
+  padding: 0 12px 0;
+  height: 95%;
 
    @media (orientation: landscape)  {
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: start;
+    align-items: center;
    }
 }

@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-  height: 100vh;
+    height: 100vh;
 
   }
 
@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
 export const Main = styled.main`
   color: #232129;
   height: 100vh;
+  width: 100%;
 `;
 
 export const Section = styled.section`

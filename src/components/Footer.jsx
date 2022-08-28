@@ -5,7 +5,7 @@ import { Section, Title, Body } from '../styles/globalStyles';
 import colors from '../styles/colors';
 
 const Contact = styled(Section)`
-  height: inherit;
+  height: unset;
   padding-bottom: 64px;
   background-color: ${colors.black};
 `;
