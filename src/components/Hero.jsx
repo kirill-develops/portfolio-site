@@ -10,6 +10,7 @@ const HeroSection = styled(Section)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden;
 
   ${media.deviceLandscape`
   transform: translateY(-10%);
@@ -34,6 +35,7 @@ const parallaxProps = {
   translateX: [0, 350],
   translateY: [0, 0],
   easing: 'easeInOutQuad',
+  shouldAlwaysCompleteAnimation: true,
 };
 
 function Hero() {
