@@ -8,6 +8,7 @@ import useMediaQuery from '../utils/useMediaQuery';
 import { Title, Section } from '../styles/globalStyles';
 import media, {
   laptopBreakpointStr,
+  mobilePortraitStr,
   tabletLandscapeBreakpointStr,
   tabletPortraitBreakpointStr,
 } from '../styles/mediaQueries';
@@ -26,6 +27,9 @@ import '../styles/swiper.scss';
 const ProjectsSection = styled(Section)`
   color: ${colors.darkShade};
   background-image: linear-gradient(315deg, #fdfcfb 0%, #e2d1c3 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px 0;
 
   ${media.mobileLandscape`
   height:100%;
@@ -55,6 +59,7 @@ function Projects() {
   // array with boolean values if in tablet or laptop view, otherwise assume we
   // are on mobile
   const breakpoint = {
+    isMobilePortrait: useMediaQuery(mobilePortraitStr),
     isTabletPortrait: useMediaQuery(tabletPortraitBreakpointStr),
     isTabletLandscape: useMediaQuery(tabletLandscapeBreakpointStr),
     isLaptop: useMediaQuery(laptopBreakpointStr),
@@ -76,9 +81,11 @@ function Projects() {
     <ProjectView>
       <Swiper
         modules={[Pagination, Autoplay, Mousewheel, EffectCube]}
+        slidesPerView={1}
         pagination={{ type: 'bullets' }}
         autoplay={{ delay: 5000, disableOnInteraction: true }}
         mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
+        breakpoints={{ 601: { slidesPerView: 2 } }}
       >
         {projectSlides}
       </Swiper>

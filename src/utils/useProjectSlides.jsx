@@ -8,17 +8,11 @@ import media from '../styles/mediaQueries';
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
 
-  ${media.tabletLandscape`
-    flex-direction: row;
-  `}
-
-  ${media.laptop`
-    flex-direction: row;
-  `}
-
-  ${media.desktop`
-    flex-direction: row;
+  ${media.tabletPortrait`
+    gap: 30px;
+    justify-content: center;
   `}
 `;
 

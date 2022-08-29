@@ -47,6 +47,10 @@ export const Section = styled.section`
   padding: 32px 32px 32px;
   `}
 
+  ${media.tabletPortrait`
+  padding: 32px 32px 32px;
+  `}
+
   ${media.laptop`
   padding: 32px 32px 32px;
   `}
@@ -56,12 +60,13 @@ export const Section = styled.section`
   `}
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-size: 2.7rem;
   color: ${(props) => props.color || 'inherit'};
   width: 100%;
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   min-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
+  margin: ${(props) => (!props.Projects ? 'unset' : '16px 0 0')};
 
   ${media.mobileLandscape`
   max-width: unset;
@@ -70,7 +75,10 @@ export const Title = styled.h1`
 
   ${media.tabletPortrait`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
-  margin: ${(props) => (props.Hero ? '' : '8px 12px 18px')};
+  margin: ${(props) => (!props.Hero ? '8px 12px 18px' : '8px 0 18px')};
+  margin: ${(props) => (!props.About ? '8px 12px 18px' : '48px 12px 18px')};
+  margin: ${(props) => (!props.Projects ? '8px 12px 18px' : '28px 12px 0')}
+
   `}
 
   ${media.tabletLandscape`

@@ -3,36 +3,75 @@ import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
-import { Body } from '../styles/globalStyles';
 
 const Slide = styled.article`
-  padding: auto auto 40px;
+  color: ${colors.white};
+  background-color: rgba(68, 68, 68, 0.675);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
+    0 1rem 1rem rgba(0, 0, 0, 0.275), inset 0 0 7px 2px #002a6849;
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  border-radius: 8px;
   display: flex;
+  flex-shrink: 1;
+  gap: 16px;
   flex-direction: column;
   align-items: center;
-  gap: 0 32px;
-  padding: 0 12px 0;
-  height: 95%;
+  height: 96%;
+  margin: 20px 12px 0;
+  padding: 8px 0 12px;
 
   ${media.mobileLandscape`
-  gap: 0 24px;
-  flex-direction: row;
-  justify-content: space-evenly;
+  background-color: unset;
+  box-shadow: unset;
+  backdrop-filter: unset;
+  border-radius: unset;
+  gap: 16px;
+  margin: 0;
+  padding: 0 16px 0;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: start;
-  height: unset;
-  max-height: 80vh;
   `}
 
+  ${media.tabletLandscape`
+    height: 100%;
+    background-color: unset;
+    box-shadow: unset;
+    backdrop-filter: unset;
+    border-radius: unset;
+    justify-content: space-between;
+    `};
+
   ${media.tabletPortrait`
-    height: 45vh;
-  `};
+    color: ${colors.white};
+    background-color: rgba(68, 68, 68, 0.675);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+    0 4px 30px rgba(0, 0, 0, 0.15),
+    0 1rem 1rem rgba(0, 0, 0, 0.275),
+    inset 0 0 7px 2px #002a6849;
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    border-radius: 8px;
+    margin: 0 16px 0;
+    max-width: fit-content;
+    height: 40%;
+    flex-direction: column-reverse;
+    padding: 16px 0 8px;
+    
+    & ~ & {
+      flex-direction: column;
+      padding: 0 0 16px;
+    }
+    
+  `}
 
   ${media.laptop`
-    height: 45vh;
-  `};
+    height: 100%;
+    `};
 
   ${media.desktop`
-    height: 45vh;
+    height: 100%;
   `};
 `;
 
@@ -44,32 +83,36 @@ const Card = styled.div`
 `;
 
 const PhotoWrapper = styled(Card)`
+  background-color: ${colors.darkShade};
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
   display: flex;
+  flex-shrink: 1;
   align-items: center;
   justify-content: center;
-  background-color: ${colors.darkShade};
   height: fit-content;
-  max-height: 50%;
   width: fit-content;
   max-width: 95%;
-  padding: 16px;
+  padding: 8px;
 
   ${media.mobileLandscape`
-    flex-shrink: 1.6;
-    width: 100%;
-    max-height:unset;
-    margin: 8px auto;
+    max-height:226px;
+    margin: auto;
   `};
 
   ${media.tabletLandscape`
-    max-width: 45%;
-    max-height: 100%;
-    align-self: center;
+    max-height:226px;
+    margin: auto;
   `}
 
   ${media.tabletPortrait`
-    max-width: 50%;
+    max-height:230px;
+    margin: 8px 0 0;
+    width:100%;
+  `}
+
+  ${media.laptop`
+    margin: 0;
+    max-width: unset;
   `}
 `;
 
@@ -83,71 +126,118 @@ const PhotoBorder = styled.div`
 
 const CardSection = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex-shrink: 1;
+  justify-content: start;
   align-items: center;
 
   ${media.mobileLandscape`
+    display: hidden;
     flex-shrink: 1;
-    width:100%;
-    margin: 8px auto;
-  `};
+    margin: auto;
+    `};
 
   ${media.tabletLandscape`
-  width: 45%;
-  flex-direction: column;
-  gap: 64px 0;
+    gap: 64px 0;
 `};
 `;
 
 const DetailsWrapper = styled(Card)`
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
-  background-color: ${colors.white};
-  height: fit-content;
-  padding-bottom: 24px;
   width: 98%;
-  background: rgba(112, 116, 133, 0.39);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(11px);
-  -webkit-backdrop-filter: blur(11px);
-  border: 1px solid rgba(112, 116, 133, 0.17);
+  padding-bottom: 24px;
 
-  ${media.landscape`
-    border-radius: initial;
-    background-color: inherit;
-    box-shadow: unset;
+  ${media.mobileLandscape`
+  display: none;
+  `};
+
+  ${media.tabletLandscape`
+    display: none;
+    `}
+
+  ${media.tabletPortrait`
+  background: unset;
+  border: unset;
+  border-radius: unset;
+  box-shadow: unset;
+  backdrop-filter: blur(0);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 12px 12px 0;
+  height:unset;
   `}
 `;
 
-const CardTitle = styled.h2`
-  margin: 38px auto 6px;
+const CardTitle = styled.h3`
+  color: ${colors.lightShade};
+  text-transform: uppercase;
   font-size: 2rem;
   text-align: center;
   width: fit-content;
-  text-transform: uppercase;
-  color: ${colors.darkShade};
+  margin: 28px auto 6px;
 
-  ${media.landscape`
-    margin: 0 auto 42px;
-    box-shadow: inset 0px 0rem 3rem 5px rgb(0 0 0 / 38%);
-    width:100%;
-    border-radius: 8px;
-    padding: 12px;
-    background: rgba(112, 116, 133, 0.39);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  ${media.mobileLandscape`
+    color: ${colors.white};
+    background-color: rgba(115, 118, 131, 0.146);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+    0 1rem 1rem rgba(0, 0, 0, 0.275),
+    inset 0 0rem 5rem #002a68ac;
     backdrop-filter: blur(11px);
     -webkit-backdrop-filter: blur(11px);
-    border: 1px solid rgba(112, 116, 133, 0.17);
+    flex-shrink: 1;
+    font-size: 1.2rem;
+    width:100%;
+    margin: 0 auto;
+    padding: 4px 0;
+    border-radius: 8px;
+  `}
+
+  ${media.tabletLandscape`
+    color: ${colors.white};
+    background-color: rgba(115, 118, 131, 0.146);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+    0 1rem 1rem rgba(0, 0, 0, 0.275),
+    inset 0 0rem 5rem #002a68ac;
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    border: 1px solid rgba(0, 22, 119, 0.17);
+    font-size: 1.4rem;
+    flex-shrink: 1;
+    width:100%;
+    margin: 0 auto;
+    padding: 8px 0;
+    border-radius: 8px;
+    `}
+    
+    ${media.tabletPortrait`;
+    color: ${colors.main};
+    font-size: 1.7rem;
+    flex-shrink: 1;
+    width:100%;
+    margin: 0 auto;
+    padding: 8px 0;
+    border-radius: 8px;
+  `}
+
+  ${media.laptop`
+    color: ${colors.lightShade};
+    background-color: rgba(68, 68, 68, 0.675);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
+      0 1rem 1rem rgba(0, 0, 0, 0.275), inset 0 0 7px 2px #002a6849;
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    border-radius: 8px;
+    width: 90%;
   `}
 `;
 
-const CardAccent = styled.h3`
-  color: ${colors.mainColor};
+const CardAccent = styled.h4`
+  color: ${colors.lightAccent};
   font: roboto slab;
   font-size: 0.8rem;
+  margin: 8px 0;
 `;
 
 function ProjectSlide({ project }) {
@@ -166,7 +256,7 @@ function ProjectSlide({ project }) {
       <CardSection>
         <CardTitle>{project.name}</CardTitle>
         <DetailsWrapper>
-          <Body>{project.description}</Body>
+          {/* <Body>{project.description}</Body> */}
           <CardAccent>Front-End:</CardAccent>
           <CardAccent>Back-End:</CardAccent>
         </DetailsWrapper>
