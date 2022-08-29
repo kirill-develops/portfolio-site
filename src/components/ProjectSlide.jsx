@@ -1,9 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
 import { Body } from '../styles/globalStyles';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+
+const Slide = styled.article`
+  padding: auto auto 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0 32px;
+  padding: 0 12px 0;
+  height: 95%;
+
+  ${media.mobileLandscape`
+  gap: 0 24px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: start;
+  height: unset;
+  max-height: 80vh;
+  `}
+`;
 
 const Card = styled.div`
   height: 50%;
@@ -18,17 +37,27 @@ const PhotoWrapper = styled(Card)`
   align-items: center;
   justify-content: center;
   background-color: ${colors.darkShade};
-  overflow: hidden;
   height: fit-content;
   max-height: 50%;
   width: fit-content;
   max-width: 95%;
   padding: 16px;
 
-  ${media.landscape`
+  ${media.mobileLandscape`
+    flex-shrink: 1.6;
+    width: 100%;
+    max-height:unset;
+    margin: 8px auto;
+  `};
+
+  ${media.tabletLandscape`
     max-width: 45%;
     max-height: 100%;
     align-self: center;
+  `}
+
+  ${media.tabletPortrait`
+    max-width: 50%;
   `}
 `;
 
@@ -47,7 +76,13 @@ const CardSection = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${media.landscape`
+  ${media.mobileLandscape`
+    flex-shrink: 1;
+    width:100%;
+    margin: 8px auto;
+  `};
+
+  ${media.tabletLandscape`
   width: 45%;
   flex-direction: column;
   gap: 64px 0;
@@ -77,7 +112,7 @@ const CardTitle = styled.h2`
   color: ${colors.darkShade};
 
   ${media.landscape`
-    margin: 28px auto 42px;
+    margin: 0 auto 42px;
     box-shadow: inset 0px 0rem 3rem 5px rgb(0 0 0 / 38%);
     background-color: ${colors.mainColor};
     color: ${colors.white};
@@ -98,7 +133,7 @@ function ProjectSlide({ project }) {
   const projectPhoto = getImage(project.img);
 
   return (
-    <article>
+    <Slide>
       <PhotoWrapper>
         <PhotoBorder>
           <GatsbyImage
@@ -115,7 +150,7 @@ function ProjectSlide({ project }) {
           <CardAccent>Back-End:</CardAccent>
         </DetailsWrapper>
       </CardSection>
-    </article>
+    </Slide>
   );
 }
 

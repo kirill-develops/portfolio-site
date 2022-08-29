@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Section, Title, TitleAccent, TitleLink } from '../styles/globalStyles';
 import media from '../styles/mediaQueries';
 
+// Styled-Components specific to Hero Component
 const HeroSection = styled(Section)`
   height: 100vh;
   transform: translateY(15%);
@@ -12,16 +13,22 @@ const HeroSection = styled(Section)`
   justify-content: center;
   overflow-x: hidden;
 
-  ${media.tabletPortrait`
-    width:75%;
-    margin: auto;
-  `}
+  ${media.mobileLandscape`
+  transform: unset;
+  width: 75%;
+  margin: auto;    
+  `};
 
   ${media.tabletLandscape`
   transform: unset;
   width: 75%;
   margin: auto;
   `};
+
+  ${media.tabletPortrait`
+    width:75%;
+    margin: auto;
+  `}
 
   ${media.laptop`
   transform: translateY(-10%);
@@ -35,6 +42,8 @@ const HeroSection = styled(Section)`
   margin: auto;
   `};
 `;
+
+// props object for Parallax animation wrapper
 const parallaxProps = {
   opacity: [1, -1],
   translateX: [0, 350],
@@ -54,7 +63,7 @@ function Hero() {
         <Title Hero>
           Kirill Tchentsov
           <br />
-          <TitleAccent color="#1c52a2">Web Developer</TitleAccent>
+          <TitleAccent color="#1c52a2">Software Dev</TitleAccent>
         </Title>
       </Parallax>
       <Parallax

@@ -35,12 +35,16 @@ export const Main = styled.main`
 
 export const Section = styled.section`
   min-height: fit-content;
-  padding: 12px 16px 96px;
+  padding: 12px 16px 28px;
   height: 100vh;
 
-  ${media.tabletLandscape`
-  padding: 32px 32px 32px;
+  ${media.mobileLandscape`
+  padding: 12px 16px 28px;
   `}
+
+  /* ${media.tabletLandscape`
+  padding: 32px 32px 32px;
+  `} */
 
   ${media.laptop`
   padding: 32px 32px 32px;
@@ -58,6 +62,11 @@ export const Title = styled.h1`
   width: 100%;
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   min-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
+
+  ${media.mobileLandscape`
+  max-width: unset;
+  margin: 0 0 12px;
+  `}
 
   ${media.tabletPortrait`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};

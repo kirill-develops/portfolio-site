@@ -69,7 +69,7 @@ function useProjectSlide(breakpoint) {
     return combineTwoProjectElements(projectSlidesArr);
   };
 
-  if (breakpoint.isTablet) {
+  if (breakpoint.isTabletPortrait || breakpoint.isTabletLandscape) {
     return twoPerSlide(projectElementArr);
   }
 
