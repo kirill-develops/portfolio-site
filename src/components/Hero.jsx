@@ -63,7 +63,10 @@ function Hero() {
           endScroll={1250}
           {...parallaxProps}
         >
-          <Title Hero>
+          <Title
+            Hero
+            as="h1"
+          >
             Kirill Tchentsov
             <br />
             <TitleAccent color="#1c52a2">Software Dev</TitleAccent>
