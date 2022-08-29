@@ -25,7 +25,7 @@ import '../styles/swiper.scss';
 // styled-component for Projects section
 const ProjectsSection = styled(Section)`
   color: ${colors.darkShade};
-  background-color: ${colors.lightShade};
+  background-image: linear-gradient(315deg, #fdfcfb 0%, #e2d1c3 100%);
 
   ${media.mobileLandscape`
   height:100%;
@@ -44,7 +44,7 @@ function ProjectView({ children }) {
         speed={-5}
         shouldAlwaysCompleteAnimation
       >
-        <Title>Projects</Title>
+        <Title Projects>Projects</Title>
       </Parallax>
       {children}
     </ProjectsSection>

@@ -45,7 +45,7 @@ const LinkedinWrapper = styled(LogoWrapper)`
 const Divider = styled.hr`
   width: 50%;
   min-width: 300px;
-  border-color: ${colors.darkAccent};
+  border-color: ${colors.mainColor};
 `;
 
 const ClickUpWrapper = styled(LogoWrapper)`
@@ -66,7 +66,7 @@ const Caption = styled(Body)`
 function Footer() {
   return (
     <Contact id="contact">
-      <Title color={colors.darkAccent}> Connect </Title>
+      <Title color={colors.mainColor}> Connect </Title>
       <ClickUpWrapper href="#top">
         <SiClickup size={22} />
       </ClickUpWrapper>

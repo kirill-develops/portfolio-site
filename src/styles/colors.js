@@ -1,9 +1,9 @@
 const colors = {
   darkShade: '#1D3051',
   darkAccent: '#5A769F',
-  mainColor: '#707485',
+  mainColor: '#346E9E',
   lightAccent: '#c2b368',
-  lightShade: '#E5E2D1',
+  lightShade: '#D8D1C4',
   white: '#fcf2ee',
   black: '#272727',
   logoInactive: '#c9cbcd',

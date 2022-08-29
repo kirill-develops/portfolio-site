@@ -22,6 +22,18 @@ const Slide = styled.article`
   height: unset;
   max-height: 80vh;
   `}
+
+  ${media.tabletPortrait`
+    height: 45vh;
+  `};
+
+  ${media.laptop`
+    height: 45vh;
+  `};
+
+  ${media.desktop`
+    height: 45vh;
+  `};
 `;
 
 const Card = styled.div`
@@ -95,6 +107,12 @@ const DetailsWrapper = styled(Card)`
   height: fit-content;
   padding-bottom: 24px;
   width: 98%;
+  background: rgba(112, 116, 133, 0.39);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  border: 1px solid rgba(112, 116, 133, 0.17);
 
   ${media.landscape`
     border-radius: initial;
@@ -114,12 +132,15 @@ const CardTitle = styled.h2`
   ${media.landscape`
     margin: 0 auto 42px;
     box-shadow: inset 0px 0rem 3rem 5px rgb(0 0 0 / 38%);
-    background-color: ${colors.mainColor};
-    color: ${colors.white};
     width:100%;
     border-radius: 8px;
     padding: 12px;
-
+    background: rgba(112, 116, 133, 0.39);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    border: 1px solid rgba(112, 116, 133, 0.17);
   `}
 `;
 

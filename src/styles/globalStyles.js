@@ -34,6 +34,7 @@ export const Main = styled.main`
 `;
 
 export const Section = styled.section`
+  overflow-x: hidden;
   min-height: fit-content;
   padding: 12px 16px 28px;
   height: 100vh;
@@ -42,9 +43,9 @@ export const Section = styled.section`
   padding: 12px 16px 28px;
   `}
 
-  /* ${media.tabletLandscape`
+  ${media.tabletLandscape`
   padding: 32px 32px 32px;
-  `} */
+  `}
 
   ${media.laptop`
   padding: 32px 32px 32px;
@@ -56,7 +57,6 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-  margin: 12px 0 40px;
   font-size: 2.7rem;
   color: ${(props) => props.color || 'inherit'};
   width: 100%;
@@ -70,6 +70,7 @@ export const Title = styled.h1`
 
   ${media.tabletPortrait`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
+  margin: ${(props) => (props.Hero ? '' : '8px 12px 18px')};
   `}
 
   ${media.tabletLandscape`

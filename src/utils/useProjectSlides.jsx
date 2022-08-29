@@ -1,7 +1,26 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { SwiperSlide } from 'swiper/react';
+import styled from 'styled-components';
 import ProjectSlide from '../components/ProjectSlide';
+import media from '../styles/mediaQueries';
+
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${media.tabletLandscape`
+    flex-direction: row;
+  `}
+
+  ${media.laptop`
+    flex-direction: row;
+  `}
+
+  ${media.desktop`
+    flex-direction: row;
+  `}
+`;
 
 function useProjectSlide(breakpoint) {
   // this is a Gatsby hook using graphQL to fetch JSON data and use saved images correctly
@@ -39,8 +58,10 @@ function useProjectSlide(breakpoint) {
   const combineTwoProjectElements = (Arr) =>
     Arr.map((group) => (
       <SwiperSlide key={`double${group[0].key}`}>
-        {group[0]}
-        {group[1]}
+        <Flex>
+          {group[0]}
+          {group[1]}
+        </Flex>
       </SwiperSlide>
     ));
 

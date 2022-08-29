@@ -22,7 +22,7 @@ const media = {
       ${css(...args)}
     }`,
   laptop: (...args) => css`
-    @media (min-width: ${laptopBreakpoint}em) and (max-width: ${desktopBreakpoint}em) {
+    @media (min-width: ${laptopBreakpoint - 1}em) and (max-width: ${desktopBreakpoint}em) {
       ${css(...args)}
     }`,
   tabletLandscape: (...args) => css`

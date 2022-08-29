@@ -6,18 +6,20 @@ import media from '../styles/mediaQueries';
 
 // Styled-Components specific to Hero Component
 const HeroSection = styled(Section)`
-  height: 100vh;
-  transform: translateY(15%);
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow-x: hidden;
+`;
+
+const HeroWrapper = styled.div`
+  transform: translateY(15%);
 
   ${media.mobileLandscape`
-  transform: unset;
   width: 75%;
-  margin: auto;    
-  `};
+  transform: unset;
+    margin: auto;
+  `}
 
   ${media.tabletLandscape`
   transform: unset;
@@ -55,40 +57,42 @@ const parallaxProps = {
 function Hero() {
   return (
     <HeroSection id="top">
-      <Parallax
-        startScroll={0}
-        endScroll={1250}
-        {...parallaxProps}
-      >
-        <Title Hero>
-          Kirill Tchentsov
-          <br />
-          <TitleAccent color="#1c52a2">Software Dev</TitleAccent>
-        </Title>
-      </Parallax>
-      <Parallax
-        startScroll={25}
-        endScroll={1275}
-        {...parallaxProps}
-      >
-        <TitleLink href="#about">Learn More</TitleLink>
-      </Parallax>
-      <br />
-      <Parallax
-        startScroll={50}
-        endScroll={1300}
-        {...parallaxProps}
-      >
-        <TitleLink href="#projects">Projects</TitleLink>
-      </Parallax>
-      <br />
-      <Parallax
-        startScroll={75}
-        endScroll={1325}
-        {...parallaxProps}
-      >
-        <TitleLink href="#contact">Contact Me</TitleLink>
-      </Parallax>
+      <HeroWrapper>
+        <Parallax
+          startScroll={0}
+          endScroll={1250}
+          {...parallaxProps}
+        >
+          <Title Hero>
+            Kirill Tchentsov
+            <br />
+            <TitleAccent color="#1c52a2">Software Dev</TitleAccent>
+          </Title>
+        </Parallax>
+        <Parallax
+          startScroll={25}
+          endScroll={1275}
+          {...parallaxProps}
+        >
+          <TitleLink href="#about">Learn More</TitleLink>
+        </Parallax>
+        <br />
+        <Parallax
+          startScroll={50}
+          endScroll={1300}
+          {...parallaxProps}
+        >
+          <TitleLink href="#projects">Projects</TitleLink>
+        </Parallax>
+        <br />
+        <Parallax
+          startScroll={75}
+          endScroll={1325}
+          {...parallaxProps}
+        >
+          <TitleLink href="#contact">Contact Me</TitleLink>
+        </Parallax>
+      </HeroWrapper>
     </HeroSection>
   );
 }
