@@ -60,6 +60,19 @@ export const Section = styled.section`
   `}
 `;
 
+const handleTitleMarginTPType = (section) => {
+  switch (true) {
+    case section.Hero === true:
+      return '8px 0 18px';
+    case section.About === true:
+      return '32px 12px 18px';
+    case section.Projects === true:
+      return '28px 12px 0';
+    default:
+      return '8px 12px 18px';
+  }
+};
+
 export const Title = styled.h2`
   font-size: 2.7rem;
   color: ${(props) => props.color || 'inherit'};
@@ -75,16 +88,13 @@ export const Title = styled.h2`
 
   ${media.tabletPortrait`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
-  margin: ${(props) => (!props.Hero ? '8px 12px 18px' : '8px 0 18px')};
-  margin: ${(props) => (!props.About ? '8px 12px 18px' : '48px 12px 18px')};
-  margin: ${(props) => (!props.Projects ? '8px 12px 18px' : '28px 12px 0')}
-
+  margin: ${(props) => handleTitleMarginTPType(props)};
+  
   `}
-
+  
   ${media.tabletLandscape`
-  margin: 16px 0 16px;
+  max-width: ${(props) => (props.Hero ? '220px' : 'unset')};
   margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
-  max-width: unset;
   `};
 
   ${media.laptop`
