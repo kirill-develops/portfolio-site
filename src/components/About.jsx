@@ -1,23 +1,18 @@
 import { StaticImage } from 'gatsby-plugin-image';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Parallax } from 'react-scroll-parallax';
 import colors from '../styles/colors';
 import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
-import media from '../styles/mediaQueries';
+import media, { mobileLandscapeBreakpointStr } from '../styles/mediaQueries';
 import Bubbles from './Bubbles/Bubbles';
+import useMediaQuery from '../utils/useMediaQuery';
+import Sticky from 'react-sticky-el';
 
 const AboutSection = styled(Section)`
-  background: rgb(9, 55, 121);
-  background: linear-gradient(
-    180deg,
-    rgba(9, 55, 121, 1) 0%,
-    rgba(9, 58, 128, 1) 11%,
-    rgba(8, 52, 117, 1) 21%,
-    rgba(8, 48, 110, 1) 30%,
-    rgba(2, 0, 36, 1) 88%,
-    rgba(2, 0, 36, 1) 93%
-  );
+  background-color: #1b2845;
+  background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
+
   color: ${colors.lightShade};
   position: relative;
   display: flex;
@@ -26,10 +21,6 @@ const AboutSection = styled(Section)`
   height: fit-content;
   min-height: 100vh;
   width: 100%;
-
-  ${media.deviceLandscape`
-  height: 100vh;
-  `};
 
   ${media.laptop`
   height: 100vh;
@@ -43,59 +34,77 @@ const AboutSection = styled(Section)`
 const FlexWrapper = styled.div`
   display: flex;
   flex: 1;
-  flex-wrap: wrap;
+  flex-direction: column;
   flex-basis: min-content;
   justify-content: center;
   align-items: center;
   height: fit-content;
   gap: 16px 24px;
 
-  ${media.devicePortrait`
+  ${media.mobileLandscape`
+  flex-direction:row;
+  align-items: flex-start;
+  gap: 18px;
+  `};
+
+  ${media.tabletPortrait`
   gap: 32px 24px;
   `};
 
-  ${media.deviceLandscape`
+  ${media.tabletLandscape`
+  flex-direction:row;
+  justify-content: space-between;
   gap: 0 32px;
   `};
 
   ${media.laptop`
+  flex-direction:row;
+  justify-content: space-between;
   gap: 0 32px;
   `}
+
   ${media.desktop`
+  flex-direction:row;
+  justify-content: space-between;
   gap: 0 42px;
+  width: 75%;
+  margin: auto;
+  `}
+`;
+
+const StickyPhoto = styled(Sticky)`
+  transition: 0;
+  flex-shrink: 2.6;
+  height: fit-content;
+  width: 90%;
+  z-index: 1;
+
+  ${media.tabletPortrait`
+  width: 50%;
+  `}
+
+  ${media.tabletLandscape`
+    flex-shrink:1.8;
+    `}
+    
+    ${media.laptop`
+    flex-shrink:1.8;
+    `}
+    
+    ${media.desktop`
+    flex-shrink:1.4;
   `}
 `;
 
 const PhotoWrapper = styled.div`
-  z-index: 10;
   border-radius: 6px;
   border: 2px solid ${colors.lightAccent};
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
-  height: fit-content;
-  margin: 0 16px;
-  max-width: 25rem;
-
-  ${media.deviceLandscape`
-  width: 40%;
-  margin: 0;
-  max-width: fit-content;
-  `};
-
-  ${media.laptop`
-  width: 40%;
-  margin: 0;
-  max-width: fit-content;
-  `};
-
-  ${media.desktop`
-  width: 35%;
-  margin: 0;
-  max-width: fit-content;
-  `}
 `;
 
 const BodyWrapper = styled.article`
   display: flex;
+  flex-shrink: 1;
   flex-direction: column;
   min-width: 240px;
   width: 100%;
@@ -103,29 +112,27 @@ const BodyWrapper = styled.article`
   text-align: center;
   gap: 12px;
 
-  ${media.devicePortrait`
-  padding: 0 16px;
+  ${media.mobileLandscape`
+  padding: unset;
   `}
 
-  ${media.deviceLandscape`
-    text-align: start;
-    padding: unset;
-    width: 45%;
+  ${media.tabletPortrait`
+  padding: unset;
+  `}
 
+  ${media.tabletLandscape`
+  text-align: start;
+    padding: unset;
     `};
 
   ${media.laptop`
     text-align: start;
     padding: unset;
-    width: 45%;
-
     `};
 
   ${media.desktop`
     text-align: start;
     padding: unset;
-    width: 40%;
-
   `};
 `;
 
@@ -134,14 +141,12 @@ const AboutBody = styled(Body)`
   margin: auto;
 `;
 
+const parallaxProp = {
+  opacity: [-1, 1],
+  shouldAlwaysCompleteAnimation: true,
+};
+
 function About() {
-  const aboutTargetRef = useRef();
-
-  const [targetElement, setElement] = useState();
-  useEffect(() => {
-    setElement(aboutTargetRef.current);
-  }, []);
-
   const ScubaPhoto = (
     <StaticImage
       src="../images/Scuba.jpg"
@@ -150,6 +155,8 @@ function About() {
       layout="constrained"
     />
   );
+
+  const isMobileLandscape = useMediaQuery(mobileLandscapeBreakpointStr);
 
   return (
     <AboutSection
@@ -161,18 +168,22 @@ function About() {
         translateY={[-100, 0]}
         easing="easeInOutQuad"
       >
-        <Title ref={aboutTargetRef}>About Me</Title>
+        <Title About>About Me</Title>
       </Parallax>
-      <FlexWrapper>
-        <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
+      <FlexWrapper id="StickyBoundry">
+        <StickyPhoto
+          boundaryElement="#StickyBoundry"
+          disabled={!isMobileLandscape}
+          dontUpdateHolderHeightWhenSticky={true}
+        >
+          <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
+        </StickyPhoto>
         <BodyWrapper>
           <Parallax
-            opacity={[-1, 1]}
             translateY={[-350, 0]}
             startScroll={0}
-            endScroll={1000}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            endScroll={isMobileLandscape ? 400 : 700}
+            {...parallaxProp}
           >
             <AboutBody>
               I first fell in love with programming in grade 7, creating
@@ -180,12 +191,10 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-1, 1]}
             translateY={[-300, 0]}
-            startScroll={-25}
-            endScroll={975}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            startScroll={isMobileLandscape ? -40 : -25}
+            endScroll={isMobileLandscape ? 375 : 675}
+            {...parallaxProp}
           >
             <AboutBody>
               More recently I've been creating Full-Stack projects built on
@@ -202,53 +211,63 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-1, 1]}
             translateY={[-275, 0]}
-            startScroll={-50}
-            endScroll={950}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            startScroll={isMobileLandscape ? -80 : -50}
+            endScroll={isMobileLandscape ? 350 : 650}
+            {...parallaxProp}
           >
             <AboutBody>
-              I've worn many hats. Marketing professional. Bartender. Carpenter.
-              Even a scuba diving instructor. It wasn't until I rediscovered
-              programming that I really felt in my element.
+              I've worn many hats. A marketing professional. Mixologist.
+              Carpenter. Even a scuba diving instructor (highly recommend).
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-1, 1]}
-            translateY={[-250, 0]}
-            startScroll={-75}
-            endScroll={925}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            translateY={[-275, 0]}
+            startScroll={isMobileLandscape ? -120 : -75}
+            endScroll={isMobileLandscape ? 325 : 625}
+            {...parallaxProp}
           >
             <AboutBody>
-              My love for programming stems from a need to be creative and the
-              satisfaction you gain from solving problems. I'm excited about all
-              the possibilites this industry provides.
+              It wasn't until I rediscovered software development that I really
+              felt in my element.
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-1, 1]}
             translateY={[-225, 0]}
-            startScroll={-100}
-            endScroll={900}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            startScroll={isMobileLandscape ? -160 : -100}
+            endScroll={isMobileLandscape ? 300 : 600}
+            {...parallaxProp}
           >
             <AboutBody>
-              If you would like to talk more, I can be contacted below via email
-              or LinkedIn. Thanks for dropping by!
+              Software Dev let's me be creative and to experience the rush from
+              solving complex problems. I'm excited about all the possibilites
+              in this industry and where the road ahead will take me.
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-1, 1]}
-            translateY={[-350, 0]}
-            startScroll={-125}
-            endScroll={875}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            translateY={[-200, 0]}
+            startScroll={isMobileLandscape ? -200 : -125}
+            endScroll={isMobileLandscape ? 275 : 575}
+            {...parallaxProp}
+          >
+            <AboutBody>
+              If you would like to talk more, you can find my email and LinkedIn
+              below!
+            </AboutBody>
+          </Parallax>
+          <Parallax
+            translateY={[-175, 0]}
+            startScroll={isMobileLandscape ? -240 : -150}
+            endScroll={isMobileLandscape ? 250 : 550}
+            {...parallaxProp}
+          >
+            <AboutBody>Thanks for dropping by 🤓</AboutBody>
+          </Parallax>
+          <Parallax
+            translateY={[-150, 0]}
+            startScroll={isMobileLandscape ? -280 : -175}
+            endScroll={isMobileLandscape ? 225 : 525}
+            {...parallaxProp}
           >
             <AboutBody>
               <BodyAccent color={colors.lightAccent}>FrontEnd: </BodyAccent>
@@ -256,12 +275,10 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-1, 1]}
-            translateY={[-350, 0]}
-            startScroll={-150}
-            endScroll={850}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            translateY={[-125, 0]}
+            startScroll={isMobileLandscape ? -320 : -200}
+            endScroll={isMobileLandscape ? 200 : 500}
+            {...parallaxProp}
           >
             <AboutBody>
               <BodyAccent color={colors.lightAccent}>BackEnd: </BodyAccent>
@@ -269,12 +286,10 @@ function About() {
             </AboutBody>
           </Parallax>
           <Parallax
-            opacity={[-1, 1]}
-            translateY={[-350, 0]}
-            startScroll={-175}
-            endScroll={825}
-            shouldAlwaysCompleteAnimation
-            easing="easeInOutQuad"
+            translateY={[-100, 0]}
+            startScroll={isMobileLandscape ? -360 : -225}
+            endScroll={isMobileLandscape ? 175 : 475}
+            {...parallaxProp}
           >
             <AboutBody>
               <BodyAccent color={colors.lightAccent}>Database: </BodyAccent>
