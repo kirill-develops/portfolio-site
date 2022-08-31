@@ -69,7 +69,7 @@ function Hero() {
           >
             Kirill Tchentsov
             <br />
-            <TitleAccent color="#1c52a2">Software Dev</TitleAccent>
+            <TitleAccent color="#1c52a2">Software Developer</TitleAccent>
           </Title>
         </Parallax>
         <Parallax
