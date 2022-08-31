@@ -44,19 +44,19 @@ export const Section = styled.section`
   `}
 
   ${media.tabletLandscape`
-  padding: 32px 32px 32px;
+  padding: 32px;
   `}
 
   ${media.tabletPortrait`
-  padding: 32px 32px 32px;
+  padding: 32px;
   `}
 
   ${media.laptop`
-  padding: 32px 32px 32px;
+  padding: 32px;
   `}
 
   ${media.desktop`
-  padding: 32px 32px 32px;
+  padding: 32px 72px;
   `}
 `;
 
@@ -98,7 +98,8 @@ export const Title = styled.h2`
   `};
 
   ${media.laptop`
-  margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
+  margin: ${(props) => (props.Hero ? '16px 0 16px' : '36px 28px')};
+  font-size: 3.5rem;
   `};
 
   ${media.desktop`
