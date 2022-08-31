@@ -141,6 +141,7 @@ const CardSection = styled.div`
 
   ${media.tabletLandscape`
     gap: 64px 0;
+    position: relative;
 `};
 `;
 
@@ -196,12 +197,12 @@ const CardTitle = styled.h3`
 
   ${media.tabletLandscape`
     color: ${colors.white};
-    background-color: rgba(115, 118, 131, 0.146);
+    background-color: rgba(0, 0, 0, 0.179);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
     0 1rem 1rem rgba(0, 0, 0, 0.275),
-    inset 0 0rem 5rem #002a68ac;
-    backdrop-filter: blur(11px);
-    -webkit-backdrop-filter: blur(11px);
+    inset 0 0rem 10px 3px #000000ac;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(0, 22, 119, 0.17);
     font-size: 1.4rem;
     flex-shrink: 1;
@@ -209,17 +210,19 @@ const CardTitle = styled.h3`
     margin: 0 auto;
     padding: 8px 0;
     border-radius: 8px;
+    position: absolute;
+    top: -35px;
     `}
-    
+
     ${media.tabletPortrait`;
-    color: ${colors.main};
-    font-size: 1.7rem;
-    flex-shrink: 1;
-    width:100%;
-    margin: 0 auto;
-    padding: 8px 0;
-    border-radius: 8px;
-  `}
+      color: ${colors.main};
+      font-size: 1.7rem;
+      flex-shrink: 1;
+      width:100%;
+      margin: 0 auto;
+      padding: 8px 0;
+      border-radius: 8px;
+    `}
 
   ${media.laptop`
     color: ${colors.lightShade};
