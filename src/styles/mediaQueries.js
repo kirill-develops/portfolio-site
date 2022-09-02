@@ -19,11 +19,11 @@ const media = {
       ${css(...args)}
     }`,
   desktop: (...args) => css`
-    @media (min-width: ${desktopBreakpoint}em) {
+    @media (min-width: ${desktopBreakpoint}em) and (min-height: ${tabletMaxBreakpoint + 1}em){
       ${css(...args)}
     }`,
   laptop: (...args) => css`
-    @media (min-width: ${laptopBreakpoint}em) and (max-width: ${desktopBreakpoint}em) {
+    @media (min-width: ${tabletMaxBreakpoint}em) and (min-height: ${mobileBreakpoint}em) and (max-height: ${tabletMaxBreakpoint}em) {
       ${css(...args)}
     }`,
   tabletLandscape: (...args) => css`

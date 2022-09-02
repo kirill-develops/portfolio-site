@@ -14,6 +14,11 @@ const Flex = styled.div`
     gap: 30px;
     justify-content: center;
   `}
+
+  ${media.laptop`
+    gap: 30px;
+    justify-content: flex-start;
+  `}
 `;
 
 function useProjectSlide(breakpoint) {
@@ -34,8 +39,6 @@ function useProjectSlide(breakpoint) {
       }
     }
   `);
-
-  if (breakpoint.isLaptop) return data;
 
   // creates an array of JSX article elements representing each Project seperately from
   // JSON data parsed by useStaticQuery above in reverse order
@@ -84,11 +87,9 @@ function useProjectSlide(breakpoint) {
     return combineTwoProjectElements(projectSlidesArr);
   };
 
-  if (breakpoint.isTabletPortrait || breakpoint.isTabletLandscape) {
-    return twoPerSlide(projectElementArr);
-  }
+  if (breakpoint.isMobilePortrait) return onePerSlide(projectElementArr);
 
-  return onePerSlide(projectElementArr);
+  return twoPerSlide(projectElementArr);
 }
 
 export default useProjectSlide;

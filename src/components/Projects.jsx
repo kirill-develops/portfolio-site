@@ -13,7 +13,6 @@ import media, {
   tabletPortraitBreakpointStr,
 } from '../styles/mediaQueries';
 import colors from '../styles/colors';
-import ProjectLaptopView from './ProjectLaptopView';
 
 // Swiper style dependencies
 import 'swiper/scss';
@@ -34,6 +33,24 @@ const ProjectsSection = styled(Section)`
   ${media.mobileLandscape`
   height:100%;
   `};
+`;
+
+const ProjectsSwiper = styled(Swiper)`
+  border-radius: 3px;
+  overflow-y: hidden;
+  margin-left: -16px;
+  margin-right: -16px;
+  height: 100%;
+
+  ${media.laptop`
+    width:85%;
+    margin: auto;
+  `}
+
+  ${media.desktop`
+    width:85%;
+    margin: auto;
+  `}
 `;
 
 // Wrapper for projects layout allowing interchanging project card layout
@@ -65,30 +82,20 @@ function Projects() {
     isLaptop: useMediaQuery(laptopBreakpointStr),
   };
 
-  if (breakpoint.isLaptop) {
-    const data = useProjectSlide(breakpoint);
-
-    return (
-      <ProjectView>
-        <ProjectLaptopView data={data} />
-      </ProjectView>
-    );
-  }
-
   const projectSlides = useProjectSlide(breakpoint);
 
   return (
     <ProjectView>
-      <Swiper
+      <ProjectsSwiper
         modules={[Pagination, Autoplay, Mousewheel, EffectCube]}
         slidesPerView={1}
         pagination={{ type: 'bullets' }}
         autoplay={{ delay: 5000, disableOnInteraction: true }}
         mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
-        breakpoints={{ 601: { slidesPerView: 2 } }}
+        breakpoints={{ 601: { slidesPerView: 2 }, 1280: { slidesPerView: 3 } }}
       >
         {projectSlides}
-      </Swiper>
+      </ProjectsSwiper>
     </ProjectView>
   );
 }
