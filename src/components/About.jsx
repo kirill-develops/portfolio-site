@@ -61,6 +61,8 @@ const FlexWrapper = styled.div`
   flex-direction:row;
   justify-content: space-between;
   gap: 0 32px;
+  width: 90%;
+  margin: auto;
   `}
 
   ${media.desktop`

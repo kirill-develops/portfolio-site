@@ -70,13 +70,13 @@ function useProjectSlide(breakpoint) {
     ));
 
   // utility function wrapping each project element in SwiperSlide component
-  const onePerSlide = (projectArr) =>
+  const onePerSlideFn = (projectArr) =>
     projectArr.map((projEl) => (
       <SwiperSlide key={`single${projEl.key}`}>{projEl}</SwiperSlide>
     ));
 
   // utility function creates 2D array, each internal array consists of two Project elements
-  const twoPerSlide = (projectArr) => {
+  const twoPerSlideFn = (projectArr) => {
     const projectSlidesArr = [[]];
     let count = 0;
 
@@ -95,10 +95,14 @@ function useProjectSlide(breakpoint) {
   };
 
   if (breakpoint.isMobilePortrait || breakpoint.isMobileLandscape) {
-    return onePerSlide(projectElementArr);
+    const onePerSlide = onePerSlideFn(projectElementArr);
+
+    return onePerSlide;
   }
 
-  return twoPerSlide(projectElementArr);
+  const twoPerSlide = twoPerSlideFn(projectElementArr);
+
+  return twoPerSlide;
 }
 
 export default useProjectSlide;

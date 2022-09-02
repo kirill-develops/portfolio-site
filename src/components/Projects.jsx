@@ -34,6 +34,14 @@ const ProjectsSection = styled(Section)`
   ${media.mobileLandscape`
   height:100%;
   `};
+
+  ${media.laptop`
+  padding: 32px;
+  `}
+
+  ${media.desktop`
+  padding: 32px 72px;
+  `}
 `;
 
 const ProjectsSwiper = styled(Swiper)`
