@@ -2,12 +2,12 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import { Parallax } from 'react-scroll-parallax';
+import Sticky from 'react-sticky-el';
 import colors from '../styles/colors';
 import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
 import media, { mobileLandscapeBreakpointStr } from '../styles/mediaQueries';
 import Bubbles from './Bubbles/Bubbles';
 import useMediaQuery from '../utils/useMediaQuery';
-import Sticky from 'react-sticky-el';
 
 const AboutSection = styled(Section)`
   background-color: #1b2845;
@@ -174,7 +174,7 @@ function About() {
         <StickyPhoto
           boundaryElement="#StickyBoundry"
           disabled={!isMobileLandscape}
-          dontUpdateHolderHeightWhenSticky={true}
+          dontUpdateHolderHeightWhenSticky
         >
           <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
         </StickyPhoto>
