@@ -19,6 +19,11 @@ const Flex = styled.div`
     gap: 30px;
     justify-content: flex-start;
   `}
+
+  ${media.desktop`
+    gap: 30px;
+    justify-content: flex-start;
+  `}
 `;
 
 function useProjectSlide(breakpoint) {
