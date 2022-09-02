@@ -99,12 +99,13 @@ export const Title = styled.h2`
 
   ${media.laptop`
   margin: ${(props) => (props.Hero ? '16px 0 16px' : '36px 28px')};
-  font-size: 3.5rem;
-  `};
-
+  font-size: ${(props) => (props.Hero ? '2.5rem' : '3.5rem')};
+`};
+  
   ${media.desktop`
-  margin: ${(props) => (props.Hero ? '16px 0 16px' : '16px auto 16px')};
-  max-width: ${(props) => (props.Hero ? '220px' : `${desktopBreakpoint}rem`)};
+  margin: ${(props) => (props.Hero ? '16px 0 16px' : '48px auto 14px')};
+  max-width: ${(props) => (props.Hero ? '220px' : 'unset')};
+  font-size: 3.5rem;
   `};
 `;
 

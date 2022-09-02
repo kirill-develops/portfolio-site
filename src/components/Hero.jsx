@@ -1,6 +1,10 @@
-import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { getImage } from 'gatsby-plugin-image';
+import React, { useMemo } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
+import BackgroundImage from 'gatsby-background-image';
+import { convertToBgImage } from 'gbimage-bridge';
 import { Section, Title, TitleAccent, TitleLink } from '../styles/globalStyles';
 import media from '../styles/mediaQueries';
 
@@ -10,6 +14,26 @@ const HeroSection = styled(Section)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  ${media.mobileLandscape`
+  width: 65%;
+  `}
+
+  ${media.tabletLandscape`
+  width: 35%;
+  `};
+
+  ${media.tabletPortrait`
+    width:45%;
+  `}
+
+  ${media.laptop`
+  width: 40%;
+  `};
+
+  ${media.desktop`
+  width: 35%;
+  `};
 `;
 
 const HeroWrapper = styled.div`
@@ -55,48 +79,71 @@ const parallaxProps = {
 };
 
 function Hero() {
+  const data = useStaticQuery(graphql`
+    query BackgroundImage {
+      file(relativePath: { eq: "sunset3.jpg" }) {
+        id
+        childImageSharp {
+          gatsbyImageData(placeholder: TRACED_SVG, width: 400)
+        }
+      }
+    }
+  `);
+
+  const imageData = useMemo(() => getImage(data.file), [data]);
+  const bgImage = useMemo(() => convertToBgImage(imageData), [imageData]);
+  console.log(data, imageData, bgImage);
+
   return (
-    <HeroSection id="top">
-      <HeroWrapper>
-        <Parallax
-          startScroll={0}
-          endScroll={1250}
-          {...parallaxProps}
-        >
-          <Title
-            Hero
-            as="h1"
+    <BackgroundImage
+      Tag="Section"
+      id="top"
+      {...bgImage}
+      // preserveStackingContext
+      backgroundColor="#000"
+    >
+      <HeroSection as="div">
+        <HeroWrapper>
+          <Parallax
+            startScroll={0}
+            endScroll={1250}
+            {...parallaxProps}
           >
-            Kirill Tchentsov
-            <br />
-            <TitleAccent color="#1c52a2">Software Developer</TitleAccent>
-          </Title>
-        </Parallax>
-        <Parallax
-          startScroll={25}
-          endScroll={1275}
-          {...parallaxProps}
-        >
-          <TitleLink href="#about">Learn More</TitleLink>
-        </Parallax>
-        <br />
-        <Parallax
-          startScroll={50}
-          endScroll={1300}
-          {...parallaxProps}
-        >
-          <TitleLink href="#projects">Projects</TitleLink>
-        </Parallax>
-        <br />
-        <Parallax
-          startScroll={75}
-          endScroll={1325}
-          {...parallaxProps}
-        >
-          <TitleLink href="#contact">Contact Me</TitleLink>
-        </Parallax>
-      </HeroWrapper>
-    </HeroSection>
+            <Title
+              Hero
+              as="h1"
+            >
+              Kirill Tchentsov
+              <br />
+              <TitleAccent color="#1c52a2">Software Developer</TitleAccent>
+            </Title>
+          </Parallax>
+          <Parallax
+            startScroll={25}
+            endScroll={1275}
+            {...parallaxProps}
+          >
+            <TitleLink href="#about">Learn More</TitleLink>
+          </Parallax>
+          <br />
+          <Parallax
+            startScroll={50}
+            endScroll={1300}
+            {...parallaxProps}
+          >
+            <TitleLink href="#projects">Projects</TitleLink>
+          </Parallax>
+          <br />
+          <Parallax
+            startScroll={75}
+            endScroll={1325}
+            {...parallaxProps}
+          >
+            <TitleLink href="#contact">Contact Me</TitleLink>
+          </Parallax>
+        </HeroWrapper>
+      </HeroSection>
+    </BackgroundImage>
   );
 }
 
