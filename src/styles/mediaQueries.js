@@ -7,7 +7,7 @@ export const tabletMaxBreakpoint = 820 / 16;
 export const desktopBreakpoint = 1081 / 16;
 
 // laptop and tablet breakpoints interpolated into REM
-export const mobilePortraitStringStr = `(max-width:${mobileBreakpoint}rem) and (orientation: portrait)`;
+export const mobilePortraitBreakpointStr = `(max-width:${mobileBreakpoint}rem) and (orientation: portrait)`;
 export const mobileLandscapeBreakpointStr = `(max-width:${laptopBreakpoint}rem) and (max-height: ${mobileBreakpoint - 1}rem) and (orientation: landscape)`;
 export const tabletPortraitBreakpointStr = `(min-width:${mobileBreakpoint}rem) and (max-width:${laptopBreakpoint - 1}rem) and (orientation: portrait)`;
 export const tabletLandscapeBreakpointStr = `(min-height:${mobileBreakpoint}rem) and (max-height:${tabletMaxBreakpoint}rem) and (orientation: landscape)`;

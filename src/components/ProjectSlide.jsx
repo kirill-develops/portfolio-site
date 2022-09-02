@@ -126,13 +126,13 @@ const PhotoWrapper = styled(Card)`
   `}
 
   ${media.tabletPortrait`
-    max-height:60%;
+    max-height:70%;
     margin: 8px 0 0;
     width:100%;
   `}
 
   ${media.laptop`
-    max-height:60%;
+    max-height:70%;
     margin: 8px 0 0;
     width:100%;
   `}

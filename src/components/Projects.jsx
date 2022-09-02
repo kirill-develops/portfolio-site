@@ -8,7 +8,8 @@ import useMediaQuery from '../utils/useMediaQuery';
 import { Title, Section } from '../styles/globalStyles';
 import media, {
   laptopBreakpointStr,
-  mobilePortraitStringStr,
+  mobileLandscapeBreakpointStr,
+  mobilePortraitBreakpointStr,
   tabletLandscapeBreakpointStr,
   tabletPortraitBreakpointStr,
 } from '../styles/mediaQueries';
@@ -76,7 +77,8 @@ function Projects() {
   // array with boolean values if in tablet or laptop view, otherwise assume we
   // are on mobile
   const breakpoint = {
-    isMobilePortrait: useMediaQuery(mobilePortraitStringStr),
+    isMobilePortrait: useMediaQuery(mobilePortraitBreakpointStr),
+    isMobileLandscape: useMediaQuery(mobileLandscapeBreakpointStr),
     isTabletPortrait: useMediaQuery(tabletPortraitBreakpointStr),
     isTabletLandscape: useMediaQuery(tabletLandscapeBreakpointStr),
     isLaptop: useMediaQuery(laptopBreakpointStr),

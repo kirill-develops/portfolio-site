@@ -6,7 +6,7 @@ import colors from '../styles/colors';
 import useMediaQuery from '../utils/useMediaQuery';
 import media, {
   mobileLandscapeBreakpointStr,
-  mobilePortraitStringStr,
+  mobilePortraitBreakpointStr,
 } from '../styles/mediaQueries';
 
 const Contact = styled(Section)`
@@ -78,7 +78,7 @@ const Caption = styled(Body)`
 `;
 
 function Footer() {
-  const isMobilePortrait = useMediaQuery(mobilePortraitStringStr);
+  const isMobilePortrait = useMediaQuery(mobilePortraitBreakpointStr);
   const isMobileLandscape = useMediaQuery(mobileLandscapeBreakpointStr);
 
   const isMobile = isMobileLandscape || isMobilePortrait;

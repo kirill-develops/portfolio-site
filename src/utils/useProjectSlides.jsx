@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { SwiperSlide } from 'swiper/react';
 import styled from 'styled-components';
@@ -47,14 +47,16 @@ function useProjectSlide(breakpoint) {
 
   // creates an array of JSX article elements representing each Project seperately from
   // JSON data parsed by useStaticQuery above in reverse order
-  const projectElementArr = data.allProjectListJson?.nodes
-    ?.reverse()
-    .map((project) => (
-      <ProjectSlide
-        project={project}
-        key={project.id}
-      />
-    ));
+  const projectElementArr = useMemo(
+    () =>
+      data.allProjectListJson.nodes.reverse().map((project) => (
+        <ProjectSlide
+          project={project}
+          key={project.id}
+        />
+      )),
+    [data],
+  );
 
   // utility function wrapping two project elements in SwiperSlide component
   const combineTwoProjectElements = (Arr) =>
@@ -92,7 +94,9 @@ function useProjectSlide(breakpoint) {
     return combineTwoProjectElements(projectSlidesArr);
   };
 
-  if (breakpoint.isMobilePortrait) return onePerSlide(projectElementArr);
+  if (breakpoint.isMobilePortrait || breakpoint.isMobileLandscape) {
+    return onePerSlide(projectElementArr);
+  }
 
   return twoPerSlide(projectElementArr);
 }

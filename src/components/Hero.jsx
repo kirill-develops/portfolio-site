@@ -92,7 +92,6 @@ function Hero() {
 
   const imageData = useMemo(() => getImage(data.file), [data]);
   const bgImage = useMemo(() => convertToBgImage(imageData), [imageData]);
-  console.log(data, imageData, bgImage);
 
   return (
     <BackgroundImage
