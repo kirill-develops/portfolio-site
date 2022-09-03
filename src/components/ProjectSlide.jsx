@@ -1,9 +1,44 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useMemo } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
 import { Body } from '../styles/globalStyles';
+
+const pulseAnimation = keyframes`
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+`;
 
 const Slide = styled.article`
   color: ${colors.white};
@@ -104,6 +139,23 @@ const Card = styled.div`
   padding: 12px;
 `;
 
+const photoWrapperHover = css`
+  &:hover {
+    cursor: pointer;
+    position: relative;
+  }
+
+  &:hover::after {
+    content: 'Click For More';
+    background-color: #000000ab;
+    padding: 8px;
+    border-radius: 4px;
+    color: ${colors.lightAccent};
+    position: absolute;
+    top: 50%;
+  }
+`;
+
 const PhotoWrapper = styled(Card)`
   background-color: ${colors.darkShade};
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
@@ -124,6 +176,8 @@ const PhotoWrapper = styled(Card)`
   ${media.tabletLandscape`
     max-height:70%;
     margin: auto;
+
+    ${photoWrapperHover}
   `}
 
   ${media.tabletPortrait`
@@ -131,17 +185,21 @@ const PhotoWrapper = styled(Card)`
     margin: 8px 0 0;
     width:100%;
   `}
-
+    
   ${media.laptop`
     max-height:80%;
     margin: 8px 0 0;
     width:100%;
+    
+    ${photoWrapperHover}
   `}
-  
+    
   ${media.desktop`
     max-height:90%;
     margin: 8px 0 0;
     width:100%;
+    
+    ${photoWrapperHover};
   `}
 `;
 
@@ -151,6 +209,18 @@ const PhotoBorder = styled.div`
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   overflow: hidden;
   height: 100%;
+
+  ${PhotoWrapper}:hover & {
+    ${media.tabletLandscape`
+    filter: grayscale(1) blur(3px);
+    `}
+    ${media.laptop`
+    filter: grayscale(1) blur(3px);
+    `}
+    ${media.desktop`
+    filter: grayscale(1) blur(3px);
+    `}
+  }
 `;
 
 const CardSection = styled.div`
@@ -223,6 +293,11 @@ const CardTitle = styled.h3`
   text-align: center;
   width: fit-content;
   margin: 28px auto 6px;
+
+  ${PhotoWrapper} :hover & {
+    animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
+    -webkit-animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
+  }
 
   ${media.mobileLandscape`
     color: ${colors.white};
@@ -308,7 +383,29 @@ const CardAccent = styled.span`
 `;
 
 function ProjectSlide({ project }) {
-  const projectPhoto = getImage(project.img);
+  const projectPhoto = useMemo(() => getImage(project.img), [project]);
+
+  const frontEndContainer = useMemo(
+    () =>
+      project.frontEnd && (
+        <Body margin="0.5rem">
+          <CardAccent>Front-End:</CardAccent>
+          {project.frontEnd}
+        </Body>
+      ),
+    [project],
+  );
+
+  const backEndContainer = useMemo(
+    () =>
+      project.backEnd && (
+        <Body margin="0.5rem">
+          <CardAccent>Back-End:</CardAccent>
+          {project.backEnd}
+        </Body>
+      ),
+    [project],
+  );
 
   return (
     <Slide>
@@ -323,14 +420,8 @@ function ProjectSlide({ project }) {
       <CardSection>
         <CardTitle>{project.name}</CardTitle>
         <DetailsWrapper>
-          <Body margin="0.5rem">
-            <CardAccent>Front-End:</CardAccent>
-            {project.frontEnd}
-          </Body>
-          <Body margin="0.5rem">
-            <CardAccent>Back-End:</CardAccent>
-            {project.backEnd}
-          </Body>
+          {frontEndContainer}
+          {backEndContainer}
         </DetailsWrapper>
       </CardSection>
     </Slide>
