@@ -1,12 +1,11 @@
 import * as React from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
 import Contact from '../components/Footer';
-import GlobalStyle from '../styles/globalStyles';
-import { Main } from '../styles/globalStyles';
-import { ParallaxProvider } from 'react-scroll-parallax';
+import GlobalStyle, { Main } from '../styles/globalStyles';
 
 function IndexPage() {
   return (

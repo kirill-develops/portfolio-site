@@ -1,10 +1,9 @@
+import '@fontsource/lato';
+import '@fontsource/abril-fatface';
 import styled, { createGlobalStyle } from 'styled-components';
 import media from './mediaQueries';
-import fonts from './fonts';
 
 const GlobalStyle = createGlobalStyle`
-  ${fonts.abrilFatface}
-  ${fonts.lato}
 
   * {
     box-sizing: border-box;
@@ -13,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html{
-    font-family: 'Lato', Roboto, -apple-system, sans-serif;
+    font-family: 'lato', Roboto, -apple-system, sans-serif;
     height: 100vh;
   }
   
@@ -90,7 +89,7 @@ const handleTitleMarginDesktopType = (section) => {
 };
 
 export const Title = styled.h2`
-  font-family: 'abrilFatface';
+  font-family: "Abril Fatface";
   font-size: 2.7rem;
   color: ${(props) => props.color || 'inherit'};
   width: 100%;
