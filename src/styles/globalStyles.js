@@ -154,6 +154,7 @@ export const TitleLink = styled.a`
 
 export const Body = styled.p`
   color: ${(props) => props.color || 'inherit'};
+  margin: ${(props) => props.margin || 'unset'}
 `;
 
 export const BodyAccent = styled.span`

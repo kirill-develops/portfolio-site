@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
+import { Body } from '../styles/globalStyles';
 
 const Slide = styled.article`
   color: ${colors.white};
@@ -74,10 +75,10 @@ const Slide = styled.article`
     flex-direction: column;
     justify-content: space-between;
     border-radius: 8px;
-    margin: 0 16px 0;
+    margin: 0;
     height: 42.5%;
     max-height: fit-content;
-    padding: 0 0 8px;
+    padding: 0 22px 8px;
     `};
 
   ${media.desktop`
@@ -89,10 +90,10 @@ const Slide = styled.article`
     flex-direction: column;
     justify-content: space-between;
     border-radius: 8px;
-    margin: 0 16px 0;
+    margin: 0;
     height: 42.5%;
     max-height: fit-content;
-    padding: 0 0 8px;
+    padding: 0 22px 8px;
   `};
 `;
 
@@ -116,23 +117,23 @@ const PhotoWrapper = styled(Card)`
   padding: 8px;
 
   ${media.mobileLandscape`
-    max-height:226px;
+    max-height:80%;
     margin: auto;
   `};
 
   ${media.tabletLandscape`
-    max-height:226px;
+    max-height:70%;
     margin: auto;
   `}
 
   ${media.tabletPortrait`
-    max-height:70%;
+    max-height:50%;
     margin: 8px 0 0;
     width:100%;
   `}
 
   ${media.laptop`
-    max-height:70%;
+    max-height:80%;
     margin: 8px 0 0;
     width:100%;
   `}
@@ -274,6 +275,7 @@ const CardTitle = styled.h3`
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
       0 1rem 1rem rgba(0, 0, 0, 0.275), inset 0 0 7px 2px #002a6849;
     -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(2px);
     border-radius: 8px;
     width: 100%;
     margin: 0 auto;
@@ -288,6 +290,7 @@ const CardTitle = styled.h3`
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
       0 1rem 1rem rgba(0, 0, 0, 0.275), inset 0 0 7px 2px #002a6849;
     -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(2px);
     border-radius: 8px;
     width: 100%;
     margin: 0 auto;
@@ -297,7 +300,7 @@ const CardTitle = styled.h3`
   `}
 `;
 
-const CardAccent = styled.h4`
+const CardAccent = styled.span`
   color: ${colors.lightAccent};
   font: roboto slab;
   font-size: 0.8rem;
@@ -320,9 +323,14 @@ function ProjectSlide({ project }) {
       <CardSection>
         <CardTitle>{project.name}</CardTitle>
         <DetailsWrapper>
-          {/* <Body>{project.description}</Body> */}
-          <CardAccent>Front-End:</CardAccent>
-          <CardAccent>Back-End:</CardAccent>
+          <Body margin="0.5rem">
+            <CardAccent>Front-End:</CardAccent>
+            {project.frontEnd}
+          </Body>
+          <Body margin="0.5rem">
+            <CardAccent>Back-End:</CardAccent>
+            {project.backEnd}
+          </Body>
         </DetailsWrapper>
       </CardSection>
     </Slide>
