@@ -1,7 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import media, { desktopBreakpoint } from './mediaQueries';
+import media from './mediaQueries';
+import fonts from './fonts';
 
 const GlobalStyle = createGlobalStyle`
+  ${fonts.abrilFatface}
+  ${fonts.lato}
+
   * {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -9,11 +13,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html{
-    font-family: -apple-system, Roboto, sans-serif, serif;
-  height: 100vh;
-
+    font-family: 'Lato', Roboto, -apple-system, sans-serif;
+    height: 100vh;
   }
-
+  
   body {
     margin: 0;
     height: 100vh;
@@ -87,6 +90,7 @@ const handleTitleMarginDesktopType = (section) => {
 };
 
 export const Title = styled.h2`
+  font-family: 'abrilFatface';
   font-size: 2.7rem;
   color: ${(props) => props.color || 'inherit'};
   width: 100%;
