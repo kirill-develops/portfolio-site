@@ -10,14 +10,14 @@
     "name": "TravelSite",
     "img": "../images/TravelSite.jpg",
     "description": "",
-    "frontEnd": "HTML5, Sass, Git",
+    "frontEnd": "HTML5, Sass/CSS3, Git",
     "backEnd": ""
   },
   {
     "name": "BandSite",
     "img": "../images/bandsite2.jpg",
-    "description": "HTML5, Sass, Git",
-    "frontEnd": "",
+    "description": "",
+    "frontEnd": "React, Axios, HTML5, Sass/CSS3, Git, Figma",
     "backEnd": ""
   },
   {
@@ -31,7 +31,7 @@
     "name": "InStock",
     "img": "../images/InStock.jpg",
     "description": "",
-    "frontEnd": "React, Router, Axios, Sass",
+    "frontEnd": "React, Router, Axios, Sass, Jira",
     "backEnd": "Node, Express, MySQL, Cors"
   }
 ]

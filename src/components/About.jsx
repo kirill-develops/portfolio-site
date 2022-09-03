@@ -205,7 +205,7 @@ function About() {
                 {' '}
                 JavaScript
               </BodyAccent>{' '}
-              and I'm always eager to learn new languages & frameworks.
+              and I'm always eager to learn new languages & libraries.
             </AboutBody>
           </Parallax>
           <Parallax
@@ -215,8 +215,9 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              I've worn many hats. A marketing professional. Mixologist.
-              Carpenter. Even a scuba diving instructor (highly recommend).
+              I've worn many hats in my professional persuits that have given me
+              an array of skills such as problem solving, teamwork, customer
+              service and communication.
             </AboutBody>
           </Parallax>
           <Parallax
@@ -237,9 +238,10 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              Software Dev let's me be creative and to experience the rush from
-              solving complex problems. I'm excited about all the possibilites
-              in this industry and where the road ahead will take me.
+              Software development let's me be creative and to experience the
+              rush from solving complex problems. It also drives me to seek more
+              efficent solutions that lead to more reusability and comprehension
+              in my code.
             </AboutBody>
           </Parallax>
           <Parallax
@@ -249,8 +251,8 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              If you would like to talk more, you can find my email and LinkedIn
-              below!
+              I look forward to the road ahead and to hearing from you! My
+              contact info is down below!
             </AboutBody>
           </Parallax>
           <Parallax
