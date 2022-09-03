@@ -84,7 +84,7 @@ function Hero() {
       file(relativePath: { eq: "sunset3.jpg" }) {
         id
         childImageSharp {
-          gatsbyImageData(placeholder: TRACED_SVG, width: 400)
+          gatsbyImageData(placeholder: TRACED_SVG, width: 1900)
         }
       }
     }
