@@ -87,9 +87,6 @@ function Projects() {
   const breakpoint = {
     isMobilePortrait: useMediaQuery(mobilePortraitBreakpointStr),
     isMobileLandscape: useMediaQuery(mobileLandscapeBreakpointStr),
-    isTabletPortrait: useMediaQuery(tabletPortraitBreakpointStr),
-    isTabletLandscape: useMediaQuery(tabletLandscapeBreakpointStr),
-    isLaptop: useMediaQuery(laptopBreakpointStr),
   };
 
   const projectSlides = useProjectSlide(breakpoint);
