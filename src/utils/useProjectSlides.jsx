@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { SwiperSlide } from 'swiper/react';
 import styled from 'styled-components';
@@ -35,6 +35,8 @@ function useProjectSlide(breakpoint) {
           id
           name
           description
+          frontEnd
+          backEnd
           img {
             childImageSharp {
               gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
@@ -59,21 +61,27 @@ function useProjectSlide(breakpoint) {
   );
 
   // utility function wrapping two project elements in SwiperSlide component
-  const combineTwoProjectElements = (Arr) =>
-    Arr.map((group) => (
-      <SwiperSlide key={`double${group[0].key}`}>
-        <Flex>
-          {group[0]}
-          {group[1]}
-        </Flex>
-      </SwiperSlide>
-    ));
+  const combineTwoProjectElements = useCallback(
+    (Arr) =>
+      Arr.map((group) => (
+        <SwiperSlide key={`double${group[0].key}`}>
+          <Flex>
+            {group[0]}
+            {group[1]}
+          </Flex>
+        </SwiperSlide>
+      )),
+    [],
+  );
 
   // utility function wrapping each project element in SwiperSlide component
-  const onePerSlideFn = (projectArr) =>
-    projectArr.map((projEl) => (
-      <SwiperSlide key={`single${projEl.key}`}>{projEl}</SwiperSlide>
-    ));
+  const onePerSlideFn = useCallback(
+    (projectArr) =>
+      projectArr.map((projEl) => (
+        <SwiperSlide key={`single${projEl.key}`}>{projEl}</SwiperSlide>
+      )),
+    [],
+  );
 
   // utility function creates 2D array, each internal array consists of two Project elements
   const twoPerSlideFn = (projectArr) => {
@@ -96,12 +104,10 @@ function useProjectSlide(breakpoint) {
 
   if (breakpoint.isMobilePortrait || breakpoint.isMobileLandscape) {
     const onePerSlide = onePerSlideFn(projectElementArr);
-
     return onePerSlide;
   }
 
   const twoPerSlide = twoPerSlideFn(projectElementArr);
-
   return twoPerSlide;
 }
 

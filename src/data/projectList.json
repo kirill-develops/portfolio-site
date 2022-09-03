@@ -2,26 +2,36 @@
   {
     "name": "CoffeeShop",
     "img": "../images/coffeeshop2.jpg",
-    "description": ""
+    "description": "",
+    "frontEnd": "HTML5, CSS3, Git",
+    "backEnd": ""
   },
   {
     "name": "TravelSite",
     "img": "../images/TravelSite.jpg",
-    "description": ""
+    "description": "",
+    "frontEnd": "HTML5, Sass, Git",
+    "backEnd": ""
   },
   {
     "name": "BandSite",
     "img": "../images/bandsite2.jpg",
-    "description": ""
+    "description": "HTML5, Sass, Git",
+    "frontEnd": "",
+    "backEnd": ""
   },
   {
     "name": "BrainFlix",
     "img": "../images/brainflix2.jpg",
-    "description": ""
+    "description": "",
+    "frontEnd": "React, Router, React Lifecycle Methods, Axios",
+    "backEnd": "Node, Express, Cors, MVC Architecture"
   },
   {
     "name": "InStock",
     "img": "../images/InStock.jpg",
-    "description": ""
+    "description": "",
+    "frontEnd": "React, Router, Axios, Sass",
+    "backEnd": "Node, Express, MySQL, Cors"
   }
 ]
