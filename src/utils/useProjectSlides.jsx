@@ -49,15 +49,16 @@ function useProjectSlide(breakpoint) {
 
   // creates an array of JSX article elements representing each Project seperately from
   // JSON data parsed by useStaticQuery above in reverse order
-  const projectElementArr = useMemo(
+  const projectsJsxArr = useMemo(
     () =>
       data.allProjectListJson.nodes.reverse().map((project) => (
         <ProjectSlide
           project={project}
           key={project.id}
+          breakpoint={breakpoint}
         />
       )),
-    [data],
+    [data, breakpoint],
   );
 
   // utility function wrapping two project elements in SwiperSlide component
@@ -75,7 +76,7 @@ function useProjectSlide(breakpoint) {
   );
 
   // utility function wrapping each project element in SwiperSlide component
-  const onePerSlideFn = useCallback(
+  const oneProjectPerSlideFn = useCallback(
     (projectArr) =>
       projectArr.map((projEl) => (
         <SwiperSlide key={`single${projEl.key}`}>{projEl}</SwiperSlide>
@@ -84,31 +85,31 @@ function useProjectSlide(breakpoint) {
   );
 
   // utility function creates 2D array, each internal array consists of two Project elements
-  const twoPerSlideFn = (projectArr) => {
-    const projectSlidesArr = [[]];
+  const twoProjectPerSlideFn = useCallback((projectArr) => {
+    const slidesArr = [[]];
     let count = 0;
 
     projectArr.forEach((element) => {
-      if (projectSlidesArr[count]?.length === 0) {
-        projectSlidesArr[count] = [element];
-      } else if (projectSlidesArr[count]?.length === 1) {
-        projectSlidesArr[count].push(element);
-      } else if (projectSlidesArr[count]?.length === 2) {
+      if (slidesArr[count]?.length === 0) {
+        slidesArr[count] = [element];
+      } else if (slidesArr[count]?.length === 1) {
+        slidesArr[count].push(element);
+      } else if (slidesArr[count]?.length === 2) {
         count += 1;
-        projectSlidesArr[count] = [element];
+        slidesArr[count] = [element];
       }
     });
 
-    return combineTwoProjectElements(projectSlidesArr);
-  };
+    return combineTwoProjectElements(slidesArr);
+  }, []);
 
   if (breakpoint.isMobilePortrait || breakpoint.isMobileLandscape) {
-    const onePerSlide = onePerSlideFn(projectElementArr);
-    return onePerSlide;
+    const oneProjectPerSlide = oneProjectPerSlideFn(projectsJsxArr);
+    return oneProjectPerSlide;
   }
 
-  const twoPerSlide = twoPerSlideFn(projectElementArr);
-  return twoPerSlide;
+  const twoProjectPerSlide = twoProjectPerSlideFn(projectsJsxArr);
+  return twoProjectPerSlide;
 }
 
 export default useProjectSlide;
