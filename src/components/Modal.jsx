@@ -19,7 +19,7 @@ const ModalBody = styled.div`
   background-color: white;
   margin: 10% auto;
   padding: 20px;
-  width: 50%;
+  width: 40%;
   min-width: 400px;
 `;
 
