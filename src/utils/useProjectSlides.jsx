@@ -58,7 +58,7 @@ function useProjectSlide(breakpoint) {
           breakpoint={breakpoint}
         />
       )),
-    [data, breakpoint],
+    [data],
   );
 
   // utility function wrapping two project elements in SwiperSlide component
