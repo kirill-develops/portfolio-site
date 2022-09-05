@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
 
-export const mobileBreakpoint = 481 / 16;
-export const tabletMinBreakpoint = 601 / 16;
-export const laptopBreakpoint = 1025 / 16;
-export const tabletMaxBreakpoint = 820 / 16;
-export const desktopBreakpoint = 1081 / 16;
+export const mobileBreakpoint = 481 / 16; // 30.00625
+export const tabletMinBreakpoint = 601 / 16; // 37.5625
+export const laptopBreakpoint = 1025 / 16; // 64.0625
+export const tabletMaxBreakpoint = 820 / 16; // 51.25
+export const desktopBreakpoint = 1081 / 16; // 67.5625
 
 // laptop and tablet breakpoints interpolated into REM
 export const mobilePortraitBreakpointStr = `(max-width:${mobileBreakpoint}rem) and (orientation: portrait)`;
@@ -14,28 +14,24 @@ export const tabletLandscapeBreakpointStr = `(min-height:${mobileBreakpoint}rem)
 export const laptopBreakpointStr = `(min-width:${laptopBreakpoint}rem)`;
 
 const media = {
-  landscape: (...args) => css`
-    @media (orientation: landscape) {
-      ${css(...args)}
-    }`,
   desktop: (...args) => css`
-    @media (min-width: ${desktopBreakpoint}em) and (min-height: ${tabletMaxBreakpoint + 1}em){
+    @media (min-width: ${desktopBreakpoint}em) and (min-height: ${tabletMaxBreakpoint}em){
       ${css(...args)}
     }`,
   laptop: (...args) => css`
-    @media (min-width: ${tabletMaxBreakpoint}em) and (min-height: ${mobileBreakpoint}em) and (max-height: ${tabletMaxBreakpoint}em) {
+    @media (min-width: ${laptopBreakpoint}em) and (min-height: ${tabletMinBreakpoint}em) and (orientation: landscape) {
       ${css(...args)}
     }`,
   tabletLandscape: (...args) => css`
-    @media (min-width: ${tabletMinBreakpoint + 1}em) and (max-width: ${laptopBreakpoint}em) and (min-height:${mobileBreakpoint + 1}em) and (orientation: landscape) {
+    @media (min-width: ${tabletMinBreakpoint}em) and (min-height:${mobileBreakpoint}em) and (orientation: landscape) {
       ${css(...args)}
     }`,
   tabletPortrait: (...args) => css`
-    @media (min-width: ${tabletMinBreakpoint}em) and (max-width: ${laptopBreakpoint}em) and (orientation: portrait) {
+    @media (min-width: ${mobileBreakpoint}em) and (orientation: portrait) {
       ${css(...args)}
     }`,
   mobileLandscape: (...args) => css`
-  @media (max-width: ${laptopBreakpoint}em) and (max-height: ${mobileBreakpoint}em) and (orientation: landscape) {
+  @media (orientation: landscape) {
     ${css(...args)}
   }`,
 };
