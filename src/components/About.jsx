@@ -168,9 +168,9 @@ function About() {
       >
         <Title About>About Me</Title>
       </Parallax>
-      <FlexWrapper id="StickyBoundry">
+      <FlexWrapper id="stickyBoundry">
         <StickyPhoto
-          boundaryElement="#StickyBoundry"
+          boundaryElement="#stickyBoundry"
           disabled={!isMobileLandscape}
           dontUpdateHolderHeightWhenSticky
         >
@@ -184,7 +184,7 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              I first fell in love with programming in grade 7, creating
+              I was first introduced to programming in grade 7, creating
               side-scrolling QBasic games way before Pokemon was a thing.
             </AboutBody>
           </Parallax>
@@ -238,10 +238,10 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              Software development let's me be creative and to experience the
-              rush from solving complex problems. It also drives me to seek more
-              efficent solutions that lead to more reusability and comprehension
-              in my code.
+              Software development let's me be creative and the satisfaction
+              from solving complex problems. It also drives me to seek more
+              efficent solutions that lead to better reusability and
+              comprehension in my code.
             </AboutBody>
           </Parallax>
           <Parallax
