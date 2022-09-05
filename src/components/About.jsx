@@ -1,5 +1,5 @@
 import { StaticImage } from 'gatsby-plugin-image';
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Parallax } from 'react-scroll-parallax';
 import Sticky from 'react-sticky-el';
@@ -37,6 +37,7 @@ const FlexWrapper = styled.div`
   gap: 16px 24px;
 
   ${media.mobileLandscape`
+    flex-direction:row;
     align-items: flex-start;
     gap: 18px;
   `};
@@ -46,7 +47,6 @@ const FlexWrapper = styled.div`
   `};
 
   ${media.tabletLandscape`
-    flex-direction:row;
     align-items: center;
     justify-content: space-between;
     gap: 0 32px;
@@ -60,7 +60,7 @@ const FlexWrapper = styled.div`
 
   ${media.desktop`
     gap: 0 42px;
-    width: 75%;
+    width: 82.5%;
   `}
 `;
 
@@ -118,7 +118,7 @@ const AboutBody = styled(Body)`
   margin: auto;
 `;
 
-// prop object for Parallax
+// props object for Parallax animation wrapper
 const parallaxProp = {
   opacity: [-1, 1],
   shouldAlwaysCompleteAnimation: true,

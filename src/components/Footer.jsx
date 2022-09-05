@@ -10,9 +10,15 @@ import media, {
 } from '../styles/mediaQueries';
 
 const Contact = styled(Section)`
+  background-color: ${colors.black};
+  position: relative;
   height: unset;
   padding-bottom: 12px;
-  background-color: ${colors.black};
+
+  ${media.laptop`
+    padding-bottom: 20px;
+  
+  `}
 `;
 
 const LinksContainer = styled.address`
@@ -30,26 +36,26 @@ const LogoWrapper = styled.a`
 `;
 
 const GithubWrapper = styled(LogoWrapper)`
-  &: hover {
+  &:hover {
     color: ${colors.logoGithub};
   }
 `;
 
 const GmailWrapper = styled(LogoWrapper)`
-  &: hover {
+  &:hover {
     color: ${colors.logoGmail};
   }
 `;
 
 const LinkedinWrapper = styled(LogoWrapper)`
-  &: hover {
+  &:hover {
     color: ${colors.logoLinkedin};
   }
 `;
 
 const Divider = styled.hr`
   width: 50%;
-  min-width: 300px;
+  min-width: 200px;
   border-color: ${colors.mainColor};
 `;
 
@@ -57,17 +63,25 @@ const ClickUpWrapper = styled(LogoWrapper)`
   display: flex;
   width: fit-content;
   margin: 1.2rem auto 1.4rem;
+  border-radius: 50%;
+  padding: 8px;
+  border: 1.5px solid ${colors.finePrint};
+
+  ${media.mobileLandscape`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    `}
 
   ${media.tabletPortrait`
-    margin: 0.6rem auto 0.8rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   `}
-
-  ${media.tabletLandscape`
-    margin: 0.6rem auto 0.8rem;
-  `}
-
-  &: hover {
+  
+  &:hover {
     color: ${colors.logoUp};
+    border-color: ${colors.logoUp};
   }
 `;
 
@@ -80,8 +94,8 @@ const Caption = styled(Body)`
 function Footer() {
   const isMobilePortrait = useMediaQuery(mobilePortraitBreakpointStr);
   const isMobileLandscape = useMediaQuery(mobileLandscapeBreakpointStr);
-
   const isMobile = isMobileLandscape || isMobilePortrait;
+
   return (
     <Contact id="contact">
       <ClickUpWrapper href="#top">

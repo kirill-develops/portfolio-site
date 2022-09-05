@@ -16,11 +16,11 @@ const HeroSection = styled(Section)`
   justify-content: center;
 
   ${media.mobileLandscape`
-  width: 65%;
+    width: 65%;
   `}
 
   ${media.tabletLandscape`
-  width: 35%;
+    width: 35%;
   `};
 
   ${media.tabletPortrait`
@@ -28,11 +28,11 @@ const HeroSection = styled(Section)`
   `}
 
   ${media.laptop`
-  width: 40%;
+    width: 40%;
   `};
 
   ${media.desktop`
-  width: 35%;
+    width: 35%;
   `};
 `;
 
