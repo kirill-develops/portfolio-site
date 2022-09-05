@@ -105,7 +105,6 @@ export const Title = styled.h2`
   ${media.tabletPortrait`
   max-width: ${(props) => (props.Hero ? '220px' : 'inherit')};
   margin: ${(props) => handleTitleMarginTPType(props)};
-  
   `}
   
   ${media.tabletLandscape`
