@@ -51,14 +51,17 @@ function useProjectSlide(breakpoint) {
   // JSON data parsed by useStaticQuery above in reverse order
   const projectsJsxArr = useMemo(
     () =>
-      data.allProjectListJson.nodes.reverse().map((project) => (
-        <ProjectSlide
-          project={project}
-          key={project.id}
-          breakpoint={breakpoint}
-        />
-      )),
-    [data],
+      data.allProjectListJson.nodes
+        .slice()
+        .reverse()
+        .map((project) => (
+          <ProjectSlide
+            project={project}
+            key={project.id}
+            breakpoint={breakpoint}
+          />
+        )),
+    [data, breakpoint],
   );
 
   // utility function wrapping two project elements in SwiperSlide component
@@ -72,7 +75,7 @@ function useProjectSlide(breakpoint) {
           </Flex>
         </SwiperSlide>
       )),
-    [],
+    [projectsJsxArr],
   );
 
   // utility function wrapping each project element in SwiperSlide component
@@ -81,27 +84,30 @@ function useProjectSlide(breakpoint) {
       projectArr.map((projEl) => (
         <SwiperSlide key={`single${projEl.key}`}>{projEl}</SwiperSlide>
       )),
-    [],
+    [projectsJsxArr],
   );
 
   // utility function creates 2D array, each internal array consists of two Project elements
-  const twoProjectPerSlideFn = useCallback((projectArr) => {
-    const slidesArr = [[]];
-    let count = 0;
+  const twoProjectPerSlideFn = useCallback(
+    (projectArr) => {
+      const slidesArr = [[]];
+      let count = 0;
 
-    projectArr.forEach((element) => {
-      if (slidesArr[count]?.length === 0) {
-        slidesArr[count] = [element];
-      } else if (slidesArr[count]?.length === 1) {
-        slidesArr[count].push(element);
-      } else if (slidesArr[count]?.length === 2) {
-        count += 1;
-        slidesArr[count] = [element];
-      }
-    });
+      projectArr.forEach((element) => {
+        if (slidesArr[count]?.length === 0) {
+          slidesArr[count] = [element];
+        } else if (slidesArr[count]?.length === 1) {
+          slidesArr[count].push(element);
+        } else if (slidesArr[count]?.length === 2) {
+          count += 1;
+          slidesArr[count] = [element];
+        }
+      });
 
-    return combineTwoProjectElements(slidesArr);
-  }, []);
+      return combineTwoProjectElements(slidesArr);
+    },
+    [projectsJsxArr],
+  );
 
   if (breakpoint.isMobilePortrait || breakpoint.isMobileLandscape) {
     const oneProjectPerSlide = oneProjectPerSlideFn(projectsJsxArr);
