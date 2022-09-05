@@ -1,9 +1,12 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+
 import styled, { css, keyframes } from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { Portal } from 'react-portal';
 import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
 import { Body } from '../styles/globalStyles';
+import Modal from './Modal';
 
 const pulseAnimation = keyframes`
   from {
@@ -42,117 +45,85 @@ const pulseAnimation = keyframes`
 
 const Slide = styled.article`
   color: ${colors.white};
-  background-color: rgba(68, 68, 68, 0.675);
+  background-color: rgba(0, 0, 0, 0.342);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
-    0 1rem 1rem rgba(0, 0, 0, 0.275), inset 0 0 7px 2px #002a6849;
-  backdrop-filter: blur(11px);
-  -webkit-backdrop-filter: blur(11px);
+    0 1rem 1rem rgba(0, 0, 0, 0.275);
   border-radius: 8px;
   display: flex;
   flex-shrink: 1;
-  gap: 16px;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
   height: 96%;
   margin: 20px 12px 0;
   padding: 8px 0 12px;
 
   ${media.mobileLandscape`
-  background-color: unset;
-  box-shadow: unset;
-  backdrop-filter: unset;
-  border-radius: unset;
-  gap: 16px;
-  margin: 0;
-  padding: 0 16px 0;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: start;
-  `}
-
-  ${media.tabletLandscape`
-    height: 100%;
     background-color: unset;
     box-shadow: unset;
     backdrop-filter: unset;
     border-radius: unset;
+    flex-direction: column;
+    align-items: start;
     justify-content: space-between;
-    `};
+    gap: 16px;
+    margin: 0;
+    padding: 0 16px 0;
+  `}
+
+  ${media.tabletLandscape`
+    height: fit-content;
+    max-height: 50%;
+  `};
 
   ${media.tabletPortrait`
-    color: ${colors.white};
-    background-color: rgba(68, 68, 68, 0.675);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
-    0 4px 30px rgba(0, 0, 0, 0.15),
-    0 1rem 1rem rgba(0, 0, 0, 0.275),
-    inset 0 0 7px 2px #002a6849;
-    backdrop-filter: blur(11px);
-    -webkit-backdrop-filter: blur(11px);
-    border-radius: 8px;
-    margin: 0 16px 0;
-    max-width: fit-content;
-    height: 40%;
     flex-direction: column-reverse;
-    padding: 16px 0 8px;
+    align-items: space-between;
+    gap: 0;
+    height: fit-content;
+    max-height:45%;
+    margin: 0 20px 0;
+    padding: 20px 0 0;
     
     & ~ & {
       flex-direction: column;
-      padding: 0 0 16px;
+      padding: 0 0 20px;
     }
   `}
 
   ${media.laptop`
-    background-color: unset;
-    box-shadow: unset;
-    backdrop-filter: unset;
-    border-radius: unset;
-    gap: 16px;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 8px;
     margin: 0;
-    height: 42.5%;
-    max-height: fit-content;
-    padding: 0 22px 8px;
+    padding: 0 22px 20px;
     `};
 
   ${media.desktop`
-    background-color: unset;
-    box-shadow: unset;
-    backdrop-filter: unset;
-    border-radius: unset;
-    gap: 16px;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 8px;
-    margin: 0;
-    height: 42.5%;
-    max-height: fit-content;
-    padding: 0 22px 8px;
+    padding: 0 22px;
   `};
 `;
 
 const Card = styled.div`
-  height: 50%;
+  max-height: 50%;
   width: 100%;
   border-radius: 8px;
   padding: 12px;
 `;
 
 const photoWrapperHover = css`
+  transition: 0.3s;
   &:hover {
     cursor: pointer;
     position: relative;
   }
 
   &:hover::after {
-    content: 'Click For More';
-    background-color: #000000ab;
-    padding: 8px;
-    border-radius: 4px;
+    content: 'Click For Details';
+    text-align: center;
     color: ${colors.lightAccent};
+    background-color: #000000ab;
     position: absolute;
     top: 50%;
+    padding: 8px;
+    width: 95%;
   }
 `;
 
@@ -160,46 +131,39 @@ const PhotoWrapper = styled(Card)`
   background-color: ${colors.darkShade};
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
   display: flex;
-  flex-shrink: 1;
   align-items: center;
   justify-content: center;
+  flex-shrink: 1;
   height: fit-content;
   width: fit-content;
   max-width: 95%;
   padding: 8px;
 
   ${media.mobileLandscape`
+    ${photoWrapperHover}
     max-height:80%;
     margin: auto;
   `};
 
   ${media.tabletLandscape`
     max-height:70%;
-    margin: auto;
-
-    ${photoWrapperHover}
+    max-width:unset;
   `}
 
   ${media.tabletPortrait`
-    max-height:50%;
-    margin: 8px 0 0;
+    ${photoWrapperHover}
+    max-height:75%;
+    margin: 8px 0 8px;
     width:100%;
   `}
     
   ${media.laptop`
     max-height:80%;
     margin: 8px 0 0;
-    width:100%;
-    
-    ${photoWrapperHover}
   `}
     
   ${media.desktop`
     max-height:90%;
-    margin: 8px 0 0;
-    width:100%;
-    
-    ${photoWrapperHover};
   `}
 `;
 
@@ -211,205 +175,210 @@ const PhotoBorder = styled.div`
   height: 100%;
 
   ${PhotoWrapper}:hover & {
-    ${media.tabletLandscape`
+    ${media.mobileLandscape`
     filter: grayscale(1) blur(3px);
     `}
-    ${media.laptop`
-    filter: grayscale(1) blur(3px);
-    `}
-    ${media.desktop`
+
+    ${media.tabletPortrait`
     filter: grayscale(1) blur(3px);
     `}
   }
 `;
 
 const CardSection = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  flex-shrink: 1;
-  justify-content: start;
   align-items: center;
+  justify-content: start;
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
 
   ${media.mobileLandscape`
     display: hidden;
-    flex-shrink: 1;
     margin: auto;
-    `};
+  `};
 
   ${media.tabletLandscape`
     gap: 64px 0;
     position: relative;
-    `};
-
-  ${media.laptop`
-    position: relative;
-  `}
-
-  ${media.desktop`
-    position: relative;
-  `}
+  `};
 `;
 
 const DetailsWrapper = styled(Card)`
   width: 98%;
   padding-bottom: 24px;
-
-  ${media.mobileLandscape`
-  display: none;
-  `};
-
-  ${media.tabletLandscape`
-    display: none;
-  `}
-
-  ${media.tabletPortrait`
-  background: unset;
-  border: unset;
-  border-radius: unset;
-  box-shadow: unset;
-  backdrop-filter: blur(0);
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  padding: 12px 12px 0;
-  height:unset;
-  `}
-
-  ${media.laptop`
-    display: none;
-  `}
-
-  ${media.desktop`
-    display: none;
-  `}
 `;
 
 const CardTitle = styled.h3`
-  color: ${colors.lightShade};
+  color: ${colors.white};
   text-transform: uppercase;
   font-size: 2rem;
   text-align: center;
   width: fit-content;
   margin: 28px auto 6px;
 
-  ${PhotoWrapper} :hover & {
+  /* ${PhotoWrapper}:hover & {
     animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
     -webkit-animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
-  }
+  } */
 
   ${media.mobileLandscape`
     color: ${colors.white};
+    font-size: 1.2rem;
     background-color: rgba(115, 118, 131, 0.146);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
     0 1rem 1rem rgba(0, 0, 0, 0.275),
-    inset 0 0rem 5rem #002a68ac;
-    backdrop-filter: blur(11px);
-    -webkit-backdrop-filter: blur(11px);
+    inset 0 0rem 3rem 1px #002a68ac;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 8px;
     flex-shrink: 1;
-    font-size: 1.2rem;
     width:100%;
     margin: 0 auto;
     padding: 4px 0;
+  `}
+
+  ${media.tabletPortrait`;
+    color: ${colors.white};
+    font-size: 1.7rem;
     border-radius: 8px;
+    flex-shrink: 1;
+    width:100%;
+    margin: 0 auto;
+    padding: 8px 0;
   `}
 
   ${media.tabletLandscape`
     color: ${colors.white};
-    background-color: rgba(0, 0, 0, 0.179);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
-    0 1rem 1rem rgba(0, 0, 0, 0.275),
-    inset 0 0rem 10px 3px #000000ac;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border: 1px solid rgba(0, 22, 119, 0.17);
     font-size: 1.4rem;
-    flex-shrink: 1;
-    width:100%;
-    margin: 0 auto;
-    padding: 8px 0;
-    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.342);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+    0 4px 30px rgba(0, 0, 0, 0.15),
+    0 1rem 1rem rgba(0, 0, 0, 0.275);
     position: absolute;
     top: -35px;
+    padding: 8px 0;
     `}
 
-  ${media.tabletPortrait`;
-    color: ${colors.main};
-    font-size: 1.7rem;
-    flex-shrink: 1;
-    width:100%;
-    margin: 0 auto;
-    padding: 8px 0;
-    border-radius: 8px;
-  `}
-
   ${media.laptop`
-    color: ${colors.lightShade};
-    background-color: rgba(68, 68, 68, 0.675);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
-      0 1rem 1rem rgba(0, 0, 0, 0.275), inset 0 0 7px 2px #002a6849;
-    -webkit-backdrop-filter: blur(11px);
-    backdrop-filter: blur(2px);
-    border-radius: 8px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 8px 0;
-    position: absolute;
-    top: -35px;
+    font-size: 1.8rem;
+    border-radius: 16px;
+    top: -40px;
+    padding: 12px 0;
   `}
+`;
 
-  ${media.desktop`
-    color: ${colors.lightShade};
-    background-color: rgba(68, 68, 68, 0.675);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
-      0 1rem 1rem rgba(0, 0, 0, 0.275), inset 0 0 7px 2px #002a6849;
-    -webkit-backdrop-filter: blur(11px);
-    backdrop-filter: blur(2px);
-    border-radius: 8px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 8px 0;
-    position: absolute;
-    top: -35px;
-  `}
+const ModalTitle = styled.h3`
+  color: ${colors.mainColor};
+  font-family: 'Abril Fatface';
+  font-weight: 800;
 `;
 
 const CardAccent = styled.span`
-  color: ${colors.lightAccent};
-  font: roboto slab;
-  font-size: 0.8rem;
+  color: ${(prop) => (prop.mobile ? colors.darkShade : colors.darkAccent)};
+  font-family: roboto slab;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.75rem;
   margin: 8px 0;
 `;
 
-function ProjectSlide({ project }) {
+function ProjectSlide({ project, breakpoint }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   const projectPhoto = useMemo(() => getImage(project.img), [project]);
+
+  const descriptionContainer = useMemo(
+    () =>
+      project.description && <Body margin="0.5rem">{project.description}</Body>,
+    [project],
+  );
 
   const frontEndContainer = useMemo(
     () =>
       project.frontEnd && (
         <Body margin="0.5rem">
-          <CardAccent>Front-End:</CardAccent>
+          <CardAccent mobile={breakpoint.isMobilePortrait}>
+            Front-End:{' '}
+          </CardAccent>
           {project.frontEnd}
         </Body>
       ),
-    [project],
+    [project, breakpoint.isMobilePortrait],
   );
 
   const backEndContainer = useMemo(
     () =>
       project.backEnd && (
         <Body margin="0.5rem">
-          <CardAccent>Back-End:</CardAccent>
+          <CardAccent mobile={breakpoint.isMobilePortrait}>
+            Back-End:{' '}
+          </CardAccent>
           {project.backEnd}
         </Body>
       ),
-    [project],
+    [project, breakpoint.isMobilePortrait],
+  );
+
+  const mobileDetailsContainer = useMemo(
+    () =>
+      breakpoint.isMobilePortrait && (
+        <DetailsWrapper>
+          {descriptionContainer}
+          {frontEndContainer}
+          {backEndContainer}
+        </DetailsWrapper>
+      ),
+    [
+      breakpoint.isMobilePortrait,
+      descriptionContainer,
+      frontEndContainer,
+      backEndContainer,
+    ],
+  );
+
+  const detailsModal = useMemo(
+    () => (
+      <Portal>
+        <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        >
+          <ModalTitle>{project.name}</ModalTitle>
+          {descriptionContainer}
+          {frontEndContainer}
+          {backEndContainer}
+        </Modal>
+      </Portal>
+    ),
+    [
+      isOpen,
+      descriptionContainer,
+      frontEndContainer,
+      backEndContainer,
+      project,
+    ],
+  );
+
+  // stops scrolling on document.body when isOpen is active
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen]);
+
+  // function used to open Modal when not in mobile portrait breakpoint
+  const openModal = useCallback(
+    () => !breakpoint.isMobilePortrait && setIsOpen(true),
+    [breakpoint.isMobilePortrait],
   );
 
   return (
     <Slide>
-      <PhotoWrapper>
+      <PhotoWrapper onClick={() => openModal()}>
         <PhotoBorder>
           <GatsbyImage
             image={projectPhoto}
@@ -419,11 +388,9 @@ function ProjectSlide({ project }) {
       </PhotoWrapper>
       <CardSection>
         <CardTitle>{project.name}</CardTitle>
-        <DetailsWrapper>
-          {frontEndContainer}
-          {backEndContainer}
-        </DetailsWrapper>
+        {mobileDetailsContainer}
       </CardSection>
+      {detailsModal}
     </Slide>
   );
 }
