@@ -26,39 +26,41 @@ import '../styles/swiper.scss';
 // styled-component for Projects section
 const ProjectsSection = styled(Section)`
   color: ${colors.darkShade};
-  background-image: linear-gradient(315deg, #fdfcfb 0%, #e2d1c3 100%);
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   display: flex;
   flex-direction: column;
   padding: 12px 16px 0;
 
   ${media.mobileLandscape`
-  height:100%;
+    height:100%;
+  `};
+
+  ${media.tabletPortrait`
+    height:100%;
   `};
 
   ${media.laptop`
-  padding: 32px;
+    padding: 0 32px;
   `}
 
   ${media.desktop`
-  padding: 32px 72px;
+    padding: 32px 72px 0;
   `}
 `;
 
 const ProjectsSwiper = styled(Swiper)`
-  border-radius: 3px;
   overflow-y: hidden;
   margin-left: -16px;
   margin-right: -16px;
   height: 100%;
 
-  ${media.laptop`
-    width:85%;
+  ${media.tabletLandscape`
+    width:92.5%;
     margin: auto;
   `}
 
-  ${media.desktop`
-    width:85%;
-    margin: auto;
+  ${media.laptop`
+  width:87.5%;
   `}
 `;
 
@@ -100,7 +102,7 @@ function Projects() {
         modules={[Pagination, Autoplay, Mousewheel, EffectCube]}
         slidesPerView={1}
         pagination={{ type: 'bullets' }}
-        autoplay={{ delay: 5000, disableOnInteraction: true }}
+        autoplay={{ delay: 10000, disableOnInteraction: true }}
         mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
         breakpoints={{ 601: { slidesPerView: 2 }, 1280: { slidesPerView: 3 } }}
       >
