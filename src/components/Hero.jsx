@@ -40,16 +40,10 @@ const HeroWrapper = styled.div`
   transform: translateY(15%);
 
   ${media.mobileLandscape`
-  width: 75%;
-  transform: unset;
+    width: 75%;
+    transform: unset;
     margin: auto;
   `}
-
-  ${media.tabletLandscape`
-  transform: unset;
-  width: 75%;
-  margin: auto;
-  `};
 
   ${media.tabletPortrait`
     width:75%;
@@ -58,14 +52,6 @@ const HeroWrapper = styled.div`
 
   ${media.laptop`
   transform: translateY(-10%);
-  width: 75%;
-  margin: auto;
-  `};
-
-  ${media.desktop`
-  transform: translateY(-10%);
-  width: 75%;
-  margin: auto;
   `};
 `;
 
@@ -84,7 +70,7 @@ function Hero() {
       file(relativePath: { eq: "sunset3.jpg" }) {
         id
         childImageSharp {
-          gatsbyImageData(placeholder: TRACED_SVG, width: 400)
+          gatsbyImageData(placeholder: TRACED_SVG, width: 1900)
         }
       }
     }
