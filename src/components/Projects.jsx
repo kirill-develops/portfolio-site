@@ -60,7 +60,7 @@ const ProjectsSwiper = styled(Swiper)`
   `}
 
   ${media.laptop`
-  width:87.5%;
+    width:87.5%;
   `}
 `;
 

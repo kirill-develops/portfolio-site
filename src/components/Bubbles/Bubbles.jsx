@@ -54,6 +54,27 @@ function Bubbles() {
       <div className="bubble" />
       <div className="bubble" />
       <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
+      <div className="bubble" />
     </>
   );
 }

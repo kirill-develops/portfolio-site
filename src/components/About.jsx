@@ -1,5 +1,5 @@
 import { StaticImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { Parallax } from 'react-scroll-parallax';
 import Sticky from 'react-sticky-el';
@@ -10,20 +10,19 @@ import Bubbles from './Bubbles/Bubbles';
 import useMediaQuery from '../utils/useMediaQuery';
 
 const AboutSection = styled(Section)`
+  color: ${colors.lightShade};
   background-color: #1b2845;
   background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
-
-  color: ${colors.lightShade};
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   height: fit-content;
   min-height: 100vh;
   width: 100%;
 
   ${media.desktop`
-  height: 100vh;
+    height: 100vh;
   `};
 `;
 
@@ -38,58 +37,49 @@ const FlexWrapper = styled.div`
   gap: 16px 24px;
 
   ${media.mobileLandscape`
-  flex-direction:row;
-  align-items: flex-start;
-  gap: 18px;
+    align-items: flex-start;
+    gap: 18px;
   `};
 
   ${media.tabletPortrait`
-  gap: 32px 24px;
+    gap: 32px 24px;
   `};
 
   ${media.tabletLandscape`
-  flex-direction:row;
-  justify-content: space-between;
-  gap: 0 32px;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 32px;
+    width: 95%;
+    margin: auto;
   `};
 
   ${media.laptop`
-  flex-direction:row;
-  justify-content: space-between;
-  gap: 0 32px;
-  width: 90%;
-  margin: auto;
+    width: 90%;
   `}
 
   ${media.desktop`
-  flex-direction:row;
-  justify-content: space-between;
-  gap: 0 42px;
-  width: 75%;
-  margin: auto;
+    gap: 0 42px;
+    width: 75%;
   `}
 `;
 
 const StickyPhoto = styled(Sticky)`
+  z-index: 1;
   transition: 0;
   flex-shrink: 2.6;
   height: fit-content;
   width: 90%;
-  z-index: 1;
 
   ${media.tabletPortrait`
-  width: 50%;
+    width: 50%;
   `}
 
   ${media.tabletLandscape`
     flex-shrink:1.8;
-    `}
+  `}
     
-    ${media.laptop`
-    flex-shrink:1.8;
-    `}
-    
-    ${media.desktop`
+  ${media.desktop`
     flex-shrink:1.4;
   `}
 `;
@@ -111,38 +101,30 @@ const BodyWrapper = styled.article`
   gap: 12px;
 
   ${media.mobileLandscape`
-  padding: unset;
+    padding: unset;
   `}
 
   ${media.tabletPortrait`
-  padding: unset;
+    padding: unset;
   `}
 
   ${media.tabletLandscape`
-  text-align: start;
-    padding: unset;
-    `};
-
-  ${media.laptop`
     text-align: start;
-    padding: unset;
-    `};
-
-  ${media.desktop`
-    text-align: start;
-    padding: unset;
   `};
 `;
 
 const AboutBody = styled(Body)`
-  z-index: 10;
+  z-index: 1;
   margin: auto;
 `;
 
+// prop object for Parallax
 const parallaxProp = {
   opacity: [-1, 1],
   shouldAlwaysCompleteAnimation: true,
 };
+
+const bodyAccentColor = colors.lightAccent;
 
 function About() {
   const ScubaPhoto = (
@@ -197,15 +179,12 @@ function About() {
             <AboutBody>
               More recently I've been creating Full-Stack projects built on
               modern frameworks like
-              <BodyAccent color={colors.lightAccent}>
+              <BodyAccent color={bodyAccentColor}>
                 {' '}
                 React.js, Node.js, MySQL{' '}
               </BodyAccent>
-              &<BodyAccent color={colors.lightAccent}>
-                {' '}
-                JavaScript
-              </BodyAccent>{' '}
-              and I'm always eager to learn new languages & libraries.
+              &<BodyAccent color={bodyAccentColor}> JavaScript</BodyAccent> and
+              I'm always eager to learn new languages & libraries.
             </AboutBody>
           </Parallax>
           <Parallax
@@ -270,7 +249,7 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              <BodyAccent color={colors.lightAccent}>FrontEnd: </BodyAccent>
+              <BodyAccent color={bodyAccentColor}>FrontEnd: </BodyAccent>
               React.js, Redux, HTML5, CSS3, AJAX, Next.js
             </AboutBody>
           </Parallax>
@@ -281,7 +260,7 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              <BodyAccent color={colors.lightAccent}>BackEnd: </BodyAccent>
+              <BodyAccent color={bodyAccentColor}>BackEnd: </BodyAccent>
               Python, Node.js, Express.js, Passport.js
             </AboutBody>
           </Parallax>
@@ -292,7 +271,7 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              <BodyAccent color={colors.lightAccent}>Database: </BodyAccent>
+              <BodyAccent color={bodyAccentColor}>Database: </BodyAccent>
               MySQL, Knex.js, MongoDB
             </AboutBody>
           </Parallax>
