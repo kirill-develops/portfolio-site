@@ -9,21 +9,22 @@ const Flex = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin: auto;
 
   ${media.tabletPortrait`
-    gap: 30px;
-    justify-content: center;
+    justify-content: space-between;
+    height: 75%;
   `}
 
   ${media.laptop`
     gap: 30px;
-    justify-content: flex-start;
-  `}
-
+    justify-content: space-between;
+  `} 
+  
   ${media.desktop`
-    gap: 30px;
-    justify-content: flex-start;
-  `}
+    justify-content: space-around;
+    height:90%;
+  `};
 `;
 
 function useProjectSlide(breakpoint) {
