@@ -76,7 +76,7 @@ function ProjectView({ children }) {
         speed={-5}
         shouldAlwaysCompleteAnimation
       >
-        <Title Projects>Projects</Title>
+        <Title Projects>Previous Projects</Title>
       </Parallax>
       {children}
     </ProjectsSection>
