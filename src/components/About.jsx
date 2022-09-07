@@ -246,39 +246,6 @@ function About() {
           >
             <AboutBody>Thanks for dropping by 🤓</AboutBody>
           </Parallax>
-          <Parallax
-            translateY={[-150, 0]}
-            startScroll={isMobileLandscape ? -280 : -175}
-            endScroll={isMobileLandscape ? 225 : 525}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              <BodyAccent color={bodyAccentColor}>FrontEnd: </BodyAccent>
-              React.js, Redux, HTML5, CSS3, AJAX, Next.js
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-125, 0]}
-            startScroll={isMobileLandscape ? -320 : -200}
-            endScroll={isMobileLandscape ? 200 : 500}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              <BodyAccent color={bodyAccentColor}>BackEnd: </BodyAccent>
-              Python, Node.js, Express.js, Passport.js
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-100, 0]}
-            startScroll={isMobileLandscape ? -360 : -225}
-            endScroll={isMobileLandscape ? 175 : 475}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              <BodyAccent color={bodyAccentColor}>Database: </BodyAccent>
-              MySQL, PostgreSQL, Knex.js, MongoDB
-            </AboutBody>
-          </Parallax>
         </BodyWrapper>
       </FlexWrapper>
       <Bubbles />
