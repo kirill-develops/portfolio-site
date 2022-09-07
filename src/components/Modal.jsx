@@ -33,6 +33,7 @@ const CloseButton = styled.button`
   position: absolute;
   right: 20px;
   aspect-ratio: 1;
+  cursor: pointer;
 
   ${media.mobileLandscape`
     min-width: 44px;
