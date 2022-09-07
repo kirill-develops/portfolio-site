@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Kirill Tchentsov | Web Developer',
-    siteUrl: 'https://www.yourdomain.tld',
+    siteUrl: 'https://kirill-tchentsov.netlify.app/',
   },
   plugins: [
     {
