@@ -91,6 +91,16 @@ const Caption = styled(Body)`
   color: ${colors.finePrint};
 `;
 
+const FooterTitle = styled(Title)`
+  background: -webkit-linear-gradient(
+    270deg,
+    ${colors.lightAccent},
+    ${colors.darkAccent}
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
 function Footer() {
   const isMobilePortrait = useMediaQuery(mobilePortraitBreakpointStr);
   const isMobileLandscape = useMediaQuery(mobileLandscapeBreakpointStr);
@@ -101,7 +111,7 @@ function Footer() {
       <ClickUpWrapper href="#top">
         <SiClickup size={isMobile ? 18 : 22} />
       </ClickUpWrapper>
-      <Title color={colors.mainColor}>Connect</Title>
+      <FooterTitle color={colors.mainColor}>Connect</FooterTitle>
       <LinksContainer>
         <LinkedinWrapper
           href="https://www.linkedin.com/in/kirill-tchentsov/"
