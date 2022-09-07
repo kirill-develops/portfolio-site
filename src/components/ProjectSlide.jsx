@@ -43,6 +43,12 @@ const pulseAnimation = keyframes`
   }
 `;
 
+const onHoverScale = css`
+  &:hover {
+    transform: scale(105%);
+  }
+`;
+
 const Slide = styled.article`
   color: ${colors.white};
   background-color: rgba(0, 0, 0, 0.342);
@@ -109,9 +115,8 @@ const Card = styled.div`
 `;
 
 const photoWrapperHover = css`
-  transition: 0.3s;
+  transition: 0.3s ease;
   &:hover {
-    cursor: pointer;
     position: relative;
   }
 
@@ -128,6 +133,7 @@ const photoWrapperHover = css`
 `;
 
 const PhotoWrapper = styled(Card)`
+  cursor: pointer;
   background-color: ${colors.darkShade};
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.375);
   display: flex;
@@ -148,18 +154,24 @@ const PhotoWrapper = styled(Card)`
   ${media.tabletLandscape`
     max-height:70%;
     max-width:unset;
+    
+    &:hover {
+      transform: translateY(10px);
+    }
   `}
 
   ${media.tabletPortrait`
     ${photoWrapperHover}
+    ${onHoverScale};
     max-height:75%;
     margin: 8px 0 8px;
     width:100%;
   `}
     
-  ${media.laptop`
-    max-height:80%;
-    margin: 8px 0 0;
+    ${media.laptop`
+      ${onHoverScale};
+      max-height:80%;
+      margin: 8px 0 0;
   `}
     
   ${media.desktop`
@@ -176,11 +188,11 @@ const PhotoBorder = styled.div`
 
   ${PhotoWrapper}:hover & {
     ${media.mobileLandscape`
-    filter: grayscale(1) blur(3px);
+      filter: grayscale(1) blur(3px);
     `}
 
     ${media.tabletPortrait`
-    filter: grayscale(1) blur(3px);
+      filter: grayscale(1) blur(3px);
     `}
   }
 `;

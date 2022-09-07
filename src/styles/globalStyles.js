@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    transition: 0.1s;
+    transition: 0.1s ease;
   }
 
   html{
