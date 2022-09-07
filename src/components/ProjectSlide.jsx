@@ -321,6 +321,22 @@ function ProjectSlide({ project, breakpoint }) {
     [project, breakpoint.isMobilePortrait],
   );
 
+  const liveLinkContainer = useMemo(
+    () =>
+      project.deployedURL && (
+        <Body
+          margin="0.5rem"
+          as="a"
+          target="_blank"
+          rel="noreferrer"
+          href={project.deployedURL}
+        >
+          Live Deployment
+        </Body>
+      ),
+    [project],
+  );
+
   const mobileDetailsContainer = useMemo(
     () =>
       breakpoint.isMobilePortrait && (
@@ -328,6 +344,7 @@ function ProjectSlide({ project, breakpoint }) {
           {descriptionContainer}
           {frontEndContainer}
           {backEndContainer}
+          {liveLinkContainer}
         </DetailsWrapper>
       ),
     [
@@ -349,6 +366,7 @@ function ProjectSlide({ project, breakpoint }) {
           {descriptionContainer}
           {frontEndContainer}
           {backEndContainer}
+          {liveLinkContainer}
         </Modal>
       </Portal>
     ),
@@ -357,6 +375,7 @@ function ProjectSlide({ project, breakpoint }) {
       descriptionContainer,
       frontEndContainer,
       backEndContainer,
+      liveLinkContainer,
       project,
     ],
   );
