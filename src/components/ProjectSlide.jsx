@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Portal } from 'react-portal';
+import ProjectBodyElements from '../elements/ProjectBodyElements';
+import Modal from './Modal';
 import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
-import { Body } from '../styles/globalStyles';
-import Modal from './Modal';
 
 const pulseAnimation = keyframes`
   from {
@@ -275,84 +275,22 @@ const ModalTitle = styled.h3`
   font-weight: 800;
 `;
 
-const CardAccent = styled.span`
-  color: ${(prop) => (prop.mobile ? colors.darkShade : colors.darkAccent)};
-  font-family: roboto slab;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  margin: 8px 0;
-`;
-
 function ProjectSlide({ project, breakpoint }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const projectPhoto = useMemo(() => getImage(project.img), [project]);
 
-  const descriptionContainer = useMemo(
-    () =>
-      project.description && <Body margin="0.5rem">{project.description}</Body>,
-    [project],
-  );
-
-  const frontEndContainer = useMemo(
-    () =>
-      project.frontEnd && (
-        <Body margin="0.5rem">
-          <CardAccent mobile={breakpoint.isMobilePortrait}>
-            Front-End:{' '}
-          </CardAccent>
-          {project.frontEnd}
-        </Body>
-      ),
-    [project, breakpoint.isMobilePortrait],
-  );
-
-  const backEndContainer = useMemo(
-    () =>
-      project.backEnd && (
-        <Body margin="0.5rem">
-          <CardAccent mobile={breakpoint.isMobilePortrait}>
-            Back-End:{' '}
-          </CardAccent>
-          {project.backEnd}
-        </Body>
-      ),
-    [project, breakpoint.isMobilePortrait],
-  );
-
-  const liveLinkContainer = useMemo(
-    () =>
-      project.deployedURL && (
-        <Body
-          margin="0.5rem"
-          as="a"
-          target="_blank"
-          rel="noreferrer"
-          href={project.deployedURL}
-        >
-          Live Deployment
-        </Body>
-      ),
-    [project],
-  );
-
   const mobileDetailsContainer = useMemo(
     () =>
       breakpoint.isMobilePortrait && (
         <DetailsWrapper>
-          {descriptionContainer}
-          {frontEndContainer}
-          {backEndContainer}
-          {liveLinkContainer}
+          <ProjectBodyElements
+            project={project}
+            isMobilePortrait={breakpoint.isMobilePortrait}
+          />
         </DetailsWrapper>
       ),
-    [
-      breakpoint.isMobilePortrait,
-      descriptionContainer,
-      frontEndContainer,
-      backEndContainer,
-    ],
+    [breakpoint.isMobilePortrait],
   );
 
   const detailsModal = useMemo(
@@ -363,21 +301,14 @@ function ProjectSlide({ project, breakpoint }) {
           setIsOpen={setIsOpen}
         >
           <ModalTitle>{project.name}</ModalTitle>
-          {descriptionContainer}
-          {frontEndContainer}
-          {backEndContainer}
-          {liveLinkContainer}
+          <ProjectBodyElements
+            project={project}
+            isMobilePortrait={breakpoint.isMobilePortrait}
+          />
         </Modal>
       </Portal>
     ),
-    [
-      isOpen,
-      descriptionContainer,
-      frontEndContainer,
-      backEndContainer,
-      liveLinkContainer,
-      project,
-    ],
+    [isOpen, project],
   );
 
   // stops scrolling on document.body when isOpen is active
