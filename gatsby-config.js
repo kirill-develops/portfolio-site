@@ -7,6 +7,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
+        name: 'Kirill Tchentsov | Web Developer',
+        description: 'The Development Portfolio of Kirill Tchentsov',
+        lang: 'en',
+        start_url: '/',
+        theme_color: '#346E9E',
+        display: 'standalone',
         icon: 'src/images/favIcon.svg',
       },
     },
