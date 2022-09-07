@@ -6,6 +6,7 @@ import About from '../components/About';
 import Projects from '../components/Projects';
 import Contact from '../components/Footer';
 import GlobalStyle, { Main } from '../styles/globalStyles';
+import TechStack from '../components/TechStack';
 
 function IndexPage() {
   return (
@@ -15,6 +16,7 @@ function IndexPage() {
         <Hero />
         <About />
         <Projects />
+        <TechStack />
         <Contact />
       </Main>
     </ParallaxProvider>
