@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { SiGmail, SiGithub, SiLinkedin, SiClickup } from 'react-icons/si';
 import { Section, Title, Body } from '../styles/globalStyles';
 import colors from '../styles/colors';
@@ -8,6 +8,41 @@ import media, {
   mobileLandscapeBreakpointStr,
   mobilePortraitBreakpointStr,
 } from '../styles/mediaQueries';
+
+const pulseAnimation = keyframes`
+  from {
+    -webkit-transform: scale(1) translateX(-50%);
+            transform: scale(1) translateX(-50%);
+    -webkit-transform-origin: center center ;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91) translateX(-50%);
+            transform: scale(0.91) translateX(-50%);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98) translateX(-50%);
+            transform: scale(0.98) translateX(-50%);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87) translateX(-50%);
+            transform: scale(0.87) translateX(-50%);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1) translateX(-50%);
+            transform: scale(1) translateX(-50%);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+`;
 
 const Contact = styled(Section)`
   background-color: ${colors.black};
@@ -82,6 +117,8 @@ const ClickUpWrapper = styled(LogoWrapper)`
   &:hover {
     color: ${colors.logoUp};
     border-color: ${colors.logoUp};
+    animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
+    -webkit-animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
   }
 `;
 
