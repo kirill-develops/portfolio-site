@@ -1,24 +1,32 @@
 [
   {
+    "name": "Lost & Found",
+    "img": "../images/lostAndFound.png",
+    "description": "A craigslist clone dedicated to connecting those in need with the appropriate resources they may not yet know about. Leveraging a Google 0Auth strategy with Passport.js for user authentication, and Knex.js to query MySQL data, users can register as Volunteers or Seekers to post resources they offer or are in need of, respectively.",
+    "frontEnd": "React.js, Hooks, Router, Axios",
+    "backEnd": "Node.js, Express.js, MySQL, Redis, KNEX.js, Passport.js",
+    "deployedURL": "https://lostnfound.netlify.app/"
+  },
+  {
     "name": "CoffeeShop",
     "img": "../images/coffeeshop2.jpg",
-    "description": "",
-    "frontEnd": "HTML5, Sass/CSS3, BEM, Git, GH-Pages",
+    "description": "A simple Landing Page for a Coffee Shop using HTML5, Sass and BEM naming conventions.",
+    "frontEnd": "HTML5, Sass/CSS3, BEM, GH-Pages",
     "backEnd": "",
     "deployedURL": "https://kirill-develops.github.io/coffeeShop/"
   },
   {
     "name": "TravelSite",
     "img": "../images/TravelSite.jpg",
-    "description": "",
-    "frontEnd": "HTML5, Sass/CSS3, BEM, Git",
+    "description": "A Travel Site emulation built as a desktop landing page with HTML5, Sass and BEM naming conventions.",
+    "frontEnd": "HTML5, Sass/CSS3, BEM, GH-Pages",
     "backEnd": "",
     "deployedURL": "https://kirill-develops.github.io/travelSite/"
   },
   {
     "name": "BandSite",
     "img": "../images/bandsite2.jpg",
-    "description": "",
+    "description": "A landing page built for a musical group, this App puts a focus on a Mobile first design with commenting and liking features built in using only Vanilla JavaScript, JQuery, AXIOS for data fetching, HTML5 and Sass with BEM naming conventions.",
     "frontEnd": "JavaScript, JQuery, Axios, HTML5, Sass/CSS3, Git, Figma",
     "backEnd": "",
     "deployedURL": "https://kirill-develops.github.io/bandSite/"
@@ -26,7 +34,7 @@
   {
     "name": "BrainFlix",
     "img": "../images/brainflix2.jpg",
-    "description": "",
+    "description": "A YouTube clone built with create-react-app and an Express rest API. This App features dynamic routing, likes, comments, form validation and dynamic timestamps.",
     "frontEnd": "React, Router, React Lifecycle Methods, Axios, Heroku",
     "backEnd": "Node, Express, Cors, MVC Architecture",
     "deployedURL": "https://kirills-brainflix.herokuapp.com/"
@@ -34,8 +42,8 @@
   {
     "name": "InStock",
     "img": "../images/InStock.jpg",
-    "description": "",
-    "frontEnd": "React, Router, Axios, Sass, Jira",
+    "description": "A custom CMS for a warehousing organization built as a team effort of 3 developers, leveraging Jira to organize and distribute workload in a 5 day sprint. User's can Add/Edit/Delete new and exsisting warehouses and inventory items that will persist to the next visit.",
+    "frontEnd": "React, Router, React Lifecycle Methods, Axios, Sass",
     "backEnd": "Node, Express, MySQL, Cors",
     "deployedURL": "https://kirills-instock.herokuapp.com/warehouses"
   }
