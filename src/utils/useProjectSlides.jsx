@@ -16,8 +16,7 @@ const Flex = styled.div`
     height: 75%;
   `}
 
-  ${media.laptop`
-    gap: 30px;
+  ${media.tabletLandscape`
     justify-content: space-between;
   `} 
   
