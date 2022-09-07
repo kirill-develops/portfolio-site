@@ -3,35 +3,40 @@
     "name": "CoffeeShop",
     "img": "../images/coffeeshop2.jpg",
     "description": "",
-    "frontEnd": "HTML5, CSS3, Git",
-    "backEnd": ""
+    "frontEnd": "HTML5, Sass/CSS3, BEM, Git, GH-Pages",
+    "backEnd": "",
+    "deployedURL": "https://kirill-develops.github.io/coffeeShop/"
   },
   {
     "name": "TravelSite",
     "img": "../images/TravelSite.jpg",
     "description": "",
-    "frontEnd": "HTML5, Sass/CSS3, Git",
-    "backEnd": ""
+    "frontEnd": "HTML5, Sass/CSS3, BEM, Git",
+    "backEnd": "",
+    "deployedURL": "https://kirill-develops.github.io/travelSite/"
   },
   {
     "name": "BandSite",
     "img": "../images/bandsite2.jpg",
     "description": "",
-    "frontEnd": "React, Axios, HTML5, Sass/CSS3, Git, Figma",
-    "backEnd": ""
+    "frontEnd": "JavaScript, JQuery, Axios, HTML5, Sass/CSS3, Git, Figma",
+    "backEnd": "",
+    "deployedURL": "https://kirill-develops.github.io/bandSite/"
   },
   {
     "name": "BrainFlix",
     "img": "../images/brainflix2.jpg",
     "description": "",
-    "frontEnd": "React, Router, React Lifecycle Methods, Axios",
-    "backEnd": "Node, Express, Cors, MVC Architecture"
+    "frontEnd": "React, Router, React Lifecycle Methods, Axios, Heroku",
+    "backEnd": "Node, Express, Cors, MVC Architecture",
+    "deployedURL": "https://kirills-brainflix.herokuapp.com/"
   },
   {
     "name": "InStock",
     "img": "../images/InStock.jpg",
     "description": "",
     "frontEnd": "React, Router, Axios, Sass, Jira",
-    "backEnd": "Node, Express, MySQL, Cors"
+    "backEnd": "Node, Express, MySQL, Cors",
+    "deployedURL": "https://kirills-instock.herokuapp.com/warehouses"
   }
 ]

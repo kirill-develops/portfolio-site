@@ -38,6 +38,7 @@ function useProjectSlide(breakpoint) {
           description
           frontEnd
           backEnd
+          deployedURL
           img {
             childImageSharp {
               gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
