@@ -116,6 +116,10 @@ const BodyWrapper = styled.article`
 const AboutBody = styled(Body)`
   z-index: 1;
   margin: auto;
+
+  ${media.desktop`
+    font-size: 1.2rem;
+  `}
 `;
 
 // props object for Parallax animation wrapper
@@ -272,7 +276,7 @@ function About() {
           >
             <AboutBody>
               <BodyAccent color={bodyAccentColor}>Database: </BodyAccent>
-              MySQL, Knex.js, MongoDB
+              MySQL, PostgreSQL, Knex.js, MongoDB
             </AboutBody>
           </Parallax>
         </BodyWrapper>
