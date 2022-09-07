@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from '../styles/mediaQueries';
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -12,15 +13,34 @@ const ModalBackground = styled.div`
   height: 100vh;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
   margin: 0;
 `;
 
 const ModalBody = styled.div`
-  background-color: white;
+  background-color: #f8f8ff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.15),
+    0 1rem 1rem rgba(0, 0, 0, 0.275);
+  border-radius: 6px;
+  position: relative;
+  width: 40%;
+  min-width: 550px;
   margin: 10% auto;
   padding: 20px;
-  width: 40%;
-  min-width: 400px;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  right: 20px;
+  aspect-ratio: 1;
+
+  ${media.mobileLandscape`
+    min-width: 44px;
+  `}
+
+  ${media.tabletLandscape`
+    min-width: unset;
+  `}
 `;
 
 function Modal({ isOpen, setIsOpen, children }) {
@@ -28,12 +48,12 @@ function Modal({ isOpen, setIsOpen, children }) {
     isOpen && (
       <ModalBackground onClick={() => setIsOpen(false)}>
         <ModalBody onClick={(e) => e.stopPropagation()}>
-          <button
+          <CloseButton
             type="button"
             onClick={() => setIsOpen(false)}
           >
-            Hide Modal
-          </button>
+            X
+          </CloseButton>
           {children}
         </ModalBody>
       </ModalBackground>
