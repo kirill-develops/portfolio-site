@@ -45,7 +45,6 @@ import {
   SiPandas,
   SiVisualstudiocode,
 } from 'react-icons/si';
-import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
 import colors from '../styles/colors';
 import { Section, Title } from '../styles/globalStyles';
@@ -118,19 +117,9 @@ const TechTitle = styled(Title)`
 function TechStack() {
   const logoSize = useMemo(() => 48, []);
 
-  console.log(SiReact());
-
   return (
     <TechStackSection>
-      <Parallax
-        opacity={[-1, 1]}
-        translateY={[-100, 0]}
-        easing="easeInOutQuad"
-        startScroll={-75}
-        shouldAlwaysCompleteAnimation
-      >
-        <TechTitle>Tech Stack</TechTitle>
-      </Parallax>
+      <TechTitle>Tech Stack</TechTitle>
       <Flex>
         <LogoWrapper>
           <SiReact size={logoSize} />
