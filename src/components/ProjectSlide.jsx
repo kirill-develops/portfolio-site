@@ -8,41 +8,6 @@ import Modal from './Modal';
 import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
 
-const pulseAnimation = keyframes`
-  from {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-transform-origin: center center;
-            transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  10% {
-    -webkit-transform: scale(0.91);
-            transform: scale(0.91);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  17% {
-    -webkit-transform: scale(0.98);
-            transform: scale(0.98);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  33% {
-    -webkit-transform: scale(0.87);
-            transform: scale(0.87);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  45% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-`;
-
 const onHoverScale = css`
   &:hover {
     transform: scale(105%);
@@ -100,7 +65,7 @@ const Slide = styled.article`
   ${media.laptop`
     margin: 0;
     padding: 0 22px 20px;
-    `};
+  `};
 
   ${media.desktop`
     padding: 0 22px;
@@ -116,6 +81,7 @@ const Card = styled.div`
 
 const photoWrapperHover = css`
   transition: 0.3s ease;
+
   &:hover {
     position: relative;
   }
@@ -168,10 +134,10 @@ const PhotoWrapper = styled(Card)`
     width:100%;
   `}
     
-    ${media.laptop`
-      ${onHoverScale};
-      max-height:80%;
-      margin: 8px 0 0;
+  ${media.laptop`
+    ${onHoverScale};
+    max-height:80%;
+    margin: 8px 0 0;
   `}
     
   ${media.desktop`
@@ -228,12 +194,7 @@ const CardTitle = styled.h3`
   font-size: 2rem;
   text-align: center;
   width: fit-content;
-  margin: 28px auto 6px;
-
-  /* ${PhotoWrapper}:hover & {
-    animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
-    -webkit-animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
-  } */
+  margin: 18px auto 6px;
 
   ${media.mobileLandscape`
     color: ${colors.white};
@@ -271,7 +232,7 @@ const CardTitle = styled.h3`
     position: absolute;
     top: -35px;
     padding: 8px 0;
-    `}
+  `}
 
   ${media.laptop`
     font-size: 1.8rem;

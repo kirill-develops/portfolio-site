@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     height: 100vh;
-
   }
 
   a {
@@ -156,7 +155,8 @@ export const TitleLink = styled.a`
 
 export const Body = styled.p`
   color: ${(props) => props.color || 'inherit'};
-  margin: ${(props) => props.margin || 'unset'}
+  margin: ${(props) => props.margin || 'unset'};
+  font-size: ${(props) => props.fontSize || 'initial'};
 `;
 
 export const BodyAccent = styled.span`

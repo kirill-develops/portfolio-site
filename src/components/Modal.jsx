@@ -23,10 +23,24 @@ const ModalBody = styled.div`
     0 1rem 1rem rgba(0, 0, 0, 0.275);
   border-radius: 6px;
   position: relative;
-  width: 40%;
-  min-width: 550px;
-  margin: 10% auto;
+  width: 75%;
+  min-width: 460px;
+  margin: 5% auto;
   padding: 20px;
+
+  ${media.tabletPortrait`
+    width:40%;
+    margin: 10% auto;
+  `}
+
+  ${media.tabletLandscape`
+    width:55%;
+    margin: 10% auto;
+  `}
+
+  ${media.laptop`
+    width:40%;
+  `}
 `;
 
 const CloseButton = styled.button`

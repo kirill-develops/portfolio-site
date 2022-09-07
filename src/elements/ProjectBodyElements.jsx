@@ -4,7 +4,10 @@ import ProjectBodyElement from './ProjectBodyElement';
 function ProjectBodyElements({ project, isMobilePortrait }) {
   return (
     <div>
-      <ProjectBodyElement data={project.description} />
+      <ProjectBodyElement
+        data={project.description}
+        isMobilePortrait={isMobilePortrait}
+      />
       <ProjectBodyElement
         data={project.frontEnd}
         type={'Front-End'}
@@ -15,7 +18,10 @@ function ProjectBodyElements({ project, isMobilePortrait }) {
         type={'Back-End'}
         isMobilePortrait={isMobilePortrait}
       />
-      <ProjectBodyElement data={project.deployedURL} />
+      <ProjectBodyElement
+        data={project.deployedURL}
+        isMobilePortrait={isMobilePortrait}
+      />
     </div>
   );
 }

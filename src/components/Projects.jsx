@@ -30,6 +30,7 @@ const ProjectsSection = styled(Section)`
   display: flex;
   flex-direction: column;
   padding: 12px 16px 0;
+  height: fit-content;
 
   ${media.mobileLandscape`
     height:100%;

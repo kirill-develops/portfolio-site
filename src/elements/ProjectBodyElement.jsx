@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import colors from '../styles/colors';
 import { Body } from '../styles/globalStyles';
@@ -21,7 +21,7 @@ const DeployButton = styled.a`
     ${colors.darkAccent}
   );
   color: ${colors.white};
-  font-size: 1rem;
+  font-size: 0.8rem;
   letter-spacing: 2.5px;
   font-weight: 700;
   text-decoration: none;
@@ -48,9 +48,14 @@ const DeployButton = styled.a`
     transform: translateY(-7px);
   }
 
+  ${media.mobileLandscape`
+    font-size: 1rem;
+  `};
+
   ${media.tabletPortrait`
     max-width: fit-content;
   `};
+
   ${media.tabletLandscape`
     max-width: fit-content;
   `};
@@ -61,7 +66,12 @@ function ProjectBodyElement({ data, type = null, isMobilePortrait = false }) {
     <CardAccent mobile={isMobilePortrait}>{type}: </CardAccent>
   );
 
-  const isLink = data.startsWith('http' || 'www');
+  const buttonText = useMemo(
+    () => (isMobilePortrait ? 'Deployment' : 'Live Deployment'),
+    [isMobilePortrait],
+  );
+
+  const isLink = useMemo(() => data.startsWith('http' || 'www'), [data]);
 
   if (isLink) {
     return (
@@ -71,7 +81,7 @@ function ProjectBodyElement({ data, type = null, isMobilePortrait = false }) {
           rel="noreferrer"
           href={data}
         >
-          Live Deployment
+          {buttonText}
         </DeployButton>
       )
     );
@@ -79,7 +89,14 @@ function ProjectBodyElement({ data, type = null, isMobilePortrait = false }) {
 
   return (
     data && (
-      <Body margin="0.5rem">
+      <Body
+        margin={
+          type
+            ? `0.5rem ${isMobilePortrait ? 0 : 0.5}rem`
+            : `0 ${isMobilePortrait ? 0 : 0.5}rem 1rem`
+        }
+        fontSize={isMobilePortrait && '1rem'}
+      >
         {typeData}
         {data}
       </Body>
