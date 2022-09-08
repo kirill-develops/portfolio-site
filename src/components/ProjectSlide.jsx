@@ -110,6 +110,7 @@ const PhotoWrapper = styled(Card)`
   width: fit-content;
   max-width: 95%;
   padding: 8px;
+  outline: 0;
 
   ${media.mobileLandscape`
     ${photoWrapperHover}

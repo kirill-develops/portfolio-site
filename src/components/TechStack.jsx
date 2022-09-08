@@ -112,6 +112,7 @@ const TechTitle = styled(Title)`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  outline: 0;
 `;
 
 function TechStack() {
