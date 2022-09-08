@@ -14,7 +14,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .bubble {
   position: absolute;
   left: var(--bubble-left-offset);
-  bottom: -75%;
+  bottom: -25%;
   display: block;
   width: var(--bubble-radius);
   height: var(--bubble-radius);
@@ -48,7 +48,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 @keyframes float-up {
   to {
-    transform: translateY(-500vh);
+    transform: translateY(-125vh);
   }
 }
 
