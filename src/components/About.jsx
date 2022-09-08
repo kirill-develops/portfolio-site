@@ -35,6 +35,7 @@ const FlexWrapper = styled.div`
   align-items: center;
   height: fit-content;
   gap: 16px 24px;
+  outline: 0;
 
   ${media.mobileLandscape`
     flex-direction:row;
@@ -154,7 +155,10 @@ function About() {
       >
         <Title About>About Me</Title>
       </Parallax>
-      <FlexWrapper id="stickyBoundry">
+      <FlexWrapper
+        id="stickyBoundry"
+        tabIndex="0"
+      >
         <StickyPhoto
           boundaryElement="#stickyBoundry"
           disabled={!isMobileLandscape}

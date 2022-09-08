@@ -8,7 +8,7 @@
     "deployedURL": "https://lostnfound.netlify.app/"
   },
   {
-    "name": "CoffeeShop",
+    "name": "Nitro Coffee",
     "img": "../images/coffeeshop2.jpg",
     "description": "A simple Landing Page for a Coffee Shop using HTML5, Sass and BEM naming conventions.",
     "frontEnd": "HTML5, Sass/CSS3, BEM, GH-Pages",
