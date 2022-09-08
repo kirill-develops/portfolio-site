@@ -119,7 +119,7 @@ function TechStack() {
 
   return (
     <TechStackSection>
-      <TechTitle>Tech Stack</TechTitle>
+      <TechTitle tabIndex="0">Tech Stack</TechTitle>
       <Flex>
         <LogoWrapper>
           <SiReact size={logoSize} />

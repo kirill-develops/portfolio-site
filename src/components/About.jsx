@@ -159,6 +159,7 @@ function About() {
           boundaryElement="#stickyBoundry"
           disabled={!isMobileLandscape}
           dontUpdateHolderHeightWhenSticky
+          tabIndex="0 "
         >
           <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
         </StickyPhoto>

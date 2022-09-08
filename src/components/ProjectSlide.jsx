@@ -301,7 +301,10 @@ function ProjectSlide({ project, breakpoint }) {
 
   return (
     <Slide>
-      <PhotoWrapper onClick={() => openModal()}>
+      <PhotoWrapper
+        onClick={() => openModal()}
+        tabIndex="0"
+      >
         <PhotoBorder>
           <GatsbyImage
             image={projectPhoto}
