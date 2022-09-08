@@ -108,7 +108,7 @@ function Hero() {
             endScroll={1275}
             {...parallaxProps}
           >
-            <TitleLink href="#about">Learn More</TitleLink>
+            <TitleLink href="#about">About Me</TitleLink>
           </Parallax>
           <br />
           <Parallax
