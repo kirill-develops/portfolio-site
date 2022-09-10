@@ -46,11 +46,15 @@
     },
     "move": {
       "enable": true,
-      "speed": 1,
+      "speed": 2,
       "direction": "top",
       "random": true,
       "straight": false,
-      "out_mode": "out",
+      "outModes": {
+          "default" : "out",
+          "top": "destroy",
+          "bottom": "none"
+       },
       "bounce": false,
       "attract": {
         "enable": false,

@@ -25,10 +25,16 @@ const HeroSection = styled(Section)`
 
   ${media.tabletLandscape`
     width: 35%;
+    height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
   `};
 
   ${media.tabletPortrait`
     width:45%;
+    height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
   `}
 
   ${media.laptop`
@@ -40,25 +46,6 @@ const HeroSection = styled(Section)`
   `};
 `;
 
-const HeroWrapper = styled.div`
-  transform: translateY(15%);
-
-  ${media.mobileLandscape`
-    width: 75%;
-    transform: unset;
-    margin: auto;
-  `}
-
-  ${media.tabletPortrait`
-    width:75%;
-    margin: auto;
-  `}
-
-  ${media.laptop`
-  transform: translateY(-10%);
-  `};
-`;
-
 // props object for Parallax animation wrapper
 const parallaxProps = {
   opacity: [1, -1],
@@ -66,6 +53,7 @@ const parallaxProps = {
   translateY: [0, 0],
   easing: 'easeInOutQuad',
   shouldAlwaysCompleteAnimation: true,
+  style: { zIndex: 1 },
 };
 
 const HeroParticles = styled(Particles)`
@@ -109,49 +97,44 @@ function Hero() {
       {...bgImage}
       backgroundColor="#000"
     >
-      <HeroSection
-        as="div"
-        id="particleBackground"
-      >
-        <HeroWrapper>
-          <Parallax
-            startScroll={0}
-            endScroll={1250}
-            {...parallaxProps}
+      <HeroSection as="div">
+        <Parallax
+          startScroll={0}
+          endScroll={1250}
+          {...parallaxProps}
+        >
+          <Title
+            Hero
+            as="h1"
           >
-            <Title
-              Hero
-              as="h1"
-            >
-              Kirill Tchentsov
-              <br />
-              <TitleAccent color="#1c52a2">Software Developer</TitleAccent>
-            </Title>
-          </Parallax>
-          <Parallax
-            startScroll={25}
-            endScroll={1275}
-            {...parallaxProps}
-          >
-            <TitleLink href="#about">About Me</TitleLink>
-          </Parallax>
-          <br />
-          <Parallax
-            startScroll={50}
-            endScroll={1300}
-            {...parallaxProps}
-          >
-            <TitleLink href="#projects">Projects</TitleLink>
-          </Parallax>
-          <br />
-          <Parallax
-            startScroll={75}
-            endScroll={1325}
-            {...parallaxProps}
-          >
-            <TitleLink href="#contact">Contact Me</TitleLink>
-          </Parallax>
-        </HeroWrapper>
+            Kirill Tchentsov
+            <br />
+            <TitleAccent color="#1c52a2">Software Developer</TitleAccent>
+          </Title>
+        </Parallax>
+        <Parallax
+          startScroll={25}
+          endScroll={1275}
+          {...parallaxProps}
+        >
+          <TitleLink href="#about">About Me</TitleLink>
+        </Parallax>
+        <br />
+        <Parallax
+          startScroll={50}
+          endScroll={1300}
+          {...parallaxProps}
+        >
+          <TitleLink href="#projects">Projects</TitleLink>
+        </Parallax>
+        <br />
+        <Parallax
+          startScroll={75}
+          endScroll={1325}
+          {...parallaxProps}
+        >
+          <TitleLink href="#contact">Contact Me</TitleLink>
+        </Parallax>
         <HeroParticles
           id="heroParticles"
           init={particlesInit}
