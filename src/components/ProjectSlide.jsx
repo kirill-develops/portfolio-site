@@ -142,7 +142,7 @@ const PhotoWrapper = styled(Card)`
   `}
     
   ${media.desktop`
-    max-height:90%;
+    max-height:85%;
   `}
 `;
 

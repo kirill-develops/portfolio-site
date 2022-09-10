@@ -22,7 +22,7 @@ const Flex = styled.div`
   
   ${media.desktop`
     justify-content: space-around;
-    height:90%;
+    height:100%;
   `};
 `;
 
