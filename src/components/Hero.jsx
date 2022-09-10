@@ -81,7 +81,7 @@ function Hero() {
 
   return (
     <BackgroundImage
-      Tag="Section"
+      Tag="section"
       id="top"
       {...bgImage}
       // preserveStackingContext
