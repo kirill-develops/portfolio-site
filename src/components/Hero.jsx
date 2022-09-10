@@ -1,10 +1,13 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import { convertToBgImage } from 'gbimage-bridge';
+import Particles from 'react-tsparticles';
+import { loadFull } from 'tsparticles';
+import particlesJson from '../assets/hero-particlesjs-config.json';
 import { Section, Title, TitleAccent, TitleLink } from '../styles/globalStyles';
 import media from '../styles/mediaQueries';
 
@@ -12,6 +15,7 @@ import media from '../styles/mediaQueries';
 const HeroSection = styled(Section)`
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
 
@@ -64,6 +68,16 @@ const parallaxProps = {
   shouldAlwaysCompleteAnimation: true,
 };
 
+const HeroParticles = styled(Particles)`
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+`;
+
 function Hero() {
   const data = useStaticQuery(graphql`
     query BackgroundImage {
@@ -79,15 +93,26 @@ function Hero() {
   const imageData = useMemo(() => getImage(data.file), [data]);
   const bgImage = useMemo(() => convertToBgImage(imageData), [imageData]);
 
+  const particlesInit = useCallback(async (engine) => {
+    console.log(engine);
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container) => {
+    await console.log(container);
+  }, []);
+
   return (
     <BackgroundImage
-      Tag="Section"
+      Tag="section"
       id="top"
       {...bgImage}
-      // preserveStackingContext
       backgroundColor="#000"
     >
-      <HeroSection as="div">
+      <HeroSection
+        as="div"
+        id="particleBackground"
+      >
         <HeroWrapper>
           <Parallax
             startScroll={0}
@@ -127,6 +152,12 @@ function Hero() {
             <TitleLink href="#contact">Contact Me</TitleLink>
           </Parallax>
         </HeroWrapper>
+        <HeroParticles
+          id="heroParticles"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={particlesJson}
+        />
       </HeroSection>
     </BackgroundImage>
   );

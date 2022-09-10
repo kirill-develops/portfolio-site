@@ -1,13 +1,15 @@
 import { StaticImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Parallax } from 'react-scroll-parallax';
 import Sticky from 'react-sticky-el';
 import colors from '../styles/colors';
 import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
 import media, { mobileLandscapeBreakpointStr } from '../styles/mediaQueries';
-import Bubbles from './Bubbles/Bubbles';
 import useMediaQuery from '../utils/useMediaQuery';
+import { loadFull } from 'tsparticles';
+import Particles from 'react-tsparticles';
+import particlesJson from '../assets/bubbles-particlesjs-config.json';
 
 const AboutSection = styled(Section)`
   color: ${colors.lightShade};
@@ -123,6 +125,17 @@ const AboutBody = styled(Body)`
   `}
 `;
 
+const AboutParticles = styled(Particles)`
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+`;
+
 // props object for Parallax animation wrapper
 const parallaxProp = {
   opacity: [-1, 1],
@@ -142,6 +155,15 @@ function About() {
   );
 
   const isMobileLandscape = useMediaQuery(mobileLandscapeBreakpointStr);
+
+  const particlesInit = useCallback(async (engine) => {
+    console.log(engine);
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container) => {
+    await console.log(container);
+  }, []);
 
   return (
     <AboutSection
@@ -253,7 +275,12 @@ function About() {
           </Parallax>
         </BodyWrapper>
       </FlexWrapper>
-      <Bubbles />
+      <AboutParticles
+        id="bubblesParticles"
+        init={particlesInit}
+        loaded={particlesLoaded}
+        options={particlesJson}
+      />
     </AboutSection>
   );
 }
