@@ -26,15 +26,15 @@ const HeroSection = styled(Section)`
   ${media.tabletLandscape`
     width: 35%;
     height: 100vh;
-  max-width: 100%;
-  overflow: hidden;
+    max-width: 100%;
+    overflow: hidden;
   `};
 
   ${media.tabletPortrait`
     width:45%;
     height: 100vh;
-  max-width: 100%;
-  overflow: hidden;
+    max-width: 100%;
+    overflow: hidden;
   `}
 
   ${media.laptop`
@@ -86,13 +86,10 @@ function Hero() {
   const bgImage = useMemo(() => convertToBgImage(imageData), [imageData]);
 
   const particlesInit = useCallback(async (engine) => {
-    console.log(engine);
     await loadFull(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    await console.log(container);
-  }, []);
+  const particlesLoaded = useCallback(async (container) => {}, []);
 
   return (
     <BackgroundImage
