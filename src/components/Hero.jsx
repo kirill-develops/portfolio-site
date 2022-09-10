@@ -53,7 +53,11 @@ const parallaxProps = {
   translateY: [0, 0],
   easing: 'easeInOutQuad',
   shouldAlwaysCompleteAnimation: true,
-  style: { zIndex: 1 },
+  style: {
+    zIndex: 1,
+    display: 'inline-block',
+    width: 'fit-content',
+  },
 };
 
 const HeroParticles = styled(Particles)`
