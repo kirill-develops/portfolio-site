@@ -5,7 +5,7 @@
   },
   "particles": {
     "number": {
-      "value": 60,
+      "value": 20,
       "density": {
         "enable": false,
         "value_area": 500
@@ -51,10 +51,10 @@
       "random": true,
       "straight": false,
       "outModes": {
-          "default" : "out",
-          "top": "destroy",
-          "bottom": "none"
-       },
+        "default": "out",
+        "top": "destroy",
+        "bottom": "none"
+      },
       "bounce": false,
       "attract": {
         "enable": false,
