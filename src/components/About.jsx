@@ -155,7 +155,6 @@ function About() {
   );
 
   const { isMobileLandscape } = useBreakpoint();
-  console.log(isMobileLandscape);
 
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);

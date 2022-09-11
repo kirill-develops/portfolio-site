@@ -7,6 +7,7 @@ import Projects from '../components/Projects';
 import Contact from '../components/Footer';
 import GlobalStyle, { Main } from '../styles/globalStyles';
 import TechStack from '../components/TechStack';
+import MessageForm from '../components/MessageForm';
 
 function IndexPage() {
   return (
@@ -17,6 +18,7 @@ function IndexPage() {
         <About />
         <Projects />
         <TechStack />
+        <MessageForm />
         <Contact />
       </Main>
     </ParallaxProvider>
