@@ -30,11 +30,8 @@ import {
   SiNextdotjs,
   SiGatsby,
   SiAsana,
-  SiBuffer,
-  SiDiscord,
   SiEslint,
   SiGraphql,
-  SiHootsuite,
   SiGnubash,
   SiJquery,
   SiJson,
@@ -263,10 +260,6 @@ function TechStack() {
           <LogoDetails>Slack</LogoDetails>
         </LogoWrapper>
         <LogoWrapper>
-          <SiDiscord size={logoSize} />
-          <LogoDetails>Discord</LogoDetails>
-        </LogoWrapper>
-        <LogoWrapper>
           <SiFigma size={logoSize} />
           <LogoDetails>Figma</LogoDetails>
         </LogoWrapper>
@@ -289,14 +282,6 @@ function TechStack() {
         <LogoWrapper>
           <SiLoom size={logoSize} />
           <LogoDetails>Loom</LogoDetails>
-        </LogoWrapper>
-        <LogoWrapper>
-          <SiHootsuite size={logoSize} />
-          <LogoDetails>Hootsuite</LogoDetails>
-        </LogoWrapper>
-        <LogoWrapper>
-          <SiBuffer size={logoSize} />
-          <LogoDetails>Buffer</LogoDetails>
         </LogoWrapper>
       </Flex>
     </TechStackSection>
