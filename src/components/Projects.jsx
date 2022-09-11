@@ -4,15 +4,8 @@ import { Swiper } from 'swiper/react';
 import { Pagination, Autoplay, Mousewheel, EffectCube } from 'swiper';
 import { Parallax } from 'react-scroll-parallax';
 import useProjectSlide from '../utils/useProjectSlides';
-import useMediaQuery from '../utils/useMediaQuery';
 import { Title, Section } from '../styles/globalStyles';
-import media, {
-  laptopBreakpointStr,
-  mobileLandscapeBreakpointStr,
-  mobilePortraitBreakpointStr,
-  tabletLandscapeBreakpointStr,
-  tabletPortraitBreakpointStr,
-} from '../styles/mediaQueries';
+import media from '../styles/mediaQueries';
 import colors from '../styles/colors';
 
 // Swiper style dependencies
@@ -85,17 +78,7 @@ function ProjectView({ children }) {
 }
 
 function Projects() {
-  // array with boolean values if in tablet or laptop view, otherwise assume we
-  // are on mobile
-  const breakpoint = {
-    isMobilePortrait: useMediaQuery(mobilePortraitBreakpointStr),
-    isMobileLandscape: useMediaQuery(mobileLandscapeBreakpointStr),
-    isTabletPortrait: useMediaQuery(tabletPortraitBreakpointStr),
-    isTabletLandscape: useMediaQuery(tabletLandscapeBreakpointStr),
-    isLaptop: useMediaQuery(laptopBreakpointStr),
-  };
-
-  const projectSlides = useProjectSlide(breakpoint);
+  const projectSlides = useProjectSlide();
 
   return (
     <ProjectView>

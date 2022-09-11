@@ -3,11 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import { SiGmail, SiGithub, SiLinkedin, SiClickup } from 'react-icons/si';
 import { Section, Title, Body } from '../styles/globalStyles';
 import colors from '../styles/colors';
-import useMediaQuery from '../utils/useMediaQuery';
-import media, {
-  mobileLandscapeBreakpointStr,
-  mobilePortraitBreakpointStr,
-} from '../styles/mediaQueries';
+import media from '../styles/mediaQueries';
+import useBreakpoint from '../utils/useBreakpoint';
 
 const pulseAnimation = keyframes`
   from {
@@ -139,8 +136,7 @@ const FooterTitle = styled(Title)`
 `;
 
 function Footer() {
-  const isMobilePortrait = useMediaQuery(mobilePortraitBreakpointStr);
-  const isMobileLandscape = useMediaQuery(mobileLandscapeBreakpointStr);
+  const { isMobileLandscape, isMobilePortrait } = useBreakpoint();
   const isMobile = isMobileLandscape || isMobilePortrait;
 
   return (

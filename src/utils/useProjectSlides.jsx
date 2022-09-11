@@ -4,6 +4,7 @@ import { SwiperSlide } from 'swiper/react';
 import styled from 'styled-components';
 import ProjectSlide from '../components/ProjectSlide';
 import media from '../styles/mediaQueries';
+import useBreakpoint from './useBreakpoint';
 
 const Flex = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ const Flex = styled.div`
   `};
 `;
 
-function useProjectSlide(breakpoint) {
+function useProjectSlide() {
   // this is a Gatsby hook using graphQL to fetch JSON data and use saved images correctly
   const data = useStaticQuery(graphql`
     query {
@@ -47,6 +48,8 @@ function useProjectSlide(breakpoint) {
       }
     }
   `);
+
+  const breakpoint = useBreakpoint();
 
   // creates an array of JSX article elements representing each Project seperately from
   // JSON data parsed by useStaticQuery above in reverse order

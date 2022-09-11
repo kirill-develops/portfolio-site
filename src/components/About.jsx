@@ -3,12 +3,12 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Parallax } from 'react-scroll-parallax';
 import Sticky from 'react-sticky-el';
-import colors from '../styles/colors';
-import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
-import media, { mobileLandscapeBreakpointStr } from '../styles/mediaQueries';
-import useMediaQuery from '../utils/useMediaQuery';
 import { loadFull } from 'tsparticles';
 import Particles from 'react-tsparticles';
+import colors from '../styles/colors';
+import { Title, Body, BodyAccent, Section } from '../styles/globalStyles';
+import useBreakpoint from '../utils/useBreakpoint';
+import media from '../styles/mediaQueries';
 import particlesJson from '../assets/bubbles-particlesjs-config.json';
 
 const AboutSection = styled(Section)`
@@ -154,7 +154,8 @@ function About() {
     />
   );
 
-  const isMobileLandscape = useMediaQuery(mobileLandscapeBreakpointStr);
+  const { isMobileLandscape } = useBreakpoint();
+  console.log(isMobileLandscape);
 
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
