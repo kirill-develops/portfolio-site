@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import emailjs from '@emailjs/browser';
 import styled from 'styled-components';
 import colors from '../styles/colors';
 import { Section, Title } from '../styles/globalStyles';
@@ -43,6 +43,12 @@ const Input = styled.input`
   }
 `;
 
+const ErrorMsg = styled.p`
+  color: red;
+  margin-top: 0.5rem;
+  padding-left: 8px;
+`;
+
 const SubmitButton = styled.button`
   background-color: ${colors.mainColor};
   color: ${colors.white};
@@ -54,11 +60,12 @@ const SubmitButton = styled.button`
 `;
 
 function MessageForm() {
+  const [errors, setErrors] = useState({});
   const [formValues, setFormValues] = useState({
-    name: null,
-    email: null,
-    message: null,
-    errors: {},
+    name: '',
+    email: '',
+    message: '',
+    hasClicked: false,
   });
 
   const handleValidation = useCallback(() => {
@@ -69,20 +76,20 @@ function MessageForm() {
     //Name
     if (!fields.name) {
       formIsValid = false;
-      errors.name = 'Cannot be empty';
+      errors.name = 'cannot be empty';
     }
 
     if (fields.name) {
       if (!fields.name?.match(/^[a-zA-Z]+$/)) {
         formIsValid = false;
-        errors.name = 'Only letters';
+        errors.name = 'must be only letters';
       }
     }
 
     //Email
     if (!fields.email) {
       formIsValid = false;
-      errors.email = 'Cannot be empty';
+      errors.email = 'cannot be empty';
     }
 
     if (fields.email) {
@@ -99,23 +106,30 @@ function MessageForm() {
         )
       ) {
         formIsValid = false;
-        errors.email = 'Email is not valid';
+        errors.email = 'is not valid';
       }
     }
 
     // Message
     if (!fields.message) {
       formIsValid = false;
-      errors.message = 'Cannot be empty';
+      errors.message = 'cannot be empty';
     }
 
-    setFormValues({
-      ...formValues,
-      errors,
-    });
+    setErrors(errors);
 
     return formIsValid;
   }, [formValues]);
+
+  const resetForm = useCallback(() => {
+    setFormValues({
+      name: '',
+      email: '',
+      message: '',
+      hasClicked: false,
+    });
+    setErrors({});
+  }, []);
 
   const handleChange = (e) => {
     setFormValues({
@@ -124,39 +138,84 @@ function MessageForm() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const isFormValid = handleValidation();
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const isFormValid = handleValidation();
 
-    console.log(isFormValid);
-  };
+      if (!isFormValid && !formValues.hasClicked) {
+        setFormValues({
+          ...formValues,
+          hasClicked: true,
+        });
+      }
+
+      if (isFormValid) {
+        const templateParams = {
+          from_name: formValues.name,
+          from_email: formValues.email,
+          message: formValues.message,
+          to_name: 'Kirill Tchentsov',
+        };
+
+        emailjs
+          .send(
+            process.env.GATSBY_EMAILJS_SERVICE_ID,
+            process.env.GATSBY_EMAILJS_TEMPLATE_ID,
+            templateParams,
+            process.env.GATSBY_EMAILJS_PUBLIC_KEY,
+          )
+          .then(
+            (response) => {
+              console.log('SUCCESS!', response.status, response.text);
+            },
+            (err) => {
+              console.log('FAILED...', err);
+            },
+          );
+
+        resetForm();
+      }
+    },
+    [formValues],
+  );
+
+  useEffect(() => {
+    if (formValues.hasClicked) handleValidation();
+  }, [formValues]);
 
   return (
     <MessageSection>
       <Title>Leave a Message</Title>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        netlify
+      >
         <Input
           onChange={handleChange}
+          value={formValues.name}
           name="name"
           type="text"
           placeholder="NAME"
           autoComplete="off"
-          required
         />
+        {errors?.name && <ErrorMsg>Name {errors?.name}</ErrorMsg>}
         <Input
           onChange={handleChange}
+          value={formValues.email}
           name="email"
           type="email"
           placeholder="EMAIL"
-          required
         />
+        {errors?.email && <ErrorMsg>Email {errors?.email}</ErrorMsg>}
         <Input
           onChange={handleChange}
+          value={formValues.message}
           as="textarea"
           name="message"
           placeholder="MESSAGE"
-          required
         />
+        {errors?.message && <ErrorMsg>Message {errors?.message}</ErrorMsg>}
         <SubmitButton type="submit">SEND</SubmitButton>
       </Form>
     </MessageSection>
