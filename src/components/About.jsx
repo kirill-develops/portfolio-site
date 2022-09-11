@@ -245,10 +245,10 @@ function About() {
             {...parallaxProp}
           >
             <AboutBody>
-              Software development lets me be creative and the satisfaction from
-              solving complex problems. It also drives me to seek more efficient
-              solutions that lead to better reusability and comprehension in my
-              code.
+              Software development lets me be creative while providing the
+              satisfaction of solving complex problems. It also drives me to
+              seek more efficient solutions that lead to better reusability and
+              comprehension in my code.
             </AboutBody>
           </Parallax>
           <Parallax
