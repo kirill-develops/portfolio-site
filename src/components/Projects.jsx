@@ -30,6 +30,7 @@ const ProjectsSection = styled(Section)`
   display: flex;
   flex-direction: column;
   padding: 12px 16px 0;
+  min-height: 100vh;
   height: fit-content;
 
   ${media.mobileLandscape`
@@ -54,6 +55,7 @@ const ProjectsSwiper = styled(Swiper)`
   margin-left: -16px;
   margin-right: -16px;
   height: 100%;
+  flex-grow: 1;
 
   ${media.tabletLandscape`
     width:92.5%;
