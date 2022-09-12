@@ -14,7 +14,7 @@ const Flex = styled.div`
 
   ${media.tabletPortrait`
     justify-content: space-between;
-    height: 75%;
+    height: 85%;
   `}
 
   ${media.tabletLandscape`

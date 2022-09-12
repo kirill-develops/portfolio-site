@@ -52,7 +52,7 @@ const Slide = styled.article`
     align-items: space-between;
     gap: 0;
     height: fit-content;
-    max-height:45%;
+    max-height:50%;
     margin: 0 20px 0;
     padding: 20px 0 0;
     
@@ -130,14 +130,14 @@ const PhotoWrapper = styled(Card)`
   ${media.tabletPortrait`
     ${photoWrapperHover}
     ${onHoverScale};
-    max-height:75%;
+    max-height:85%;
     margin: 8px 0 8px;
     width:100%;
   `}
     
   ${media.laptop`
     ${onHoverScale};
-    max-height:80%;
+    max-height:85%;
     margin: 8px 0 0;
   `}
     
@@ -174,7 +174,6 @@ const CardSection = styled.div`
   height: 100%;
 
   ${media.mobileLandscape`
-    display: hidden;
     margin: auto;
   `};
 
