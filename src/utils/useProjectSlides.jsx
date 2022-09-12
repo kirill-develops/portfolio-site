@@ -14,7 +14,8 @@ const Flex = styled.div`
 
   ${media.tabletPortrait`
     justify-content: space-between;
-    height: 85%;
+    height: 100%;
+    margin: 1rem auto;
   `}
 
   ${media.tabletLandscape`
@@ -22,7 +23,7 @@ const Flex = styled.div`
   `} 
   
   ${media.desktop`
-    justify-content: space-around;
+    justify-content: space-between;
     height:100%;
   `};
 `;

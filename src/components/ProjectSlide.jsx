@@ -44,7 +44,7 @@ const Slide = styled.article`
 
   ${media.tabletLandscape`
     height: fit-content;
-    max-height: 50%;
+    max-height: 49%;
   `};
 
   ${media.tabletPortrait`
@@ -142,7 +142,7 @@ const PhotoWrapper = styled(Card)`
   `}
     
   ${media.desktop`
-    max-height:85%;
+    max-height:80%;
   `}
 `;
 
