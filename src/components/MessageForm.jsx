@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
+import Recaptcha from 'react-recaptcha';
 import styled from 'styled-components';
-import colors from '../styles/colors';
+import { Button, TextField } from '@mui/material';
+import { IoMailOutline } from 'react-icons/io5';
 import { Section, Title } from '../styles/globalStyles';
 import media from '../styles/mediaQueries';
+import useBreakpoint from '../utils/useBreakpoint';
 
 const MessageSection = styled(Section)`
   height: fit-content;
@@ -12,51 +15,20 @@ const MessageSection = styled(Section)`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   width: 100%;
   margin: 1.5rem auto 0;
 
   ${media.tabletPortrait`
     max-width: 50%;
+    min-width: 300px;
   `}
-  ${media.tabletLandscape`
+  ${media.mobileLandscape`
     width: 50%;
+    min-width: 300px;
     max-width: 375px;
   `}
-`;
-
-const Input = styled.input`
-  display: block;
-  width: 100%;
-  padding: 8px;
-  font-size: 0.9rem;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.2;
-  overflow: visible;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid ${colors.black};
-
-  &::placeholder {
-    color: ${colors.darkAccent};
-  }
-`;
-
-const ErrorMsg = styled.p`
-  color: red;
-  margin-top: 0.5rem;
-  padding-left: 8px;
-`;
-
-const SubmitButton = styled.button`
-  background-color: ${colors.mainColor};
-  color: ${colors.white};
-  font-size: 1.3rem;
-  line-height: 1.2;
-  margin: 1rem auto 0;
-  width: 100%;
-  border-radius: 4px;
 `;
 
 function MessageForm() {
@@ -67,6 +39,15 @@ function MessageForm() {
     message: '',
     hasClicked: false,
   });
+  const [isRecaptchaLoaded, setRecaptchaLoaded] = useState(false);
+  const [isRecaptchaVerified, setRecaptchaVerified] = useState(false);
+
+  const recaptchaLoaded = useCallback(() => setRecaptchaLoaded(true), []);
+  const recaptchaVerified = useCallback(() => setRecaptchaVerified(true), []);
+  const recaptchaReset = useCallback(() => {
+    setRecaptchaLoaded(false);
+    setRecaptchaVerified(false);
+  }, []);
 
   const handleValidation = useCallback(() => {
     let fields = formValues;
@@ -150,7 +131,11 @@ function MessageForm() {
         });
       }
 
-      if (isFormValid) {
+      if (
+        isFormValid &&
+        recaptchaValues.isLoaded &&
+        recaptchaValues.isVerified
+      ) {
         const templateParams = {
           from_name: formValues.name,
           from_email: formValues.email,
@@ -184,6 +169,9 @@ function MessageForm() {
     if (formValues.hasClicked) handleValidation();
   }, [formValues]);
 
+  const { isMobilePortrait, isMobileLandscape } = useBreakpoint();
+  const isMobile = isMobileLandscape || isMobilePortrait;
+
   return (
     <MessageSection>
       <Title>Leave a Message</Title>
@@ -191,32 +179,60 @@ function MessageForm() {
         onSubmit={handleSubmit}
         netlify
       >
-        <Input
+        <TextField
+          id="outlined-basic"
+          label="NAME"
+          name="name"
+          variant="outlined"
+          error={Boolean(errors?.name)}
+          helperText={errors?.name && `Name ${errors?.name}`}
           onChange={handleChange}
           value={formValues.name}
-          name="name"
-          type="text"
-          placeholder="NAME"
-          autoComplete="off"
+          size={isMobile ? 'small' : 'medium'}
+          fullWidth
         />
-        {errors?.name && <ErrorMsg>Name {errors?.name}</ErrorMsg>}
-        <Input
+        <TextField
+          id="outlined-basic"
+          label="EMAIL"
+          name="email"
+          variant="outlined"
+          error={Boolean(errors?.email)}
+          helperText={errors?.email && `Email ${errors?.email}`}
           onChange={handleChange}
           value={formValues.email}
-          name="email"
-          type="email"
-          placeholder="EMAIL"
+          size={isMobile ? 'small' : 'medium'}
+          fullWidth
         />
-        {errors?.email && <ErrorMsg>Email {errors?.email}</ErrorMsg>}
-        <Input
+        <TextField
+          id="outlined-textarea-static"
+          label="MESSAGE"
+          name="message"
+          variant="outlined"
+          error={Boolean(errors?.message)}
+          helperText={errors?.message && `Message ${errors?.message}`}
+          multiline
+          rows={4}
           onChange={handleChange}
           value={formValues.message}
-          as="textarea"
-          name="message"
-          placeholder="MESSAGE"
+          fullWidth
         />
-        {errors?.message && <ErrorMsg>Message {errors?.message}</ErrorMsg>}
-        <SubmitButton type="submit">SEND</SubmitButton>
+        <Recaptcha
+          sitekey={process.env.GATSBY_GOOGLE_CAPTCHA_SITEKEY}
+          render="explicit"
+          onloadCallback={recaptchaLoaded}
+          verifyCallback={recaptchaVerified}
+          expiredCallback={recaptchaReset}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          disabled={!isRecaptchaLoaded || !isRecaptchaVerified}
+          endIcon={<IoMailOutline />}
+          size="large"
+          fullWidth
+        >
+          SEND
+        </Button>
       </Form>
     </MessageSection>
   );
