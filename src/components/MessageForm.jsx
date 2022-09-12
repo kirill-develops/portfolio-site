@@ -1,35 +1,43 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import emailjs from '@emailjs/browser';
 import Recaptcha from 'react-recaptcha';
 import styled from 'styled-components';
-import { Button, TextField } from '@mui/material';
-import { IoMailOutline } from 'react-icons/io5';
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Slide, { SlideProps } from '@mui/material/Slide';
+import Snackbar from '@mui/material/Snackbar';
+import TextField from '@mui/material/TextField';
+import { IoCloseOutline, IoMailOutline } from 'react-icons/io5';
 import { Section, Title } from '../styles/globalStyles';
-import media from '../styles/mediaQueries';
+import colors from '../styles/colors';
 import useBreakpoint from '../utils/useBreakpoint';
 
 const MessageSection = styled(Section)`
   height: fit-content;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 `;
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  margin: 1.5rem auto 0;
+const formStyle = {
+  p: 5,
+  maxWidth: 'fit-content',
+  mx: 'auto',
+  mt: 2,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 2,
+};
 
-  ${media.tabletPortrait`
-    max-width: 50%;
-    min-width: 300px;
-  `}
-  ${media.mobileLandscape`
-    width: 50%;
-    min-width: 300px;
-    max-width: 375px;
-  `}
-`;
+function SlideTransition(props = SlideProps) {
+  return (
+    <Slide
+      {...props}
+      direction="up"
+    />
+  );
+}
 
 function MessageForm() {
   const [errors, setErrors] = useState({});
@@ -39,9 +47,9 @@ function MessageForm() {
     message: '',
     hasClicked: false,
   });
+
   const [isRecaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [isRecaptchaVerified, setRecaptchaVerified] = useState(false);
-
   const recaptchaLoaded = useCallback(() => setRecaptchaLoaded(true), []);
   const recaptchaVerified = useCallback(() => setRecaptchaVerified(true), []);
   const recaptchaReset = useCallback(() => {
@@ -49,9 +57,26 @@ function MessageForm() {
     setRecaptchaVerified(false);
   }, []);
 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarProps, setSnackbarProps] = useState({
+    message: 'Message successfully sent!',
+    severity: 'success',
+  });
+  const handleClose = useCallback(() => setSnackbarOpen(false), []);
+  const snackbarAction = (
+    <IconButton
+      size="small"
+      aria-label="close"
+      color="inherit"
+      onClick={handleClose}
+    >
+      <IoCloseOutline />
+    </IconButton>
+  );
+
   const handleValidation = useCallback(() => {
-    let fields = formValues;
-    let errors = {};
+    const fields = formValues;
+    const errors = {};
     let formIsValid = true;
 
     //Name
@@ -153,13 +178,22 @@ function MessageForm() {
           .then(
             (response) => {
               console.log('SUCCESS!', response.status, response.text);
+              setSnackbarProps({
+                message: 'Message Successfully sent!',
+                severity: 'success',
+              });
+              setSnackbarOpen(true);
+              resetForm();
             },
             (err) => {
               console.log('FAILED...', err);
+              setSnackbarProps({
+                message: 'Error: Please try resending your Message',
+                severity: 'error',
+              });
+              setSnackbarOpen(true);
             },
           );
-
-        resetForm();
       }
     },
     [formValues],
@@ -170,14 +204,20 @@ function MessageForm() {
   }, [formValues]);
 
   const { isMobilePortrait, isMobileLandscape } = useBreakpoint();
-  const isMobile = isMobileLandscape || isMobilePortrait;
+  const isMobile = useMemo(
+    () => isMobilePortrait || isMobileLandscape,
+    [isMobileLandscape, isMobilePortrait],
+  );
 
   return (
     <MessageSection>
-      <Title>Leave a Message</Title>
-      <Form
+      <Title color={colors.mainColor}>Leave a Message</Title>
+      <Paper
+        component="form"
         onSubmit={handleSubmit}
         netlify
+        elevation={5}
+        sx={formStyle}
       >
         <TextField
           id="outlined-basic"
@@ -188,7 +228,7 @@ function MessageForm() {
           helperText={errors?.name && `Name ${errors?.name}`}
           onChange={handleChange}
           value={formValues.name}
-          size={isMobile ? 'small' : 'medium'}
+          size="small"
           fullWidth
         />
         <TextField
@@ -200,7 +240,7 @@ function MessageForm() {
           helperText={errors?.email && `Email ${errors?.email}`}
           onChange={handleChange}
           value={formValues.email}
-          size={isMobile ? 'small' : 'medium'}
+          size="small"
           fullWidth
         />
         <TextField
@@ -219,6 +259,7 @@ function MessageForm() {
         <Recaptcha
           sitekey={process.env.GATSBY_GOOGLE_CAPTCHA_SITEKEY}
           render="explicit"
+          size={isMobile ? 'compact' : 'normal'}
           onloadCallback={recaptchaLoaded}
           verifyCallback={recaptchaVerified}
           expiredCallback={recaptchaReset}
@@ -233,7 +274,22 @@ function MessageForm() {
         >
           SEND
         </Button>
-      </Form>
+      </Paper>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        action={snackbarAction}
+        TransitionComponent={SlideTransition}
+      >
+        <Alert
+          onClose={handleClose}
+          severity={snackbarProps.severity}
+          sx={{ width: '100%' }}
+        >
+          {snackbarProps.message}
+        </Alert>
+      </Snackbar>
     </MessageSection>
   );
 }
