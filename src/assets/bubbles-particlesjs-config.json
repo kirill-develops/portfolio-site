@@ -3,6 +3,21 @@
     "enable": false,
     "z-index": -1
   },
+  "emitters": {
+    "direction": "top",
+    "size": {
+      "width": 100,
+      "height": 0
+    },
+    "position": {
+      "x": 50,
+      "y": 100
+    },
+    "rate": {
+      "delay": 2,
+      "quantity": 1
+    }
+  },
   "particles": {
     "number": {
       "value": 20,
