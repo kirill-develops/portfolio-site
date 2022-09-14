@@ -187,89 +187,40 @@ function About() {
           <PhotoWrapper>{ScubaPhoto}</PhotoWrapper>
         </StickyPhoto>
         <BodyWrapper>
-          <Parallax
-            translateY={[-350, 0]}
-            startScroll={0}
-            endScroll={isMobileLandscape ? 400 : 700}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              I was first introduced to programming in grade 7, creating
-              side-scrolling QBasic games way before Pokemon was a thing.
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-300, 0]}
-            startScroll={isMobileLandscape ? -40 : -25}
-            endScroll={isMobileLandscape ? 375 : 675}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              More recently I've been creating Full-Stack projects built on
-              modern frameworks like
-              <BodyAccent color={bodyAccentColor}>
-                {' '}
-                React.js, Node.js, MySQL{' '}
-              </BodyAccent>
-              &<BodyAccent color={bodyAccentColor}> JavaScript</BodyAccent> and
-              I'm always eager to learn new languages & libraries.
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-275, 0]}
-            startScroll={isMobileLandscape ? -80 : -50}
-            endScroll={isMobileLandscape ? 350 : 650}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              I've worn many hats in my professional persuits that have given me
-              an array of skills such as problem solving, teamwork, customer
-              service and communication.
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-275, 0]}
-            startScroll={isMobileLandscape ? -120 : -75}
-            endScroll={isMobileLandscape ? 325 : 625}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              It wasn't until I rediscovered software development that I really
-              felt in my element.
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-225, 0]}
-            startScroll={isMobileLandscape ? -160 : -100}
-            endScroll={isMobileLandscape ? 300 : 600}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              Software development lets me be creative while providing the
-              satisfaction of solving complex problems. It also drives me to
-              seek more efficient solutions that lead to better reusability and
-              comprehension in my code.
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-200, 0]}
-            startScroll={isMobileLandscape ? -200 : -125}
-            endScroll={isMobileLandscape ? 275 : 575}
-            {...parallaxProp}
-          >
-            <AboutBody>
-              I look forward to the road ahead and to hearing from you! My
-              contact info is down below!
-            </AboutBody>
-          </Parallax>
-          <Parallax
-            translateY={[-175, 0]}
-            startScroll={isMobileLandscape ? -240 : -150}
-            endScroll={isMobileLandscape ? 250 : 550}
-            {...parallaxProp}
-          >
-            <AboutBody>Thanks for dropping by 🤓</AboutBody>
-          </Parallax>
+          <AboutBody>
+            I was first introduced to programming in grade 7, creating
+            side-scrolling QBasic games way before Pokemon was a thing.
+          </AboutBody>
+          <AboutBody>
+            More recently I've been creating Full-Stack projects built on modern
+            frameworks like
+            <BodyAccent color={bodyAccentColor}>
+              {' '}
+              React.js, Node.js, MySQL{' '}
+            </BodyAccent>
+            &<BodyAccent color={bodyAccentColor}> JavaScript</BodyAccent> and
+            I'm always eager to learn new languages & libraries.
+          </AboutBody>
+          <AboutBody>
+            I've worn many hats in my professional persuits that have given me
+            an array of skills such as problem solving, teamwork, customer
+            service and communication.
+          </AboutBody>
+          <AboutBody>
+            It wasn't until I rediscovered software development that I really
+            felt in my element.
+          </AboutBody>
+          <AboutBody>
+            Software development lets me be creative while providing the
+            satisfaction of solving complex problems. It also drives me to seek
+            more efficient solutions that lead to better reusability and
+            comprehension in my code.
+          </AboutBody>
+          <AboutBody>
+            I look forward to the road ahead and to hearing from you! My contact
+            info is down below!
+          </AboutBody>
+          <AboutBody>Thanks for dropping by 🤓</AboutBody>
         </BodyWrapper>
       </FlexWrapper>
       <AboutParticles
