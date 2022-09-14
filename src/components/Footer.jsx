@@ -1,45 +1,11 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { SiGmail, SiGithub, SiLinkedin, SiClickup } from 'react-icons/si';
+import Link from '@mui/material/Link';
 import { Section, Title, Body } from '../styles/globalStyles';
 import colors from '../styles/colors';
 import media from '../styles/mediaQueries';
 import useBreakpoint from '../utils/useBreakpoint';
-
-const pulseAnimation = keyframes`
-  from {
-    -webkit-transform: scale(1) translateX(-50%);
-            transform: scale(1) translateX(-50%);
-    -webkit-transform-origin: center center ;
-            transform-origin: center center;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  10% {
-    -webkit-transform: scale(0.91) translateX(-50%);
-            transform: scale(0.91) translateX(-50%);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  17% {
-    -webkit-transform: scale(0.98) translateX(-50%);
-            transform: scale(0.98) translateX(-50%);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  33% {
-    -webkit-transform: scale(0.87) translateX(-50%);
-            transform: scale(0.87) translateX(-50%);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  45% {
-    -webkit-transform: scale(1) translateX(-50%);
-            transform: scale(1) translateX(-50%);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-`;
 
 const Contact = styled(Section)`
   background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
@@ -120,8 +86,6 @@ const ClickUpWrapper = styled(LogoWrapper)`
   &:hover {
     color: ${colors.logoUp};
     border-color: ${colors.logoUp};
-    animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
-    -webkit-animation: ${pulseAnimation} 1.5s ease-in-out infinite both;
   }
 `;
 
@@ -151,6 +115,19 @@ function Footer() {
         <SiClickup size={isMobile ? 18 : 22} />
       </ClickUpWrapper>
       <FooterTitle color={colors.mainColor}>Connect</FooterTitle>
+      <Body
+        color={colors.lightAccent}
+        margin={'8px 36px'}
+      >
+        email:{' '}
+        <Link
+          sx={`color: ${colors.white}; display: inline-block`}
+          my={1}
+          href="mailto:kirill.develops@gmail.com"
+        >
+          kirill.develops@gmail.com
+        </Link>
+      </Body>
       <LinksContainer>
         <LinkedinWrapper
           href="https://www.linkedin.com/in/kirill-tchentsov/"
