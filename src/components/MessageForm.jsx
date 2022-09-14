@@ -52,7 +52,7 @@ function MessageForm() {
   const [isRecaptchaVerified, setRecaptchaVerified] = useState(false);
   const recaptchaLoaded = useCallback(() => setRecaptchaLoaded(true), []);
   const recaptchaVerified = useCallback(() => setRecaptchaVerified(true), []);
-  const recaptchaReset = useCallback(() => {
+  const resetRecaptcha = useCallback(() => {
     setRecaptchaLoaded(false);
     setRecaptchaVerified(false);
   }, []);
@@ -184,6 +184,7 @@ function MessageForm() {
               });
               setSnackbarOpen(true);
               resetForm();
+              resetRecaptcha();
             },
             (err) => {
               console.log('FAILED...', err);
@@ -262,7 +263,7 @@ function MessageForm() {
           size={isMobile ? 'compact' : 'normal'}
           onloadCallback={recaptchaLoaded}
           verifyCallback={recaptchaVerified}
-          expiredCallback={recaptchaReset}
+          expiredCallback={resetRecaptcha}
         />
         <Button
           type="submit"
