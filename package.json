@@ -31,7 +31,7 @@
     "gatsby-plugin-netlify": "^5.0.1",
     "gatsby-plugin-recaptcha": "^1.0.5",
     "gatsby-plugin-sass": "^5.21.0",
-    "gatsby-plugin-sharp": "^4.21.0",
+    "gatsby-plugin-sharp": "^4.25.1",
     "gatsby-plugin-sitemap": "^5.21.0",
     "gatsby-plugin-styled-components": "^5.21.0",
     "gatsby-source-filesystem": "^4.21.1",
